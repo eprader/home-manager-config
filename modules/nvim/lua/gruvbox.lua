@@ -21,7 +21,7 @@ local _M = {
   cyan = '#8ec07c';
 
   light_grey = '#a89984';
-  white = 'ebdbb2';
+  white = '#ebdbb2';
 
   dark_orange = '#d65d0e';
   orange = '#fe8019'

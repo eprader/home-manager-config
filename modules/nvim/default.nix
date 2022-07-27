@@ -83,6 +83,9 @@ in
 
       #Statusline
       lualine-nvim
+
+      #Harpoon by the CEO of TheStartup™ ThePrimeagen
+      harpoon
     ];
   };
 }
