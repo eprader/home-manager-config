@@ -23,8 +23,12 @@ in
 
   home.packages = with pkgs; [
     tree-sitter
+
     rnix-lsp
+
     ccls
+    lldb
+
     sumneko-lua-language-server
   ];
   programs.neovim = {
@@ -45,6 +49,8 @@ in
       luafile ${./lua/autopairs.lua}
       luafile ${./lua/gitsigns.lua}
       luafile ${./lua/lualine.lua}
+      luafile ${./lua/dap.lua}
+      luafile ${./lua/dapui.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -63,6 +69,8 @@ in
       #LSP
       nvim-lspconfig
       lspsaga-nvim
+
+      nvim-jdtls
 
       #UI
       dressing-nvim
@@ -86,6 +94,13 @@ in
 
       #Harpoon by the CEO of TheStartup™ ThePrimeagen
       harpoon
+
+      #DAP
+      nvim-dap
+      nvim-dap-ui
+      telescope-dap-nvim
+      nvim-dap-virtual-text
+
     ];
   };
 }
