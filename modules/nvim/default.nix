@@ -51,6 +51,7 @@ in
       luafile ${./lua/lualine.lua}
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
+      luafile ${./lua/neotest.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -100,6 +101,15 @@ in
       nvim-dap-ui
       telescope-dap-nvim
       nvim-dap-virtual-text
+
+      #Testing
+      (plugin
+        "neotest"
+        "nvim-neotest/neotest")
+      (plugin
+        "neotest-vim-test"
+        "nvim-neotest/neotest-vim-test")
+      vim-test
 
     ];
   };
