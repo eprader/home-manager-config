@@ -22,6 +22,9 @@ rm ~/.config/nixpkgs/home.nix ~/.bashrc ~/.profile &&
 rm ~/.config/nixpkgs/home.nix &&
 ln -s ~/home-manager-config/home.nix ~/.config/nixpkgs/home.nix &&
 
+# install nixGl for kitty
+$ nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
+$ nix-env -iA nixgl.auto.nixGLDefault 
 
 #switch to home-manager config
 home-manager switch
