@@ -16,8 +16,7 @@ in
     };
 
     packages = with pkgs; [
-      fontconfig
-      source-code-pro
+      (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
       gnumake
       gcc
       jdk
