@@ -5,13 +5,9 @@ let
 
 in
 {
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-
   home = {
-    username = "emanuel";
-    homeDirectory = "/home/emanuel";
+    username = "eprader";
+    homeDirectory = "/home/eprader";
     stateVersion = "22.05";
 
     sessionVariables = {
@@ -19,23 +15,25 @@ in
       VISUAL = "$EDITOR";
     };
 
-    packages = [
-      (pkgs.nerdfonts.override {
-        fonts = [
-          "SourceCodePro"
-        ];
-      })
-
-      pkgs.gnumake
-      pkgs.gcc
-      pkgs.jdk
-      pkgs.gradle
+    packages = with pkgs; [
+      fontconfig
+      source-code-pro
+      gnumake
+      gcc
+      jdk
+      gradle
     ];
+
   };
 
   imports = [
     (import "${nvim}")
   ];
+
+  fonts.fontconfig.enable = true;
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   programs.bash = {
     enable = true;
@@ -45,6 +43,10 @@ in
       hms = "systemctl --user reset-failed && home-manager switch";
       cat = "bat";
     };
+
+    initExtra = "
+      source $HOME/.nix-profile/etc/profile.d/nix.sh
+    ";
   };
 
   programs.bat = {
@@ -116,59 +118,59 @@ in
     };
   };
 
-  programs.alacritty = {
+  /*  programs.alacritty = {
     enable = true;
 
     settings = {
-      window = {
-        title = "Terminal";
-        padding = {
-          x = 2;
-          y = 2;
-        };
-        opacity = 1.0;
-      };
+    window = {
+    title = "Terminal";
+    padding = {
+    x = 2;
+    y = 2;
+    };
+    opacity = 1.0;
+    };
 
-      font = {
-        normal.family = "SourceCodePro Nerd Font";
-        size = 11.0;
-      };
+    font = {
+    normal.family = "SourceCodePro Nerd Font";
+    size = 11.0;
+    };
 
 
-      colors = {
-        primary = {
-          background = "0x282828";
-          foreground = "0xebdbb2";
-        };
-        cursor = {
-          text = "0x282828";
-          cursor = "0xa89984";
-        };
-        normal = {
-          black = "0x282828";
-          red = "0xcc241d";
-          green = "0x98971a";
-          yellow = "0xd79921";
-          blue = "0x458588";
-          magenta = "0xb16286";
-          cyan = "0x689d6a";
-          white = "0xa89984";
-        };
-        bright = {
-          black = "0x928374";
-          red = "0xfb4934";
-          green = "0xb8bb26";
-          yellow = "0xfabd2f";
-          blue = "0x83a598";
-          magenta = "0xd3869b";
-          cyan = "0x8ec07c";
-          white = "0xebdbb2";
-        };
-      };
+    colors = {
+    primary = {
+    background = "0x282828";
+    foreground = "0xebdbb2";
+    };
+    cursor = {
+    text = "0x282828";
+    cursor = "0xa89984";
+    };
+    normal = {
+    black = "0x282828";
+    red = "0xcc241d";
+    green = "0x98971a";
+    yellow = "0xd79921";
+    blue = "0x458588";
+    magenta = "0xb16286";
+    cyan = "0x689d6a";
+    white = "0xa89984";
+    };
+    bright = {
+    black = "0x928374";
+    red = "0xfb4934";
+    green = "0xb8bb26";
+    yellow = "0xfabd2f";
+    blue = "0x83a598";
+    magenta = "0xd3869b";
+    cyan = "0x8ec07c";
+    white = "0xebdbb2";
+    };
+    };
 
-      shell.program = "${pkgs.bash}/bin/bash";
+    shell.program = "${pkgs.bash}/bin/bash";
 
     };
-  };
+    }; */
 
 }
