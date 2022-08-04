@@ -11,6 +11,12 @@ in
     stateVersion = "22.05";
 
     sessionVariables = {
+      /* The terminal variable does not seem to work...
+        installing kitty using the distros package manager and setting the default terminal with 
+        sudo update-alternatives --config x-terminal-emulator
+        will use the nix configuration
+      */
+      # TODO: figure out a way to make kitty the default terminal without the workaround
       TERMINAL = "nixGL kitty";
       EDITOR = "nvim";
       VISUAL = "$EDITOR";
