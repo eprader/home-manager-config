@@ -24,6 +24,7 @@ in
 
     packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+
       gnumake
       gcc
       jdk
@@ -45,9 +46,21 @@ in
     enable = true;
 
     shellAliases = {
+      ll = "ls -alF";
+      la = "ls -A";
+      l = "ls -CF";
+      ls = "ls --color=auto";
+      dir = "dir --color=auto";
+      vdir = "vdir --color=auto";
+
+      grep = "grep --color=auto";
+      fgrep = "fgrep --color=auto";
+      egrep = "egrep --color=auto";
+
       vi = "nvim";
       hms = "systemctl --user reset-failed && home-manager switch";
       cat = "bat";
+
     };
 
     initExtra = "
@@ -59,6 +72,13 @@ in
     enable = true;
     config = {
       theme = "gruvbox-dark";
+    };
+  };
+
+  programs.dircolors = {
+    enable = true;
+    settings = {
+      ".sh" = "01;32";
     };
   };
 
@@ -97,14 +117,6 @@ in
       };
       scan_timeout = 10;
       package.disabled = true;
-    };
-  };
-
-  programs.dircolors = {
-    enable = true;
-    settings = {
-      DIR = "01;34";
-      ".sh" = "01;32";
     };
   };
 
