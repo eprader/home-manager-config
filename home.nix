@@ -49,7 +49,7 @@ in
     shellAliases = {
       ll = "lsd -alF";
       la = "lsd -A";
-      l = "lsd -CF";
+      l = "lsd -F";
       ls = "lsd";
       dir = "dir --color=auto";
       vdir = "vdir --color=auto";
