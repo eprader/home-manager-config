@@ -63,9 +63,11 @@ in
 
     };
 
-    initExtra = "
+    # The second line is needed for 'home-manager switch' to work in kitty
+    initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/nix.sh
-    ";
+      export TERMINFO_DIRS="$HOME/.nix-profile/share/terminfo":/lib/terminfo 
+    '';
   };
 
   programs.bat = {
