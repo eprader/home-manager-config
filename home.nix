@@ -24,6 +24,7 @@ in
 
     packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+      lsd
 
       gnumake
       gcc
@@ -46,10 +47,10 @@ in
     enable = true;
 
     shellAliases = {
-      ll = "ls -alF";
-      la = "ls -A";
-      l = "ls -CF";
-      ls = "ls --color=auto";
+      ll = "lsd -alF";
+      la = "lsd -A";
+      l = "lsd -CF";
+      ls = "lsd";
       dir = "dir --color=auto";
       vdir = "vdir --color=auto";
 
