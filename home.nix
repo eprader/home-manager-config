@@ -28,8 +28,11 @@ in
 
       gnumake
       gcc
+
       jdk
       gradle
+
+      R
     ];
 
   };
