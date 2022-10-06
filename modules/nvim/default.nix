@@ -99,7 +99,7 @@ in
       vim-test
 
       #Language specifics
-      (fromGit "nvim-r" "jalvesaq/Nvim-R")
+      (fromGit "nvim-r" "jalvesaq/nvim-r")
 
     ];
   };
