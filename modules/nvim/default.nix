@@ -15,30 +15,23 @@ let
 
 in
 {
-  #nixpkgs.overlays = [
-  # (import (builtins.fetchTarball {
-  #  url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+  #nixpkgs.overlays = [ (import (builtins.fetchTarball { url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
   #}))
   #];
 
   home.packages = with pkgs; [
     tree-sitter
-
     rnix-lsp
-
     ccls
     lldb
-
     sumneko-lua-language-server
   ];
+
   programs.neovim = {
     enable = true;
-    #package = pkgs.neovim-nightly;
-    package = nixos-unstable.neovim-unwrapped;
-    viAlias = true;
-    vimAlias = true;
+    #viAlias = true; vimAlias = true;
 
-    extraConfig = ''
+    extraConfig = '' 
       luafile ${./lua/settings.lua}
       luafile ${./lua/keymaps.lua}
       luafile ${./lua/telescope.lua}
@@ -51,7 +44,6 @@ in
       luafile ${./lua/lualine.lua}
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
-      luafile ${./lua/neotest.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -103,14 +95,11 @@ in
       nvim-dap-virtual-text
 
       #Testing
-      (plugin
-        "neotest"
-        "nvim-neotest/neotest")
-      (plugin
-        "neotest-vim-test"
-        "nvim-neotest/neotest-vim-test")
-      vim-test
+      /*(plugin "neotest" "nvim-neotest/neotest") (plugin
+        "neotest-vim-test" "nvim-neotest/neotest-vim-test")
+        vim-test*/
 
     ];
   };
 }
+

@@ -1,6 +1,11 @@
+  -- following two lines were needed as treesitter needed to be installed at read write location...
+  --local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
+  --vim.fn.mkdir(parser_install_dir, "p")
 require 'nvim-treesitter.configs'.setup {
+
+
   -- A list of parser names, or "all"
-  ensure_installed = { "nix", "lua", "bash", "c", "java", "haskell" },
+  ensure_installed = { "nix", "lua", "bash", "c", "java", "haskell", "r" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -31,4 +36,9 @@ require 'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+
+  -- needed for install location
+  parser_install_dir = "~/treesitter/parsers" -- https://github.com/NixOS/nixpkgs/issues/189838
 }
+
+vim.opt.runtimepath:append("~/treesitter/parsers")

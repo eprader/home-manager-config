@@ -28,12 +28,12 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   map('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map('n', '<leader>ff', vim.lsp.buf.formatting, bufopts)
+  map('n', '<leader>ff', vim.lsp.buf.format, bufopts)
   -- formatting on save
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.cmd [[augroup Format]]
     vim.cmd [[autocmd! * <buffer>]]
-    vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format]]
     vim.cmd [[augroup END]]
   end
 end
