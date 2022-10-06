@@ -1,17 +1,16 @@
 { pkgs, lib, ... }:
 let
-  nixos-unstable = import <nixos-unstable> { };
+  #nixos-unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
-  fromGit = ref: name: repo: pkgs.vimUtils.buildVimPlugin {
-    name = name;
+  fromGit = name: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = name;
+    version = "2022-10-06";
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
-      ref = ref;
+      ref = "master";
     };
   };
-
-  plugin = fromGit "master";
 
 in
 {
@@ -95,9 +94,12 @@ in
       nvim-dap-virtual-text
 
       #Testing
-      /*(plugin "neotest" "nvim-neotest/neotest") (plugin
-        "neotest-vim-test" "nvim-neotest/neotest-vim-test")
-        vim-test*/
+      (fromGit "neotest" "nvim-neotest/neotest")
+      (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
+      vim-test
+
+      #Language specifics
+      (fromGit "nvim-r" "jalvesaq/Nvim-R")
 
     ];
   };
