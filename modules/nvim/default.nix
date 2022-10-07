@@ -43,6 +43,7 @@ in
       luafile ${./lua/lualine.lua}
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
+      luafile ${./lua/nvim-r.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
