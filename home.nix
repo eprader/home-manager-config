@@ -32,7 +32,12 @@ in
       jdk
       gradle
 
+#dap
       R
+#dbs
+      yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
+#cnit
+      python38
     ];
 
   };
@@ -71,6 +76,7 @@ in
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/nix.sh
       export TERMINFO_DIRS="$HOME/.nix-profile/share/terminfo":/lib/terminfo 
+      export NIXPKGS_ALLOW_UNFREE=1
     '';
   };
 
@@ -176,6 +182,8 @@ in
 
     };
   };
+
+  programs.zathura.enable = true;
 
   /*programs.alacritty = {
     enable = true;
