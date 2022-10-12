@@ -36,8 +36,11 @@ in
       R
 #dbs
       yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
+      docker
+      docker-compose
 #cnit
       python38
+      traceroute
     ];
 
   };
@@ -61,6 +64,7 @@ in
       ls = "lsd";
       dir = "dir --color=auto";
       vdir = "vdir --color=auto";
+      sudop = "sudo env PATH=$PATH"; #sudo preserving user path
 
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
