@@ -102,6 +102,9 @@ in
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
 
+      # Markdown
+      (fromGit "nvim-markdown" "ixru/nvim-markdown")
+
     ];
   };
 }
