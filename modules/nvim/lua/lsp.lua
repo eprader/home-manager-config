@@ -2,7 +2,7 @@ local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+  local on_attach = function(client, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   -- Mappings
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -29,12 +29,13 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
   map('n', '<leader>ff', vim.lsp.buf.format, bufopts)
+
   -- formatting on save
-  if client.server_capabilities.document_formatting then
-    vim.cmd [[augroup Format]]
-    vim.cmd [[autocmd! * <buffer>]]
-    vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format]]
-    vim.cmd [[augroup END]]
+  vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
+
+  -- this capability check does not seem to work so the command was added outside...
+  if client.server_capabilities.textDocument_formatting then
+    vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
   end
 end
 
