@@ -14,7 +14,7 @@ in
       /* The terminal variable does not seem to work...
         installing kitty using the distros package manager and setting the default terminal with 
         sudo update-alternatives --config x-terminal-emulator
-        will use the nix configuration
+        will use the nix configwuration
       */
       # TODO: figure out a way to make kitty the default terminal without the workaround
       TERMINAL = "nixGL kitty";
@@ -26,21 +26,27 @@ in
       (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
       lsd
 
+      pandoc
+      texlive.combined.scheme-full
+
       gnumake
       gcc
 
       jdk
       gradle
 
-#fp
+      #modeling
+      umlet
+
+      #fp
       ghc
-#dap
+      #dap
       R
-#dbs
+      #dbs
       yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
       docker
       docker-compose
-#cnit
+      #cnit
       python38
       traceroute
     ];
