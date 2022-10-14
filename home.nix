@@ -44,8 +44,6 @@ in
       R
       #dbs
       yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
-      docker
-      docker-compose
       #cnit
       python38
       traceroute
@@ -58,6 +56,9 @@ in
   ];
 
   fonts.fontconfig.enable = true;
+
+  #virtualisation.docker.enable = true;
+  #users.eprader.extraGroups = [ "docker" ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

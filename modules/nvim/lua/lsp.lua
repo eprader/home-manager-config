@@ -2,7 +2,7 @@ local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-  local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   -- Mappings
   -- See `:help vim.lsp.*` for documentation on any of the below functions
