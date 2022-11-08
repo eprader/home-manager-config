@@ -62,6 +62,14 @@ require 'lspconfig'.sumneko_lua.setup {
   capabilities = capabilities,
 }
 
+require 'lspconfig'.hls.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require 'lspconfig'.jdtls.setup {}
+
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {

@@ -5,6 +5,11 @@ let
 
 in
 {
+  # for desktop icons on non nixos
+  # TODO: does not seem to work
+  xdg.enable = true;
+  xdg.mime.enable = true;
+  targets.genericLinux.enable = true;
   home = {
     username = "eprader";
     homeDirectory = "/home/eprader";
@@ -22,6 +27,7 @@ in
       VISUAL = "$EDITOR";
     };
 
+
     packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
       lsd
@@ -35,18 +41,27 @@ in
       jdk
       gradle
 
-      #modeling
-      umlet
-
       #fp
       ghc
+
       #dap
-      R
+      # openssl
+      # R
+      # rPackages.plotly
+      #rstudio
+
       #dbs
       yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
+
       #cnit
-      python38
       traceroute
+      python310
+      python310Packages.pyyaml
+
+      #notes
+      obsidian
+
+      tree
     ];
 
   };
@@ -86,10 +101,13 @@ in
     };
 
     # The second line is needed for 'home-manager switch' to work in kitty
+    # third line for yed
+    # fourth line for icons on Desktop
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/nix.sh
       export TERMINFO_DIRS="$HOME/.nix-profile/share/terminfo":/lib/terminfo 
-      export NIXPKGS_ALLOW_UNFREE=1
+      export NIXPKGS_ALLOW_UNFREE=1 
+      export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
   };
 

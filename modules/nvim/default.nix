@@ -3,12 +3,11 @@ let
   #nixos-unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
-  fromGit = name: repo: pkgs.vimUtils.buildVimPlugin {
+  fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = name;
-    version = "2022-10-06";
+    version = "2022-10-28";
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
-      ref = "master";
     };
   };
 
@@ -24,6 +23,8 @@ in
     ccls
     lldb
     sumneko-lua-language-server
+    haskell-language-server
+    jdt-language-server
   ];
 
   programs.neovim = {
@@ -44,6 +45,7 @@ in
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
       luafile ${./lua/nvim-r.lua}
+      luafile ${./lua/jdtls.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -104,6 +106,11 @@ in
 
       # Markdown
       (fromGit "nvim-markdown" "ixru/nvim-markdown")
+
+      #UML
+      #plantuml-syntax
+      #open-browser-vim
+      #(fromGit "plantuml-previewer" "weirongxu/plantuml-previewer")
 
     ];
   };
