@@ -45,7 +45,7 @@ in
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
       luafile ${./lua/nvim-r.lua}
-      luafile ${./lua/jdtls.lua}
+      luafile ${./lua/java.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
