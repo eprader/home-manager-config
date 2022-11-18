@@ -55,8 +55,11 @@ in
 
       #cnit
       traceroute
-      python310
-      python310Packages.pyyaml
+
+      (python39.withPackages (ps: with ps; [
+        pip
+        pyyaml
+      ]))
 
       #notes
       obsidian
