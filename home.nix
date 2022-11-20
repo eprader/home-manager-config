@@ -51,7 +51,6 @@ in
       #rstudio
 
       #dbs
-      yed # export NIXPKGS_ALLOW_UNFREE=1 in bash config
 
       #cnit
       traceroute
@@ -62,7 +61,7 @@ in
       ]))
 
       #notes
-      obsidian
+      #obsidian
 
       tree
     ];
