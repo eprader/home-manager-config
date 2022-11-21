@@ -22,6 +22,9 @@ o.smartindent = true
 o.autoindent = true
 o.colorcolumn = '100'
 o.undofile = true
+
+o.clipboard = "unnamedplus"
+
 vim.api.nvim_command("set noswapfile")
 
 vim.cmd [[ 
@@ -38,7 +41,7 @@ o.listchars = {
   tab = '~>'
 }
 
-vim.cmd[[
+vim.cmd [[
 augroup highlight_yank
 autocmd!
 au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=80})
