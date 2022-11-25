@@ -58,6 +58,7 @@ in
       (python39.withPackages (ps: with ps; [
         pip
         pyyaml
+        requests
       ]))
 
       #notes

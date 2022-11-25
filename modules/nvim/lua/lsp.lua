@@ -1,13 +1,12 @@
 local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
   -- Mappings
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local map = vim.keymap.set
-  local opts = { noremap = true, silent = true }
   map('n', '<leader>e', vim.diagnostic.open_float, opts)
   map('n', '[d', vim.diagnostic.goto_prev, opts)
   map('n', ']d', vim.diagnostic.goto_next, opts)
@@ -34,9 +33,9 @@ local on_attach = function(client, bufnr)
   vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
 
   -- this capability check does not seem to work so the command was added outside...
-  if client.server_capabilities.textDocument_formatting then
-    vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
-  end
+  -- if client.server_capabilities.textDocument_formatting then
+  --   vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
+  --end]]
 end
 
 local lsp_flags = {
@@ -68,7 +67,22 @@ require 'lspconfig'.hls.setup {
   capabilities = capabilities,
 }
 
-require 'lspconfig'.jdtls.setup {}
+require 'lspconfig'.sqls.setup {
+  on_attach = function(client, bufnr)
+    require 'sqls'.on_attach(client, bufnr)
+    on_attach()
+
+    map({ 'n', 'v' }, '<leader>eq', ":SqlsExecuteQuery<cr>", opts)
+    map('n', '<leader>sd', ":SqlsSwitchDatabase<cr>", opts)
+    map('n', '<leader>sc', ":SqlsSwitchConnection<cr>", opts)
+
+
+  end,
+
+  flags = lsp_flags,
+  capabilities = capabilities,
+  cmd = { "sqls", "-config", "/home/eprader/.config/sqls/config.yml" }
+}
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

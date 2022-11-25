@@ -19,12 +19,15 @@ in
 
   home.packages = with pkgs; [
     tree-sitter
+
+    # LSP
     rnix-lsp
     ccls
     lldb
     sumneko-lua-language-server
     haskell-language-server
     jdt-language-server
+    sqls # SQL
   ];
 
   programs.neovim = {
@@ -103,15 +106,10 @@ in
 
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
-
-      # Markdown
-      (fromGit "nvim-markdown" "ixru/nvim-markdown")
-
-      #UML
-      #plantuml-syntax
-      #open-browser-vim
-      #(fromGit "plantuml-previewer" "weirongxu/plantuml-previewer")
-
+      (fromGit "sqls-nvim" "nanotee/sqls.nvim")
+      #fzf-vim
+      #vim-lsp
+      #(fromGit "sqls-vim" "lighttiger2505/sqls.vim")
     ];
   };
 }

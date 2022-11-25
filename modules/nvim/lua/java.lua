@@ -1,4 +1,4 @@
-local jdtls_dir = 'gy007s4ixbsfsl908l8drrhxff0cznim-jdt-language-server-1.17.0'
+--[[ local jdtls_dir = 'gy007s4ixbsfsl908l8drrhxff0cznim-jdt-language-server-1.17.0'
 
 local config_dir = jdtls_dir .. '/share/config/'
 local plugin_dir = jdtls_dir .. '/share/java/plugins/'
@@ -67,4 +67,4 @@ local config = {
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
-require('jdtls').start_or_attach(config)
+require('jdtls').start_or_attach(config) ]]
