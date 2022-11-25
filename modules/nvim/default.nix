@@ -107,9 +107,8 @@ in
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
-      #fzf-vim
-      #vim-lsp
-      #(fromGit "sqls-vim" "lighttiger2505/sqls.vim")
+      #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
+
     ];
   };
 }

@@ -67,6 +67,18 @@ require 'lspconfig'.hls.setup {
   capabilities = capabilities,
 }
 
+require 'lspconfig'.tsserver.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require 'lspconfig'.pyright.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
 require 'lspconfig'.sqls.setup {
   on_attach = function(client, bufnr)
     require 'sqls'.on_attach(client, bufnr)
@@ -75,8 +87,6 @@ require 'lspconfig'.sqls.setup {
     map({ 'n', 'v' }, '<leader>eq', ":SqlsExecuteQuery<cr>", opts)
     map('n', '<leader>sd', ":SqlsSwitchDatabase<cr>", opts)
     map('n', '<leader>sc', ":SqlsSwitchConnection<cr>", opts)
-
-
   end,
 
   flags = lsp_flags,

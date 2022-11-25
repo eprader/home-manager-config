@@ -2,6 +2,18 @@
 let
   nvim = ~/home-manager-config/modules/nvim;
 
+  pythonPackages = ps: with ps; [
+    pip
+    pyyaml
+    requests
+  ];
+
+  nodePackages = with pkgs.nodePackages; [
+    pnpm
+    typescript
+    typescript-language-server
+    pyright
+  ];
 
 in
 {
@@ -32,8 +44,7 @@ in
       (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; })
       lsd
 
-      pandoc
-      texlive.combined.scheme-full
+      (python39.withPackages pythonPackages)
 
       gnumake
       gcc
@@ -41,31 +52,22 @@ in
       jdk
       gradle
 
+      pandoc
+      texlive.combined.scheme-full
+
       #fp
       ghc
 
-      #dap
-      # openssl
-      # R
-      # rPackages.plotly
-      #rstudio
+      #js / ts
+      nodejs
+      yarn
 
-      #dbs
 
       #cnit
       traceroute
 
-      (python39.withPackages (ps: with ps; [
-        pip
-        pyyaml
-        requests
-      ]))
-
-      #notes
-      #obsidian
-
       tree
-    ];
+    ] ++ nodePackages;
 
   };
 
