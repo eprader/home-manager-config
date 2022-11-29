@@ -2,44 +2,50 @@ local g = vim.g
 
 g.mapleader = ' '
 
-local o = vim.opt
+local settings = {
+  hidden = true, -- opening new buffer without writing old one
+  errorbells = false,
 
-o.hidden = true -- opening new buffer without writing old one
-o.errorbells = false
+  number = true,
+  relativenumber = true,
+  termguicolors = true,
 
-o.number = true
-o.relativenumber = true
-o.termguicolors = true
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  expandtab = true,
 
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
-o.expandtab = true
+  cursorline = true,
+  signcolumn = 'yes',
+  smartindent = true,
+  autoindent = true,
+  colorcolumn = '100',
+  undofile = true,
 
-o.cursorline = true
-o.signcolumn = 'yes'
-o.smartindent = true
-o.autoindent = true
-o.colorcolumn = '100'
-o.undofile = true
+  clipboard = "unnamedplus",
 
-o.clipboard = "unnamedplus"
+
+
+  list = true,
+  listchars = {
+    trail = '·',
+    extends = '>',
+    precedes = '<',
+    eol = '↴',
+    tab = '~>'
+  }
+}
+
+for k, v in pairs(settings) do
+  vim.opt[k] = v
+end
 
 vim.api.nvim_command("set noswapfile")
 
-vim.cmd [[ 
+vim.cmd [[
 colorscheme gruvbox
 set noshowmode
 ]]
-
-o.list = true
-o.listchars = {
-  trail = '·',
-  extends = '>',
-  precedes = '<',
-  eol = '↴',
-  tab = '~>'
-}
 
 vim.cmd [[
 augroup highlight_yank
