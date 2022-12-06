@@ -1,6 +1,4 @@
-local g = vim.g
-
-g.mapleader = ' '
+vim.g.mapleader = ' '
 
 local settings = {
   hidden = true, -- opening new buffer without writing old one

@@ -30,12 +30,12 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>ff', vim.lsp.buf.format, bufopts)
 
   -- formatting on save
-  vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
+  --vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
 
   -- this capability check does not seem to work so the command was added outside...
-  -- if client.server_capabilities.textDocument_formatting then
-  --   vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
-  --end]]
+  --if client.server_capabilities.documentFormattingProvider then
+  -- vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
+  --end
 end
 
 local lsp_flags = {
