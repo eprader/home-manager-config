@@ -6,6 +6,7 @@ let
     pip
     pyyaml
     requests
+    psycopg2 # python postgresql
   ];
 
   nodePackages = with pkgs.nodePackages; [
