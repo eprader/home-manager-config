@@ -103,11 +103,41 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   signs = true,
   update_in_insert = true,
   severity_sort = true,
-}
-)
+})
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 end
+
+local config = {
+  virtual_text = true, -- disable virtual text
+  signs = {
+    active = signs, -- show signs
+  },
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    severity_sort = true,
+    focusable = true,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+}
+
+vim.cmd [[highlight link NormalFloat Normal]]
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
+
+vim.diagnostic.config(config)
