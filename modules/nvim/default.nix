@@ -51,6 +51,7 @@ in
       luafile ${./lua/java.lua}
       luafile ${./lua/trouble.lua}
       luafile ${./lua/todo-comments.lua}
+      luafile ${./lua/comment.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -59,6 +60,7 @@ in
       tokyonight-nvim
       nvim-web-devicons
       gitsigns-nvim
+      todo-comments-nvim
 
       #Telescope
       plenary-nvim
@@ -70,7 +72,6 @@ in
       #LSP
       nvim-lspconfig
       lspsaga-nvim
-      todo-comments-nvim
       trouble-nvim
 
       nvim-jdtls
@@ -108,6 +109,9 @@ in
       (fromGit "neotest" "nvim-neotest/neotest")
       (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
       vim-test
+
+      #Helpful
+      comment-nvim
 
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
