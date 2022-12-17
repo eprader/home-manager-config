@@ -118,7 +118,7 @@ local lspname = {
 local diagnostics = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
-  symbols = { error = " ", warn = " ", hint = " ", info = " " };
+  symbols = { error = " ", warn = " ", hint = " ", info = " " };
   colored = true,
   always_visible = true
 }

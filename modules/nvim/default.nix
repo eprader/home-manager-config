@@ -49,6 +49,8 @@ in
       luafile ${./lua/lualine.lua}
       luafile ${./lua/nvim-r.lua}
       luafile ${./lua/java.lua}
+      luafile ${./lua/trouble.lua}
+      luafile ${./lua/todo-comments.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -68,6 +70,8 @@ in
       #LSP
       nvim-lspconfig
       lspsaga-nvim
+      todo-comments-nvim
+      trouble-nvim
 
       nvim-jdtls
 
