@@ -26,7 +26,7 @@ in
     lldb
     sumneko-lua-language-server
     haskell-language-server
-    jdt-language-server
+    #jdt-language-server
     sqls # SQL
   ];
 
@@ -44,9 +44,9 @@ in
       luafile ${./lua/cmp.lua}
       luafile ${./lua/autopairs.lua}
       luafile ${./lua/gitsigns.lua}
-      luafile ${./lua/lualine.lua}
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
+      luafile ${./lua/lualine.lua}
       luafile ${./lua/nvim-r.lua}
       luafile ${./lua/java.lua}
     '';
@@ -54,6 +54,7 @@ in
     plugins = with pkgs.vimPlugins; [
       #Eyecandy
       gruvbox-community
+      tokyonight-nvim
       nvim-web-devicons
       gitsigns-nvim
 

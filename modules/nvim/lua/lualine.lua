@@ -9,7 +9,7 @@ local colors = {
   black = '#282828',
   dark_grey = '#928374',
 
-  darg_red = '#cc241d',
+  dark_red = '#cc241d',
   red = '#fb4934',
 
   dark_green = '#98971a',
@@ -48,58 +48,14 @@ local conditions = {
   end,
 }
 
--- Config
-local config = {
-  options = {
-    -- Disable sections and component separators
-    component_separators = '',
-    section_separators = '',
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = colors.white, bg = colors.black } },
-      inactive = { c = { fg = colors.white, bg = colors.black } },
-    },
-  },
-  sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    -- These will be filled later
-    lualine_c = {},
-    lualine_x = {},
-  },
-  inactive_sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
+local filename = {
+  'filename',
+  cond = conditions.buffer_not_empty,
+  color = { fg = colors.blue, ui = 'bold' },
+  path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
 }
 
--- Inserts a component in lualine_c at left section
-local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
-end
-
--- Inserts a component in lualine_x ot right section
-local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
-end
-
-ins_left {
-  function()
-    return ' '
-  end,
-}
-
-ins_left {
+local mode = {
   -- mode component
   function()
     return '⌨'
@@ -107,12 +63,12 @@ ins_left {
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
-      n = colors.red,
+      n = colors.dark_magenta,
       i = colors.dark_green,
-      v = colors.dark_blue,
+      v = colors.dark_yellow,
       ['␖'] = colors.blue,
-      V = colors.dark_blue,
-      c = colors.magenta,
+      V = colors.dark_yellow,
+      c = colors.dark_red,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
@@ -130,93 +86,15 @@ ins_left {
     }
     return { fg = mode_color[vim.fn.mode()] }
   end,
-  padding = { right = 1 },
+  padding = { left = 2, right = 1 },
 }
 
---[[ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-}]]
-
-ins_left {
-  function()
-    return ' '
-  end,
-}
-
-ins_left {
-  'filename',
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.dark_blue, gui = 'bold' },
-  path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-}
-
-ins_left {
+local location = {
   'location',
   color = { fg = colors.dark_grey, gui = 'bold' },
 }
 
-ins_left {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = " ", warn = " ", hint = " ", info = " " };
-  diagnostics_color = {
-    color_error = { fg = colors.dark_red },
-    color_warn = { fg = colors.dark_yellow },
-    color_info = { fg = colors.dark_cyan },
-  },
-}
-
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
-}
-
-ins_left {
-  'branch',
-  icon = '',
-  color = { fg = colors.dark_magenta, gui = 'bold' },
-}
-
-ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '柳', removed = ' ' },
-  diff_color = {
-    added = { fg = colors.dark_green },
-    modified = { fg = colors.dark_cyan },
-    removed = { fg = colors.dark_red },
-  },
-  cond = conditions.hide_in_width,
-}
-
--- Add components to right sections
-ins_right {
-  'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
-  cond = conditions.hide_in_width,
-  color = { fg = colors.dark_green, gui = 'bold' },
-}
-
-ins_right {
-  'fileformat',
-  fmt = string.upper,
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.dark_green, gui = 'bold' },
-}
-
-ins_right {
-  'filetype',
-  fmt = string.lower,
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.dark_grey, gui = 'bold' },
-}
-
-ins_right {
+local lspname = {
   -- Lsp server name .
   function()
     local msg = '∅'
@@ -237,7 +115,75 @@ ins_right {
   color = { fg = colors.dark_yellow, gui = 'bold' },
 }
 
+local diagnostics = {
+  'diagnostics',
+  sources = { 'nvim_diagnostic' },
+  symbols = { error = " ", warn = " ", hint = " ", info = " " };
+  colored = true,
+  always_visible = true
+}
+--
+local branch = {
+  'branch',
+  icon = '',
+  color = { fg = colors.dark_magenta, gui = 'bold' },
+}
 
+local diff = {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+  symbols = { added = ' ', modified = '柳', removed = ' ' },
+  diff_color = {
+    added = { fg = colors.dark_green },
+    modified = { fg = colors.dark_cyan },
+    removed = { fg = colors.dark_red },
+  },
+  cond = conditions.hide_in_width,
+}
 
+local encoding = {
+  'o:encoding', -- option component same as &encoding in viml
+  fmt = string.upper, -- I'm not sure why it's upper case either ;)
+  cond = conditions.hide_in_width,
+  color = { fg = colors.dark_green, gui = 'bold' },
+}
+
+local fileformat = {
+  'fileformat',
+  fmt = string.upper,
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  color = { fg = colors.dark_green, gui = 'bold' },
+}
+
+local filetype = {
+  'filetype',
+  fmt = string.lower,
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  color = { fg = colors.dark_grey, gui = 'bold' },
+}
+
+local spaces = function()
+  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+end
+
+-- Config
+local config = {
+  options = {
+    -- Disable sections and component separators
+    globalstatus = true,
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+    always_divide_middle = true,
+  },
+  sections = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { mode, filename, branch, diff, location },
+    lualine_x = { lspname, diagnostics },
+    lualine_y = { spaces, filetype, fileformat, encoding },
+    lualine_z = {},
+  },
+}
 -- Now don't forget to initialize lualine
 lualine.setup(config)

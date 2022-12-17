@@ -188,7 +188,7 @@ in
   programs.kitty = {
     enable = true;
     settings = {
-      font_size = "12.0";
+      font_size = "14.0";
       font_family = "SourceCodePro Nerd Font Mono";
       bold_font = "auto";
       italic_font = "auto";
