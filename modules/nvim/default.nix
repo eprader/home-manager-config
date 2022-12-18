@@ -47,6 +47,7 @@ in
       luafile ${./lua/dap.lua}
       luafile ${./lua/dapui.lua}
       luafile ${./lua/lualine.lua}
+      luafile ${./lua/neotest.lua}
       luafile ${./lua/nvim-r.lua}
       luafile ${./lua/java.lua}
       luafile ${./lua/trouble.lua}
@@ -61,6 +62,8 @@ in
       nvim-web-devicons
       gitsigns-nvim
       todo-comments-nvim
+      nvim-notify
+      dressing-nvim
 
       #Telescope
       plenary-nvim
@@ -75,9 +78,6 @@ in
       trouble-nvim
 
       nvim-jdtls
-
-      #UI
-      dressing-nvim
 
       #Completion
       cmp-nvim-lsp

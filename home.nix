@@ -50,8 +50,10 @@ in
       gnumake
       gcc
 
-      jdk
+      #jdk11
+
       gradle
+      maven
 
       pandoc
       texlive.combined.scheme-full

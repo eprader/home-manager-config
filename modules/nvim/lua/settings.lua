@@ -38,6 +38,9 @@ for k, v in pairs(settings) do
   vim.opt[k] = v
 end
 
+-- nvim-notify
+vim.notify = require 'notify'
+
 vim.api.nvim_command("set noswapfile")
 
 vim.cmd [[
