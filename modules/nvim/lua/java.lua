@@ -1,5 +1,5 @@
 --local jdtls_dir = '/nix/store/gy007s4ixbsfsl908l8drrhxff0cznim-jdt-language-server-1.17.0'
-local jdtls_dir = '/home/eprader/jdt-language-server/'
+--[[ local jdtls_dir = '/home/eprader/jdt-language-server/'
 
 local config_dir = jdtls_dir .. 'config_linux/'
 local plugin_dir = jdtls_dir .. 'plugins/'
@@ -69,4 +69,4 @@ local config = {
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
-require('jdtls').start_or_attach(config)
+require('jdtls').start_or_attach(config) ]]
