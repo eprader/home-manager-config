@@ -37,6 +37,9 @@ require 'neotest'.setup({
     target = "NeotestTarget",
     unknown = "GruvboxFg0",
   },
+  consumers = {
+    overseer = require("neotest.consumers.overseer"),
+  },
 })
 
 -- Keymaps

@@ -53,6 +53,8 @@ in
       luafile ${./lua/trouble.lua}
       luafile ${./lua/todo-comments.lua}
       luafile ${./lua/comment.lua}
+      luafile ${./lua/toggleterm.lua}
+      luafile ${./lua/overseer.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -112,6 +114,12 @@ in
 
       #Helpful
       comment-nvim
+
+      #Terminal
+      toggleterm-nvim
+
+      #Tasks / code runner
+      (fromGit "overseer" "stevearc/overseer.nvim")
 
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
