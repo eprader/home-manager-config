@@ -2,10 +2,9 @@
 let
   nvim = ~/home-manager-config/modules/nvim;
 
-  setfont = import ./setfont.nix {};
+  setfont = import ./setfont.nix { };
 
   pythonPackages = p: with p; [
-    #pre-commit # pre commit hooks
     numpy
     pip
     pyyaml
@@ -14,8 +13,11 @@ let
   ];
 
   nodePackages = with pkgs.nodePackages; [
+    prettier
+    #prettier-plugin-svelte
     pnpm
     typescript
+
     typescript-language-server
     pyright
   ];
@@ -49,9 +51,11 @@ in
       lsd
 
       (python310.withPackages pythonPackages)
+      pre-commit # pre commit hooks
 
       gnumake
       gcc
+      libclang
 
       #jdk11
 
@@ -63,6 +67,8 @@ in
 
       #fp
       ghc
+      # TODO: find a way to install prettier and its prettier-plugin-java easily
+
 
       #js / ts
       nodejs
