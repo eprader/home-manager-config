@@ -52,6 +52,7 @@ require 'lspconfig'.ccls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
+  lsp = {codelens = {enable = true}}
 }
 
 require 'lspconfig'.sumneko_lua.setup {
