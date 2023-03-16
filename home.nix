@@ -247,7 +247,7 @@ in
       };
 
       font = setfont "FiraCode Nerd Font" // {
-        size = 16.0;
+        size = 14.0;
       };
 
 
