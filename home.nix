@@ -14,11 +14,14 @@ let
 
   nodePackages = with pkgs.nodePackages; [
     prettier
-    #prettier-plugin-svelte
     pnpm
-    typescript
 
+    typescript
     typescript-language-server
+
+    svelte-check
+    svelte-language-server
+
     pyright
   ];
 

@@ -62,10 +62,13 @@ in
       gruvbox-community
       tokyonight-nvim
       nvim-web-devicons
-      gitsigns-nvim
       todo-comments-nvim
       nvim-notify
       dressing-nvim
+
+      #Git
+      gitsigns-nvim
+      git-blame-nvim
 
       #Telescope
       plenary-nvim
