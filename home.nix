@@ -66,7 +66,6 @@ in
       maven
 
       pandoc
-      texlive.combined.scheme-full
 
       #fp
       ghc
