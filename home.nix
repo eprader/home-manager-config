@@ -76,8 +76,7 @@ in
       yarn
 
       tree
-    ] #++ nodePackages;
-;
+    ] ++ nodePackages;
 
   };
 
