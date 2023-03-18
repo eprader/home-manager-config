@@ -2,7 +2,7 @@
 let
   nvim = ~/home-manager-config/modules/nvim;
 
-  setfont = import ./setfont.nix { };
+ # setfont = import ./setfont.nix { };
 
   pythonPackages = p: with p; [
     numpy
@@ -29,9 +29,9 @@ in
 {
   # for desktop icons on non nixos
   # TODO: does not seem to work
-  xdg.enable = true;
-  xdg.mime.enable = true;
-  targets.genericLinux.enable = true;
+  #xdg.enable = true;
+  #xdg.mime.enable = true;
+  #targets.genericLinux.enable = true;
   home = {
     username = "eprader";
     homeDirectory = "/home/eprader";
@@ -43,18 +43,18 @@ in
         sudo update-alternatives --config x-terminal-emulator
         will use the nix configwuration
       */
-      TERMINAL = "nixGL alacritty";
+     # TERMINAL = "nixGL alacritty";
       EDITOR = "nvim";
       VISUAL = "$EDITOR";
     };
 
 
     packages = with pkgs; [
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+      #(pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
       lsd
 
       (python310.withPackages pythonPackages)
-      pre-commit # pre commit hooks
+      #pre-commit # pre commit hooks
 
       gnumake
       gcc
@@ -65,23 +65,19 @@ in
       gradle
       maven
 
-      pandoc
+      #pandoc
 
       #fp
       ghc
-      # TODO: find a way to install prettier and its prettier-plugin-java easily
 
 
       #js / ts
       nodejs
       yarn
 
-
-      #cnit
-      traceroute
-
       tree
-    ] ++ nodePackages;
+    ] #++ nodePackages;
+;
 
   };
 
@@ -89,7 +85,7 @@ in
     (import "${nvim}")
   ];
 
-  fonts.fontconfig.enable = true;
+  #fonts.fontconfig.enable = true;
 
   #virtualisation.docker.enable = true;
   #users.eprader.extraGroups = [ "docker" ];
@@ -196,7 +192,6 @@ in
       };
     };
   };
-
   /*
     programs.kitty = {
     enable = true;
@@ -233,7 +228,7 @@ in
     };
     };
   */
-  programs.zathura.enable = true;
+  /*programs.zathura.enable = true;
 
   programs.alacritty = {
     enable = true;
@@ -288,5 +283,5 @@ in
 
     };
   };
-
+*/
 }
