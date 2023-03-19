@@ -122,6 +122,7 @@ in
     # fourth line for icons on Desktop
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/nix.sh
+      source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
   };

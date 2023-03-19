@@ -1,8 +1,7 @@
 #prerequisites for this script are: curl being installed
 
 #install nix
-sh <(curl -L https://nixos.org/nix/install) --no-daemon && source $HOME/.nix-profile/etc/profile.d/nix.sh &&
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+sh <(curl -L https://nixos.org/nix/install) --no-daemon && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 #enable nix flakes
 #nix-env -iA nixpkgs.nixFlakes
