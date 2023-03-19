@@ -16,13 +16,15 @@ let
     prettier
     pnpm
 
+    pyright
+
     typescript
     typescript-language-server
 
     svelte-check
     svelte-language-server
 
-    pyright
+    tailwindcss
   ];
 
 in
@@ -54,7 +56,7 @@ in
       lsd
 
       (python310.withPackages pythonPackages)
-      #pre-commit # pre commit hooks
+      pre-commit # pre commit hooks
 
       gnumake
       gcc
@@ -188,6 +190,11 @@ in
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
+      };
+
+      "lcc" = {
+        user = "cb761119";
+        hostname = "lcc2.uibk.ac.at";
       };
     };
   };

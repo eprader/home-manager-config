@@ -79,6 +79,12 @@ require 'lspconfig'.svelte.setup {
   capabilities = capabilities,
 }
 
+require 'lspconfig'.tailwindcss.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
 require 'lspconfig'.pyright.setup {
   on_attach = on_attach,
   flags = lsp_flags,
