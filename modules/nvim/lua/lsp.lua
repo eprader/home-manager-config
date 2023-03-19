@@ -37,61 +37,74 @@ local on_attach = function(client, bufnr)
   --end
 end
 
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+local lsconfig = require 'lspconfig'
 -- Server setup
-require 'lspconfig'.rnix.setup {
+lsconfig.rnix.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.ccls.setup {
+lsconfig.ccls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
   lsp = {codelens = {enable = true}}
 }
 
-require 'lspconfig'.lua_ls.setup {
+lsconfig.lua_ls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.hls.setup {
+lsconfig.hls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.tsserver.setup {
+lsconfig.tsserver.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.svelte.setup {
+lsconfig.svelte.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.tailwindcss.setup {
+lsconfig.tailwindcss.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.pyright.setup {
+lsconfig.pyright.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.sqls.setup {
+lsconfig.ltex.setup {
+  settings = {
+    ltex = {
+      disabledRules = {
+        ['en-US'] = { 'PROFANITY' },
+        ['en-GB'] = { 'PROFANITY' },
+      },
+    },
+  },
+}
+
+lsconfig.sqls.setup {
   on_attach = function(client, bufnr)
     require 'sqls'.on_attach(client, bufnr)
     on_attach()

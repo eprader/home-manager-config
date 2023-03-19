@@ -54,6 +54,7 @@ in
     packages = with pkgs; [
       #(pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
       lsd
+      tree
 
       (python310.withPackages pythonPackages)
       pre-commit # pre commit hooks
@@ -67,17 +68,16 @@ in
       gradle
       maven
 
-      #pandoc
+      # latex
+      tectonic
 
       #fp
       ghc
 
-
-      #js / ts
+      # javascript
       nodejs
       yarn
 
-      tree
     ] ++ nodePackages;
 
   };

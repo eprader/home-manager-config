@@ -26,6 +26,7 @@ in
     lldb
     sumneko-lua-language-server
     haskell-language-server
+    ltex-ls
     #jdt-language-server
     sqls # SQL
   ];
