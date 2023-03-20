@@ -61,6 +61,7 @@ in
 
       gnumake
       gcc
+      pkgs.llvmPackages.openmp  # openmp support
       libclang
 
       #jdk11
