@@ -25,6 +25,7 @@ let
     svelte-language-server
 
     tailwindcss
+    #"@tailwindcss/language-server"
   ];
 
 in
@@ -55,6 +56,7 @@ in
       #(pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
       lsd
       tree
+      zip
 
       (python310.withPackages pythonPackages)
       pre-commit # pre commit hooks
