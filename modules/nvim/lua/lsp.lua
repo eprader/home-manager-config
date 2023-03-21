@@ -96,6 +96,7 @@ lsconfig.pyright.setup {
 lsconfig.ltex.setup {
   settings = {
     ltex = {
+      language = 'en-GB',
       disabledRules = {
         ['en-US'] = { 'PROFANITY' },
         ['en-GB'] = { 'PROFANITY' },

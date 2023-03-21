@@ -25,7 +25,6 @@ let
     svelte-language-server
 
     tailwindcss
-    #"@tailwindcss/language-server"
   ];
 
 in
@@ -73,6 +72,7 @@ in
 
       # latex
       tectonic
+      zathura
 
       #fp
       ghc

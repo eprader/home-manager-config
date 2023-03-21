@@ -56,6 +56,7 @@ in
       luafile ${./lua/comment.lua}
       luafile ${./lua/toggleterm.lua}
       luafile ${./lua/overseer.lua}
+      luafile ${./lua/vimtex.lua}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -128,6 +129,7 @@ in
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
+      vimtex
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
 
     ];

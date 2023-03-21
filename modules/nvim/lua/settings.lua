@@ -22,8 +22,6 @@ local settings = {
 
   clipboard = "unnamedplus",
 
-
-
   list = true,
   listchars = {
     trail = '·',
