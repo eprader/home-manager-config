@@ -79,6 +79,9 @@ in
       #TreeSitter
       nvim-treesitter
 
+      #HTML autotags
+      nvim-ts-autotag
+
       #LSP
       nvim-lspconfig
       lspsaga-nvim

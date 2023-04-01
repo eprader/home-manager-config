@@ -65,7 +65,6 @@ in
       pkgs.llvmPackages.openmp  # openmp support
       libclang
       valgrind
-      perf-linux
 
       #jdk11
 
