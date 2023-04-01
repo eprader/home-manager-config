@@ -2,7 +2,7 @@ local _M = {
   black = '#282828';
   dark_grey = '#928374';
 
-  darg_red = '#cc241d';
+  dark_red = '#cc241d';
   red = '#fb4934';
 
   dark_green = '#98971a';
