@@ -1,5 +1,7 @@
 require 'telescope'.setup {
   defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -7,7 +9,14 @@ require 'telescope'.setup {
         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-h>"] = "which_key"
       }
-    }
+    },
+    layout_strategy = "horizontal",
+    layout_config = {
+      prompt_position = "top"
+    },
+    prompt_prefix = "󰍉|",
+    sorting_strategy = "ascending"
+
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
@@ -17,20 +26,6 @@ require 'telescope'.setup {
     -- }
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
-    find_files = {
-      layout_config = {
-        prompt_position = "top",
-        prompt_prefix = "🔍>",
-        --sorting_strategy = "ascending"
-      },
-    },
-    current_buffer_fuzzy_find = {
-      layout_config = {
-        prompt_position = "top",
-        prompt_prefix = "🔍>",
-        --sorting_strategy = "ascending"
-      },
-    }
   },
   extensions = {
     -- Your extension configuration goes here:
