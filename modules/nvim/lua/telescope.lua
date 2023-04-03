@@ -84,7 +84,7 @@ map('n', '<leader>ps', ":Telescope find_files<cr>")
 map('n', '<leader>ld', ":Telescope diagnostics<cr>")
 
 local colors = {
-  black = '#1d2021',
+  black = '#32302f',
   black2 = '#3c3836',
   dark_grey = '#928374',
   dark_red = '#cc241d',
