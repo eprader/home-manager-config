@@ -111,7 +111,7 @@ vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.black2 })
 vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = colors.black2, bg = colors.black2 })
 vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = colors.black, bg = colors.dark_magenta })
 vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { fg = colors.white, bg = colors.black2 })
-vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.dark_red, bg = colors.black2 })
+vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.dark_magenta, bg = colors.black2 })
 
 vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { fg = colors.black, bg = colors.black })
 vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = colors.black, bg = colors.blue })
