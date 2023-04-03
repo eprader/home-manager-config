@@ -38,6 +38,7 @@ in
     extraConfig = '' 
       luafile ${./lua/settings.lua}
       luafile ${./lua/keymaps.lua}
+      luafile ${./lua/gruvbox.lua}
       luafile ${./lua/telescope.lua}
       luafile ${./lua/treesitter.lua}
       luafile ${./lua/lsp.lua}
@@ -76,6 +77,7 @@ in
       #Telescope
       plenary-nvim
       telescope-nvim
+      telescope-fzf-native-nvim
 
       #TreeSitter
       nvim-treesitter
