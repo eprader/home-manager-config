@@ -35,6 +35,7 @@ in
     enable = true;
     #viAlias = true; vimAlias = true;
 
+    #luafile ${./lua/neotest.lua}
     extraConfig = '' 
       luafile ${./lua/settings.lua}
       luafile ${./lua/keymaps.lua}
@@ -49,7 +50,6 @@ in
       luafile ${./lua/dapui.lua}
       luafile ${./lua/lualine.lua}
       luafile ${./lua/notify.lua}
-      luafile ${./lua/neotest.lua}
       luafile ${./lua/nvim-r.lua}
       luafile ${./lua/java.lua}
       luafile ${./lua/trouble.lua}
