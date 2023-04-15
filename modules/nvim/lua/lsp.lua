@@ -54,7 +54,7 @@ lsconfig.ccls.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
-  lsp = {codelens = {enable = true}}
+  lsp = { codelens = { enable = true } }
 }
 
 lsconfig.lua_ls.setup {
@@ -122,14 +122,14 @@ lsconfig.sqls.setup {
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    prefix = '≫',
-    spacing = 2,
-  },
-  signs = true,
-  update_in_insert = true,
-  severity_sort = true,
-})
+    virtual_text = {
+      prefix = '≫',
+      spacing = 2,
+    },
+    signs = true,
+    update_in_insert = true,
+    severity_sort = true,
+  })
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
@@ -140,7 +140,7 @@ end
 local config = {
   virtual_text = true, -- disable virtual text
   signs = {
-    active = signs, -- show signs
+    active = signs,    -- show signs
   },
   update_in_insert = true,
   underline = true,

@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.gruvbox_contrast_dark = 'soft'
 
 local settings = {
   hidden = true, -- opening new buffer without writing old one
