@@ -1,5 +1,4 @@
 vim.g.mapleader = ' '
-vim.g.gruvbox_contrast_dark = 'soft'
 
 local settings = {
   hidden = true, -- opening new buffer without writing old one
@@ -42,6 +41,7 @@ vim.notify = require 'notify'
 
 vim.api.nvim_command("set noswapfile")
 
+vim.g.gruvbox_contrast_dark = 'medium'
 vim.cmd [[
 colorscheme gruvbox
 set noshowmode

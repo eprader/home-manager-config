@@ -57,7 +57,7 @@ in
       tree
       zip
 
-      (python310.withPackages pythonPackages)
+      #(python310.withPackages pythonPackages)
       pre-commit # pre commit hooks
 
       gnumake

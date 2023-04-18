@@ -64,6 +64,7 @@ in
       #Eyecandy
       gruvbox-community
       tokyonight-nvim
+      (fromGit "one-monokai" "cpea2506/one_monokai.nvim")
       nvim-web-devicons
       todo-comments-nvim
       nvim-notify
