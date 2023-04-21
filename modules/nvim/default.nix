@@ -65,6 +65,8 @@ in
       gruvbox-community
       tokyonight-nvim
       (fromGit "one-monokai" "cpea2506/one_monokai.nvim")
+      (fromGit "catpuccin" "catppuccin/nvim")
+      onedark-nvim
       nvim-web-devicons
       todo-comments-nvim
       nvim-notify
