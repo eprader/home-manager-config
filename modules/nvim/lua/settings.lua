@@ -45,7 +45,7 @@ set noshowmode
 
 if (vim.g.colors_name == "gruvbox") then
   vim.api.nvim_set_hl(0, '@parameter.python', { link = 'GruvboxYellowBold' })
-  vim.api.nvim_set_hl(0, 'Special', { link = 'GruvboxGray' })
+  vim.api.nvim_set_hl(0, 'Delimiter', { link = 'GruvboxGray' })
 end
 
 vim.cmd [[
