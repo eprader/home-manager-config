@@ -105,7 +105,7 @@ lsconfig.ltex.setup {
   },
 }
 
-lsconfig.sqls.setup {
+lsconfig.sqlls.setup {
   on_attach = function(client, bufnr)
     require 'sqls'.on_attach(client, bufnr)
     on_attach()

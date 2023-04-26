@@ -16,11 +16,10 @@ nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && n
 nix-env -iA nixgl.auto.nixGLDefault 
 
 #remove default files
-rm ~/.config/nixpkgs/home.nix ~/.bashrc ~/.profile
+rm ~/.config/home-manager/home.nix ~/.bashrc ~/.profile
 
 #symlinking home.nix
-rm ~/.config/nixpkgs/home.nix
-ln -s ~/home-manager-config/home.nix ~/.config/nixpkgs/home.nix
+ln -s ~/home-manager-config/home.nix ~/.config/home-manager/home.nix
 
 # install nixGl for kitty
 $ nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
