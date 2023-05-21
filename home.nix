@@ -56,6 +56,7 @@ in
       lsd
       tree
       zip
+      unzip
 
       #(python310.withPackages pythonPackages)
       pre-commit # pre commit hooks
