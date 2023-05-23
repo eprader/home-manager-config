@@ -21,10 +21,7 @@ let
     typescript
     typescript-language-server
 
-    svelte-check
-    svelte-language-server
-
-    tailwindcss
+    #svelte-language-server
   ];
 
 in
