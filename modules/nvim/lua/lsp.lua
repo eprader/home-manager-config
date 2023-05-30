@@ -93,17 +93,17 @@ lsconfig.pyright.setup {
   capabilities = capabilities,
 }
 
-lsconfig.ltex.setup {
-  settings = {
-    ltex = {
-      language = 'en-GB',
-      disabledRules = {
-        ['en-US'] = { 'PROFANITY' },
-        ['en-GB'] = { 'PROFANITY' },
-      },
-    },
-  },
-}
+-- lsconfig.ltex.setup {
+--   settings = {
+--     ltex = {
+--       language = 'en-GB',
+--       disabledRules = {
+--         ['en-US'] = { 'PROFANITY' },
+--         ['en-GB'] = { 'PROFANITY' },
+--       },
+--     },
+--   },
+-- }
 
 lsconfig.sqlls.setup {
   on_attach = function(client, bufnr)
