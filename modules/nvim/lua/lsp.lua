@@ -81,11 +81,11 @@ lsconfig.svelte.setup {
   capabilities = capabilities,
 }
 
-lsconfig.tailwindcss.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-}
+-- lsconfig.tailwindcss.setup {
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+--   capabilities = capabilities,
+-- }
 
 lsconfig.pyright.setup {
   on_attach = on_attach,

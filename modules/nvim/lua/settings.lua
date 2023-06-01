@@ -11,6 +11,7 @@ local settings = {
   shiftwidth = 2,
   expandtab = true,
   cursorline = true,
+  scrolloff = 2^3,
   signcolumn = 'yes',
   smartindent = true,
   autoindent = true,
