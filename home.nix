@@ -63,6 +63,7 @@ in
       pkgs.llvmPackages.openmp # openmp support
       libclang
       valgrind
+      cmake
 
       #jdk11
 
