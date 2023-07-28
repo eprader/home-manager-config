@@ -5,11 +5,11 @@ let
   # setfont = import ./setfont.nix { };
 
   pythonPackages = p: with p; [
-    numpy
     pip
+    numpy
+    matplotlib
     pyyaml
     requests
-    psycopg2 # python postgresql
   ];
 
   nodePackages = with pkgs.nodePackages; [
@@ -55,7 +55,7 @@ in
       zip
       unzip
 
-      (python310.withPackages pythonPackages)
+      (python311.withPackages pythonPackages)
       pre-commit # pre commit hooks
 
       gnumake
@@ -64,6 +64,7 @@ in
       libclang
       valgrind
       cmake
+      poetry # python project management
 
       #jdk11
 
