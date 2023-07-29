@@ -17,7 +17,7 @@ require 'harpoon'.setup {
 
     -- set marks specific to each git branch inside git repository
     mark_branch = false,
-  };
+  },
 
   projects = {
     -- Yes $HOME works
@@ -30,3 +30,12 @@ require 'harpoon'.setup {
     } ]]
   }
 }
+
+-- KEYBINDS
+local map = vim.keymap.set
+local harpoon_ui = require("harpoon_ui")
+map('n', '<leader>ha', harpoon_ui.add_file())
+map('n', '<leader>hl', harpoon_ui.toggle_quick_menu())
+map('n', '<leader>j', harpoon_ui.nav_file(1))
+map('n', '<leader>k', harpoon_ui.nav_file(2))
+map('n', '<leader>k', harpoon_ui.nav_file(3))
