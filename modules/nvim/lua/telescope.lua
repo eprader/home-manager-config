@@ -78,10 +78,11 @@ require 'telescope'.setup {
 
 require 'telescope'.load_extension('fzf')
 
+-- KEYBINDS
 local map = vim.keymap.set
 map('n', '<leader>fs', ":Telescope current_buffer_fuzzy_find<cr>")
-map('n', '<leader>ps', ":Telescope find_files<cr>")
-map('n', '<leader>ld', ":Telescope diagnostics<cr>")
+map('n', '<leader>ff', ":Telescope find_files<cr>")
+map('n', '<leader>fd', ":Telescope diagnostics<cr>")
 
 local colors = {
   black = '#32302f',
@@ -104,7 +105,6 @@ local colors = {
   dark_orange = '#d65d0e',
   orange = '#fe8019'
 }
-
 vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.black })
 vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.black2 })
 

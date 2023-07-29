@@ -5,11 +5,12 @@ let
   # setfont = import ./setfont.nix { };
 
   pythonPackages = p: with p; [
-    pip
     numpy
-    matplotlib
+    pip
     pyyaml
     requests
+    matplotlib
+    opencv4
   ];
 
   nodePackages = with pkgs.nodePackages; [
