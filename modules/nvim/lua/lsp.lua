@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   map('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
   map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map('n', '<leader>ff', vim.lsp.buf.format, bufopts)
+  map('n', '<C-f>', vim.lsp.buf.format, bufopts)
   -- formatting on save
   --vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
 
