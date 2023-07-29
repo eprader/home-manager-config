@@ -33,9 +33,10 @@ require 'harpoon'.setup {
 
 -- KEYBINDS
 local map = vim.keymap.set
-local harpoon_ui = require("harpoon_ui")
-map('n', '<leader>ha', harpoon_ui.add_file())
-map('n', '<leader>hl', harpoon_ui.toggle_quick_menu())
-map('n', '<leader>j', harpoon_ui.nav_file(1))
-map('n', '<leader>k', harpoon_ui.nav_file(2))
-map('n', '<leader>k', harpoon_ui.nav_file(3))
+local harpoon_mark = require("harpoon.mark")
+local harpoon_ui = require("harpoon.ui")
+map('n', '<leader>ha', harpoon_mark.add_file)
+map('n', '<leader>hl', harpoon_ui.toggle_quick_menu)
+map('n', '<C-j>', function() harpoon_ui.nav_file(1) end)
+map('n', '<C-k>', function() harpoon_ui.nav_file(2) end)
+map('n', '<C-l>', function() harpoon_ui.nav_file(3) end)

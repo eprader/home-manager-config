@@ -44,6 +44,7 @@ in
       luafile ${./lua/lsp.lua}
       luafile ${./lua/dressing.lua}
       luafile ${./lua/cmp.lua}
+      luafile ${./lua/harpoon.lua}
       luafile ${./lua/autopairs.lua}
       luafile ${./lua/gitsigns.lua}
       luafile ${./lua/dap.lua}
