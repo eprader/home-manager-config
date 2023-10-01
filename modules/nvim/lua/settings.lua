@@ -16,8 +16,7 @@ local settings = {
   autoindent = true,
   colorcolumn = '100',
   undofile = true,
- -- WSL clipboard = "unnamedplus",
-  clipboard = "unnamed",
+  clipboard = "unnamedplus",
   list = true,
   listchars = {
     trail = '·',
@@ -38,22 +37,25 @@ vim.notify = require 'notify'
 vim.api.nvim_command("set noswapfile")
 
 vim.g.gruvbox_contrast_dark = 'medium'
+
+--[[ add to vim.cmd for clipboard in WSL
+let g:clipboard = {
+\   'name': 'WslClipboard',
+\   'copy': {
+\      '+': 'clip.exe',
+\      '*': 'clip.exe',
+\    },
+\   'paste': {
+\      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+\      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+\   },
+\   'cache_enabled': 0,
+\ } ]]
 vim.cmd [[
 colorscheme gruvbox
 set noshowmode
-let g:clipboard = {
-  \   'name': 'WslClipboard',
-  \   'copy': {
-  \      '+': 'clip.exe',
-  \      '*': 'clip.exe',
-  \    },
-  \   'paste': {
-  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  \   },
-  \   'cache_enabled': 0,
-  \ }
 ]]
+
 
 
 if (vim.g.colors_name == "gruvbox") then

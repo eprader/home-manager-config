@@ -47,6 +47,7 @@ in
       #Desktop Environment
       wayland
       hyprland
+      xclip
 
       (nerdfonts.override {
         fonts = [ "FiraCode" "SourceCodePro" ];
