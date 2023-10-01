@@ -54,8 +54,11 @@ in
       })
 
       # programs
+      flameshot # screenshots
       discord-ptb
       spotify
+      whatsapp-for-linux
+      jetbrains.idea-ultimate
 
       # TERMINAL
       lsd
@@ -70,7 +73,7 @@ in
       # C
       gnumake
       gcc
-      pkgs.llvmPackages.openmp # openmp support
+      llvmPackages.openmp # openmp support
       libclang
       cmake
 
