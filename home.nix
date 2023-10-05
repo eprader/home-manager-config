@@ -42,7 +42,6 @@ in
       VISUAL = "$EDITOR";
     };
 
-
     packages = with pkgs; [
       #Desktop Environment
       wayland
@@ -58,6 +57,8 @@ in
       discord-ptb
       spotify
       whatsapp-for-linux
+      station
+      franz
       jetbrains.idea-ultimate
 
       # TERMINAL
@@ -137,6 +138,26 @@ in
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
+  };
+
+
+
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x6\\0\\0\\0\\t\\0\\0\\0\\x10\\0\\0\\0\\n\\0\\0\\0\\v\\0\\0\\0\\x17\\0\\0\\0\\f)";
+        contrastOpacity = 188;
+        contrastUiColor = "#282828";
+        showSidePanelButton = true;
+        uiColor = "#b6b2b7";
+        undoLimit = 95;
+      };
+      Shortcuts = {
+
+        TYPE_COPY = "Return";
+      };
+    };
   };
 
   programs.bat = {
