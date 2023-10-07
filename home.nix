@@ -6,11 +6,15 @@ let
   # setfont = import ./setfont.nix { };
 
   pythonPackages = p: with p; [
-    numpy
     pip
+
+    # math
+    numpy
+    scipy
+    matplotlib
+
     pyyaml
     requests
-    matplotlib
     opencv4
   ];
 
@@ -97,6 +101,9 @@ in
       nodejs
       yarn
 
+      # AWS
+      awscli2
+
     ] ++ nodePackages;
 
   };
@@ -104,9 +111,6 @@ in
   imports = [
     (import "${nvim}")
   ];
-
-  #virtualisation.docker.enable = true;
-  #users.eprader.extraGroups = [ "docker" ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
