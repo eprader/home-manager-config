@@ -3,8 +3,6 @@ let
 
   nvim = ~/home-manager-config/modules/nvim;
 
-  # setfont = import ./setfont.nix { };
-
   pythonPackages = p: with p; [
     pip
 
@@ -50,14 +48,12 @@ in
       #Desktop Environment
       wayland
       hyprland
-      xclip
-
+      xclip # clipboard
       (nerdfonts.override {
-        fonts = [ "FiraCode" "SourceCodePro" ];
-      })
+       fonts = [ "FiraCode" "SourceCodePro" ];
+       })
 
       # programs
-      flameshot # screenshots
       discord-ptb
       spotify
       whatsapp-for-linux
@@ -74,6 +70,7 @@ in
       unzip
       pre-commit # pre commit hooks
       valgrind
+      docker
 
       # C
       gnumake
@@ -82,6 +79,7 @@ in
       libclang
       cmake
 
+      # Python
       (python311.withPackages pythonPackages)
       poetry # python project management
 
@@ -130,9 +128,8 @@ in
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
-
-      vi = "nvim";
       hms = "systemctl --user reset-failed && home-manager switch";
+      vi = "nvim";
       cat = "bat";
 
     };
@@ -141,6 +138,9 @@ in
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+      nrs() {
+          sudo nixos-rebuild switch
+      }
     '';
   };
 
