@@ -50,8 +50,8 @@ in
       hyprland
       xclip # clipboard
       (nerdfonts.override {
-       fonts = [ "FiraCode" "SourceCodePro" ];
-       })
+        fonts = [ "FiraCode" "SourceCodePro" ];
+      })
 
       # programs
       discord-ptb
@@ -274,6 +274,10 @@ in
   programs.zathura.enable = true;
 
   programs.brave = {
+    enable = true;
+  };
+
+  programs.obs-studio = {
     enable = true;
   };
 
