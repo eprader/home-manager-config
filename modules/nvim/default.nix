@@ -5,31 +5,41 @@ let
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = name;
-    version = "2022-10-28";
+    version = "2023-10-10";
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
     };
   };
 
+  nodePackages = with pkgs.nodePackages; [
+    prettier
+    pyright
+    typescript-language-server
+    svelte-language-server
+    # grammarly-languageserver
+  ];
 in
 {
   #nixpkgs.overlays = [ (import (builtins.fetchTarball { url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
   #}))
   #];
 
+
   home.packages = with pkgs; [
     tree-sitter
+    lldb
 
     # LSP
     rnix-lsp
     ccls
-    lldb
     sumneko-lua-language-server
     haskell-language-server
     ltex-ls
+    sqls
     #jdt-language-server
-    sqls # SQL
-  ];
+  ] ++ nodePackages;
+
+
 
   programs.neovim = {
     enable = true;
@@ -92,8 +102,7 @@ in
       nvim-lspconfig
       lspsaga-nvim
       trouble-nvim
-
-      nvim-jdtls
+      ltex_extra-nvim
 
       #Completion
       cmp-nvim-lsp

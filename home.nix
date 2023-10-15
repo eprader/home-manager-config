@@ -17,15 +17,8 @@ let
   ];
 
   nodePackages = with pkgs.nodePackages; [
-    prettier
     pnpm
-
-    pyright
-
     typescript
-    typescript-language-server
-
-    #svelte-language-server
   ];
 
 in
@@ -129,6 +122,7 @@ in
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
       hms = "systemctl --user reset-failed && home-manager switch";
+      nrs = "nixos-rebuild switch";
       vi = "nvim";
       cat = "bat";
 
@@ -138,13 +132,8 @@ in
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
-      nrs() {
-          sudo nixos-rebuild switch
-      }
     '';
   };
-
-
 
   services.flameshot = {
     enable = true;
@@ -163,6 +152,10 @@ in
       };
     };
   };
+
+  /* services.network-manager-applet = {
+    enable = true;
+  }; */
 
   programs.bat = {
     enable = true;
