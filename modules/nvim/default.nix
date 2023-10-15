@@ -34,9 +34,10 @@ in
     ccls
     sumneko-lua-language-server
     haskell-language-server
-    ltex-ls
+    ltex-ls # language-tool / spelling
     sqls
     #jdt-language-server
+    texlab 
   ] ++ nodePackages;
 
 

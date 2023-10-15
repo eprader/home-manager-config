@@ -124,12 +124,17 @@ lsconfig.ltex.setup {
         },
     },
 }
+lsconfig.texlab.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
 
 lsconfig.sqlls.setup {
     on_attach = function(client, bufnr)
         require 'sqls'.on_attach(client, bufnr)
         on_attach()
-
+        ''
         map({ 'n', 'v' }, '<leader>eq', ":SqlsExecuteQuery<cr>", opts)
         map('n', '<leader>sd', ":SqlsSwitchDatabase<cr>", opts)
         map('n', '<leader>sc', ":SqlsSwitchConnection<cr>", opts)
