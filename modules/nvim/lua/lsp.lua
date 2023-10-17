@@ -124,6 +124,7 @@ lsconfig.ltex.setup {
         },
     },
 }
+
 lsconfig.texlab.setup {
     on_attach = on_attach,
     flags = lsp_flags,
