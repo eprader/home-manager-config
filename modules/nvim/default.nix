@@ -12,8 +12,8 @@ let
   };
 
   nodePackages = with pkgs.nodePackages; [
-    prettier
     pyright
+    prettier
     typescript-language-server
     svelte-language-server
     # grammarly-languageserver
@@ -28,6 +28,8 @@ in
   home.packages = with pkgs; [
     tree-sitter
     lldb
+    # formatter
+    yapf
 
     # LSP
     rnix-lsp
@@ -37,7 +39,7 @@ in
     ltex-ls # language-tool / spelling
     sqls
     #jdt-language-server
-    texlab 
+    texlab
   ] ++ nodePackages;
 
 
