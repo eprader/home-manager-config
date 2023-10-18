@@ -155,7 +155,7 @@ in
 
   /* services.network-manager-applet = {
     enable = true;
-  }; */
+    }; */
 
   programs.bat = {
     enable = true;
