@@ -122,7 +122,7 @@ in
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
       hms = "systemctl --user reset-failed && home-manager switch";
-      nrs = "nixos-rebuild switch";
+      nrs = "sudo nixos-rebuild switch";
       vi = "nvim";
       cat = "bat";
 
