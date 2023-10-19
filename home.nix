@@ -65,6 +65,7 @@ in
       valgrind
       docker
       htop
+      linuxKernel.packages.linux_zen.perf # profiling
 
       # C
       gnumake
