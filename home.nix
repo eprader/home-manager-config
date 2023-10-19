@@ -64,6 +64,7 @@ in
       pre-commit # pre commit hooks
       valgrind
       docker
+      htop
 
       # C
       gnumake
@@ -105,6 +106,14 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Virtualisation / VMs
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
 
   programs.bash = {
     enable = true;
