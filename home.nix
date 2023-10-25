@@ -343,5 +343,4 @@ in
     };
     };
   */
-  programs.vscode.enable = true;
 }
