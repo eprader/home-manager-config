@@ -61,16 +61,17 @@ in
       # Tools
       zip
       unzip
-      pre-commit # pre commit hooks
+      pre-commit
       valgrind
       docker
       htop
-      linuxKernel.packages.linux_zen.perf # profiling
+      linuxKernel.packages.linux_zen.perf
+      strace
 
       # C
       gnumake
       gcc
-      llvmPackages.openmp # openmp support
+      llvmPackages.openmp
       libclang
       cmake
 
@@ -96,6 +97,9 @@ in
 
       # AWS
       awscli2
+
+      # Virtualisation
+      virt-manager
 
     ] ++ nodePackages;
 
@@ -339,4 +343,5 @@ in
     };
     };
   */
+  programs.vscode.enable = true;
 }
