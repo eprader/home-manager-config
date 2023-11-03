@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-
   nvim = ~/home-manager-config/modules/nvim;
 
   pythonPackages = p: with p; [
@@ -32,7 +31,7 @@ in
     stateVersion = "23.05";
 
     sessionVariables = {
-      TERMINAL = "xterm-kitty";
+      # TERMINAL = "alacritty"; # xterm-kitty for kitty
       EDITOR = "nvim";
       VISUAL = "$EDITOR";
     };
@@ -247,7 +246,7 @@ in
     enable = true;
     settings = {
       font_size = "14.0";
-      font_family = "IosevkaTerm";
+      font_family = "FiraCode";
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";
@@ -288,59 +287,67 @@ in
     enable = true;
   };
 
-  /*
-    programs.alacritty = {
+  programs.alacritty = {
     enable = true;
 
     settings = {
-    window = {
-    title = "Terminal";
-    padding = {
-    x = 1;
-    y = 1;
-    };
-    opacity = 1;
-    };
+      window = {
+        startup_mode = "Maximized";
+        title = "Terminal";
+        decorations = "full";
+        dynamic_padding = true;
+        dimensions = {
+          columns = 90;
+          lines = 30;
+        };
+        padding = {
+          x = 1;
+          y = 1;
+        };
+        opacity = 1;
+      };
 
-    font = setfont "FiraCode Nerd Font" // {
-    size = 14.0;
-    };
+      font = {
+        normal.family = "FiraCode Nerd Font Mono";
+        size = 8;
+        bold = { style = "Bold"; };
+      };
 
 
-    colors = {
-    primary = {
-    background = "0x282828";
-    foreground = "0xebdbb2";
-    };
-    cursor = {
-    text = "0x282828";
-    cursor = "0xa89984";
-    };
-    normal = {
-    black = "0x282828";
-    red = "0xcc241d";
-    green = "0x98971a";
-    yellow = "0xd79921";
-    blue = "0x458588";
-    magenta = "0xb16286";
-    cyan = "0x689d6a";
-    white = "0xa89984";
-    };
-    bright = {
-    black = "0x928374";
-    red = "0xfb4934";
-    green = "0xb8bb26";
-    yellow = "0xfabd2f";
-    blue = "0x83a598";
-    magenta = "0xd3869b";
-    cyan = "0x8ec07c";
-    white = "0xebdbb2";
-    };
-    };
+      colors = {
+        primary = {
+          background = "0x282828";
+          foreground = "0xebdbb2";
+        };
+        cursor = {
+          text = "0x282828";
+          cursor = "0xa89984";
+        };
+        normal = {
+          black = "0x282828";
+          red = "0xcc241d";
+          green = "0x98971a";
+          yellow = "0xd79921";
+          blue = "0x458588";
+          magenta = "0xb16286";
+          cyan = "0x689d6a";
+          white = "0xa89984";
+        };
+        bright = {
+          black = "0x928374";
+          red = "0xfb4934";
+          green = "0xb8bb26";
+          yellow = "0xfabd2f";
+          blue = "0x83a598";
+          magenta = "0xd3869b";
+          cyan = "0x8ec07c";
+          white = "0xebdbb2";
+        };
+      };
 
-    # shell.program = "${pkgs.bash}/bin/bash";
+      # shell.program = "${pkgs.bash}/bin/bash";
 
     };
-    };
-  */
+  };
+
 }
