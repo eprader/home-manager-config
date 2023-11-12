@@ -36,14 +36,15 @@ local on_attach = function(client, bufnr)
     -- vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
     --end
 end
-
-
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
 
 local lsconfig = require 'lspconfig'
+
+-- local lsp_utils = require('lsp_utils')
+
 -- Server setup
 lsconfig.rnix.setup {
     on_attach = on_attach,
@@ -99,7 +100,7 @@ lsconfig.ltex.setup {
         require 'ltex_extra'.setup {
             -- table <string> : languages for witch dictionaries will be loaded, e.g. { "es-AR", "en-US" }
             -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
-            load_langs = { "en-US", "de-DE" }, -- en-US as default
+            load_langs = { "de-DE" }, -- en-US as default
             -- boolean : whether to load dictionaries on startup
             init_check = true,
             -- string : relative or absolute path to store dictionaries
@@ -117,7 +118,7 @@ lsconfig.ltex.setup {
     flags = lsp_flags,
     settings = {
         ltex = {
-            language = { 'en-GB', 'de-DE' },
+            language = { 'de-DE' },
             disabledRules = {
                 ['en-GB'] = { 'PROFANITY' },
             },
