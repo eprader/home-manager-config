@@ -1,6 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
-  #nixos-unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -20,33 +19,38 @@ let
   ];
 in
 {
-  #nixpkgs.overlays = [ (import (builtins.fetchTarball { url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-  #}))
-  #];
+  imports = [
+  ];
 
+  home = {
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
 
-  home.packages = with pkgs; [
-    tree-sitter
-    lldb
-    # formatter
-    yapf
+    packages = with pkgs; [
+      tree-sitter
+      lldb
+      # formatter
+      yapf
 
-    # LSP
-    rnix-lsp
-    ccls
-    sumneko-lua-language-server
-    haskell-language-server
-    ltex-ls # language-tool / spelling
-    sqls
-    #jdt-language-server
-    texlab
-  ] ++ nodePackages;
-
-
+      # LSP
+      rnix-lsp
+      ccls
+      sumneko-lua-language-server
+      haskell-language-server
+      ltex-ls # language-tool / spelling
+      sqls
+      #jdt-language-server
+      texlab
+    ] ++ nodePackages;
+  };
 
   programs.neovim = {
     enable = true;
-    #viAlias = true; vimAlias = true;
+
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true; # sets $EDITOR variable
 
     #luafile ${./lua/neotest.lua}
     extraConfig = '' 
@@ -150,9 +154,7 @@ in
       #Language specifics
       (fromGit "nvim-r" "jalvesaq/nvim-r")
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
-      vimtex
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
-
     ];
   };
 }
