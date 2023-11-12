@@ -1,29 +1,36 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
-  nvim = ~/home-manager-config/modules/nvim;
-
-  pythonPackages = p: with p; [
-    pip
-
-    # math
-    numpy
-    scipy
-    matplotlib
-
-    pyyaml
-    requests
-    opencv4
-  ];
-
   nodePackages = with pkgs.nodePackages; [
     pnpm
     typescript
   ];
 
+  pythonPackages = p: with p; [
+    pip
+
+    # math
+    scipy
+    # numpy
+    matplotlib
+
+    pyyaml
+    requests
+    opencv4
+    redis
+
+    pygments
+  ];
 in
 {
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
+
+  imports = [
+    ./modules/nvim
+    ./modules/latex
+    ./modules/terminals/kitty
+    # ./modules/terminals/alacritty
+  ];
 
   home = {
     username = "eprader";
@@ -31,10 +38,9 @@ in
     stateVersion = "23.05";
 
     sessionVariables = {
-      # TERMINAL = "alacritty"; # xterm-kitty for kitty
-      EDITOR = "nvim";
       VISUAL = "$EDITOR";
     };
+
 
     packages = with pkgs; [
       #Desktop Environment
@@ -42,7 +48,7 @@ in
       hyprland
       xclip # clipboard
       (nerdfonts.override {
-        fonts = [ "FiraCode" "SourceCodePro" ];
+        fonts = [ "FiraCode" ];
       })
 
       # programs
@@ -84,9 +90,6 @@ in
       maven
       #jdk11
 
-      # Latex
-      tectonic
-
       # Haskell
       ghc
 
@@ -100,16 +103,16 @@ in
       # Virtualisation
       virt-manager
 
+      apptainer
+      redis
+
     ] ++ nodePackages;
 
   };
 
-  imports = [
-    (import "${nvim}")
-  ];
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 
   # Virtualisation / VMs
   dconf.settings = {
@@ -129,22 +132,18 @@ in
       ls = "lsd";
       dir = "dir --color=auto";
       vdir = "vdir --color=auto";
-      sudop = "sudo env PATH=$PATH"; #sudo preserving user path
 
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
       hms = "systemctl --user reset-failed && home-manager switch";
       nrs = "sudo nixos-rebuild switch";
-      vi = "nvim";
       cat = "bat";
 
     };
 
     #  add to initExtra for WSl source $HOME/.nix-profile/etc/profile.d/nix.sh
-    initExtra = ''
-      source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-      export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+    initExtra = '' source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
   };
 
@@ -166,8 +165,7 @@ in
     };
   };
 
-  /* services.network-manager-applet = {
-    enable = true;
+  /* services.network-manager-applet = { enable = true;
     }; */
 
   programs.bat = {
@@ -189,8 +187,7 @@ in
     settings = {
       add_newline = false;
       format = ''
-        $username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $cmd_duration)( $character)
-      '';
+        $username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $cmd_duration)( $character) '';
       username = {
         format = "[$user]($style)";
         show_always = true;
@@ -231,6 +228,14 @@ in
   programs.ssh = {
     enable = true;
     matchBlocks = {
+      "*" = {
+        /* NOTE: Sometimes the remote server does not know how to handle TERM=xterm-kitty or TERM=alacritty.
+          * Therefore we set the TERM variable on the remote server to 
+          * xterm-256color which should be more widely supported.
+        */
+        setEnv = { TERM = "xterm-256color"; };
+      };
+
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
@@ -242,40 +247,7 @@ in
       };
     };
   };
-  programs.kitty = {
-    enable = true;
-    settings = {
-      font_size = "14.0";
-      font_family = "FiraCode";
-      bold_font = "auto";
-      italic_font = "auto";
-      bold_italic_font = "auto";
-      background = "#282828";
-      foreground = "#ebdbb2";
-      selection_foreground = "#93a1a1";
-      selection_background = "#002b36";
-      cursor = "#a89984";
 
-      color0 = "#282828";
-      color1 = "#cc241d";
-      color2 = "#98971a";
-      color3 = "#fabd2f";
-      color4 = "#458588";
-      color5 = "#b16286";
-      color6 = "#8ec07c";
-      color7 = "#a89984";
-
-      color8 = "#928374";
-      color9 = "#fb4934";
-      color10 = "#b8bb26";
-      color11 = "#fabd2f";
-      color12 = "#83a598";
-      color13 = "#d3869b";
-      color14 = "#8ec07c";
-      color15 = "#ebdbb2";
-
-    };
-  };
 
   programs.zathura.enable = true;
 
@@ -285,69 +257,6 @@ in
 
   programs.obs-studio = {
     enable = true;
-  };
-
-  programs.alacritty = {
-    enable = true;
-
-    settings = {
-      window = {
-        startup_mode = "Maximized";
-        title = "Terminal";
-        decorations = "full";
-        dynamic_padding = true;
-        dimensions = {
-          columns = 90;
-          lines = 30;
-        };
-        padding = {
-          x = 1;
-          y = 1;
-        };
-        opacity = 1;
-      };
-
-      font = {
-        normal.family = "FiraCode Nerd Font Mono";
-        size = 8;
-        bold = { style = "Bold"; };
-      };
-
-
-      colors = {
-        primary = {
-          background = "0x282828";
-          foreground = "0xebdbb2";
-        };
-        cursor = {
-          text = "0x282828";
-          cursor = "0xa89984";
-        };
-        normal = {
-          black = "0x282828";
-          red = "0xcc241d";
-          green = "0x98971a";
-          yellow = "0xd79921";
-          blue = "0x458588";
-          magenta = "0xb16286";
-          cyan = "0x689d6a";
-          white = "0xa89984";
-        };
-        bright = {
-          black = "0x928374";
-          red = "0xfb4934";
-          green = "0xb8bb26";
-          yellow = "0xfabd2f";
-          blue = "0x83a598";
-          magenta = "0xd3869b";
-          cyan = "0x8ec07c";
-          white = "0xebdbb2";
-        };
-      };
-
-      # shell.program = "${pkgs.bash}/bin/bash";
-
-    };
   };
 
 }
