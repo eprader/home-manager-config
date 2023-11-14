@@ -223,14 +223,6 @@ in
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "*" = {
-        /* NOTE: Sometimes the remote server does not know how to handle TERM=xterm-kitty or TERM=alacritty.
-          * Therefore we set the TERM variable on the remote server to 
-          * xterm-256color which should be more widely supported.
-        */
-        setEnv = { TERM = "xterm-256color"; };
-      };
-
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
