@@ -11,14 +11,13 @@ in
     texlab
 
     # Engine
-    tectonic
-
-    # Viewer
-    zathura
+    # tectonic
   ];
 
+  # Viewer
+  programs.zathura.enable = true;
+
   programs.neovim = {
-    enable = true;
     extraConfig = '' 
       luafile ${../nvim/lua/eprader/vimtex.lua}
     '';
