@@ -23,7 +23,6 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
-  fonts.fontconfig.enable = true;
 
   imports = [
     ./modules/nvim
@@ -41,15 +40,11 @@ in
       VISUAL = "$EDITOR";
     };
 
-
     packages = with pkgs; [
       #Desktop Environment
       wayland
       hyprland
       xclip # clipboard
-      (nerdfonts.override {
-        fonts = [ "FiraCode" ];
-      })
 
       # programs
       discord-ptb
@@ -81,9 +76,10 @@ in
       cmake
 
       # Python
+      # (python311.withPackages (pkgs.lib.attrVals config.pythonPackages))
       (python311.withPackages pythonPackages)
-      poetry # python project management
 
+      poetry # python project management
 
       # Java
       gradle
@@ -112,7 +108,6 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
 
   # Virtualisation / VMs
   dconf.settings = {
