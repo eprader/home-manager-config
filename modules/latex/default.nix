@@ -20,7 +20,7 @@ in
   programs.neovim = {
     enable = true;
     extraConfig = '' 
-      luafile ${../nvim/lua/vimtex.lua}
+      luafile ${../nvim/lua/eprader/vimtex.lua}
     '';
     plugins = with pkgs.vimPlugins; [
       vimtex
