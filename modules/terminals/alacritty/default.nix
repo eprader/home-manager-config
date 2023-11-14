@@ -71,4 +71,16 @@
 
     };
   };
+
+  programs.ssh = {
+    matchBlocks = {
+      "*" = {
+        /* NOTE: Sometimes the remote server does not know how to handle TERM=alacritty.
+          * Therefore we set the TERM variable on the remote server to 
+          * xterm-256color which should be more widely supported.
+        */
+        setEnv = { TERM = "xterm-256color"; };
+      };
+    };
+  };
 }
