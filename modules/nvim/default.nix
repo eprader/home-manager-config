@@ -50,7 +50,6 @@ in
       ltex-ls # language-tool / spelling
       sqls
       #jdt-language-server
-      texlab
     ] ++ nodePackages;
   };
 
