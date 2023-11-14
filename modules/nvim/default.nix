@@ -4,7 +4,7 @@ let
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = name;
-    version = "2023-10-10";
+    version = "2023-14-11";
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
     };
@@ -17,6 +17,15 @@ let
     svelte-language-server
     # grammarly-languageserver
   ];
+
+  # TODO: find out a way to only need init.lua for nvim config to work (require should be able to load other modules)
+
+  # NOTE: this did not work as it seems like nvim only looks for .lua files in specific folders.
+  # Seems like custom files only end up in those folders with luafile syntax
+  nvim-config = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-config";
+    src = ./.;
+  };
 in
 {
   imports = [
@@ -53,32 +62,37 @@ in
     defaultEditor = true; # sets $EDITOR variable
 
     #luafile ${./lua/neotest.lua}
-    extraConfig = '' 
-      luafile ${./lua/settings.lua}
-      luafile ${./lua/keymaps.lua}
-      luafile ${./lua/telescope.lua}
-      luafile ${./lua/treesitter.lua}
-      luafile ${./lua/lsp.lua}
-      luafile ${./lua/dressing.lua}
-      luafile ${./lua/cmp.lua}
-      luafile ${./lua/harpoon.lua}
-      luafile ${./lua/autopairs.lua}
-      luafile ${./lua/gitsigns.lua}
-      luafile ${./lua/dap.lua}
-      luafile ${./lua/dapui.lua}
-      luafile ${./lua/lualine.lua}
-      luafile ${./lua/notify.lua}
-      luafile ${./lua/nvim-r.lua}
-      luafile ${./lua/java.lua}
-      luafile ${./lua/trouble.lua}
-      luafile ${./lua/todo-comments.lua}
-      luafile ${./lua/comment.lua}
-      luafile ${./lua/toggleterm.lua}
-      luafile ${./lua/overseer.lua}
-      luafile ${./lua/vimtex.lua}
-    '';
+     extraConfig = '' 
+      luafile ${./lua/eprader/settings.lua}
+      luafile ${./lua/eprader/keymaps.lua}
+      luafile ${./lua/eprader/telescope.lua}
+      luafile ${./lua/eprader/treesitter.lua}
+      luafile ${./lua/eprader/lsp.lua}
+      luafile ${./lua/eprader/dressing.lua}
+      luafile ${./lua/eprader/cmp.lua}
+      luafile ${./lua/eprader/harpoon.lua}
+      luafile ${./lua/eprader/autopairs.lua}
+      luafile ${./lua/eprader/gitsigns.lua}
+      luafile ${./lua/eprader/dap.lua}
+      luafile ${./lua/eprader/dapui.lua}
+      luafile ${./lua/eprader/lualine.lua}
+      luafile ${./lua/eprader/notify.lua}
+      luafile ${./lua/eprader/nvim-r.lua}
+      luafile ${./lua/eprader/java.lua}
+      luafile ${./lua/eprader/trouble.lua}
+      luafile ${./lua/eprader/todo-comments.lua}
+      luafile ${./lua/eprader/comment.lua}
+      luafile ${./lua/eprader/toggleterm.lua}
+      luafile ${./lua/eprader/overseer.lua}
+      luafile ${./lua/eprader/vimtex.lua}
+      ''; 
+    /*extraConfig = ''
+      luafile ${./init.lua}
+    '';*/
 
     plugins = with pkgs.vimPlugins; [
+      #nvim-config
+
       #Eyecandy
       gruvbox-community
       # tokyonight-nvim
