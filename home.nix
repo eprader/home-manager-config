@@ -10,7 +10,7 @@ let
 
     # math
     scipy
-    # numpy
+    numpy
     matplotlib
 
     pyyaml
@@ -45,6 +45,7 @@ in
       wayland
       hyprland
       xclip # clipboard
+      tmux
 
       # programs
       discord-ptb
