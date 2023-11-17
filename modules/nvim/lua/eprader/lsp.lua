@@ -52,6 +52,20 @@ lsconfig.rnix.setup {
     capabilities = capabilities,
 }
 
+lsconfig.nil_ls.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+-- NOTE: nixd seems to not be added to my current version of lspconfig so I wait a bit.
+
+--[[ lsconfig.nixd.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+} ]]
+
 lsconfig.ccls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
@@ -165,9 +179,9 @@ for type, icon in pairs(signs) do
 end
 
 local config = {
-    virtual_text = true, -- disable virtual text
+    virtual_text = true,
     signs = {
-        active = signs,  -- show signs
+        active = signs,
     },
     update_in_insert = true,
     underline = true,
