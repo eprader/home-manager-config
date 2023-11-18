@@ -9,6 +9,9 @@ vim.g.vimtex_compiler_tectonic = {
 }
 vim.g.vimtex_compiler_method = 'tectonic'
 
+-- KEYBINDS
+require 'eprader.mapleader'
+
 local map = vim.keymap.set
 map('n', '<leader>ll', ":VimtexCompile<cr>")
 map('n', '<leader>lv', ":VimtexView<cr>")

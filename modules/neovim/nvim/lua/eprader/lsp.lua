@@ -1,3 +1,4 @@
+require 'eprader.mapleader'
 local lsp_utils = require 'eprader.lsp_utils'
 local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local map = vim.keymap.set
@@ -66,7 +67,6 @@ lsconfig.nil_ls.setup {
     flags = lsp_flags,
     capabilities = capabilities,
 } ]]
-
 lsconfig.ccls.setup {
     on_attach = on_attach,
     flags = lsp_flags,

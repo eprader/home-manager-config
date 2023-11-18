@@ -32,6 +32,8 @@ require 'harpoon'.setup {
 }
 
 -- KEYBINDS
+require 'eprader.mapleader'
+
 local map = vim.keymap.set
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")

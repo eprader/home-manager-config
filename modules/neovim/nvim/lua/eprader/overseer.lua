@@ -1,4 +1,3 @@
 require 'overseer'.setup({
-  strategy = "toggleterm",
+    strategy = "toggleterm",
 })
-
