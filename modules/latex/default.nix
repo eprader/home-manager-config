@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   # TODO: Python packages can not be merged that easily look into how to do so.
-  pythonPackages = p: with p; [
+  pythonPackages = with pkgs.python311Packages; [
     pygments
   ];
 in
@@ -11,7 +11,7 @@ in
     texlab
 
     # Engine
-    # tectonic
+    tectonic # NOTE: This also does package managing for latex packages
   ];
 
   # Viewer
@@ -19,7 +19,7 @@ in
 
   programs.neovim = {
     extraConfig = '' 
-      luafile ${../nvim/lua/eprader/vimtex.lua}
+      lua require 'eprader.vimtex'
     '';
     plugins = with pkgs.vimPlugins; [
       vimtex
