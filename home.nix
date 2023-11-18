@@ -25,7 +25,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/nvim
+    ./modules/neovim
     ./modules/latex
     ./modules/terminals/kitty
     # ./modules/terminals/alacritty
