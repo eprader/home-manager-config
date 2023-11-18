@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
-  unstable = import <nixos-unstable> {};
+  unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -23,19 +23,13 @@ let
 
   # NOTE: this did not work as it seems like nvim only looks for .lua files in specific folders.
   # Seems like custom files only end up in those folders with luafile syntax
-  nvim-config = pkgs.vimUtils.buildVimPlugin {
-    name = "nvim-config";
-    src = ./.;
+  eprader-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "config";
+    src = ./config;
   };
 in
 {
-  imports = [
-  ];
-
   home = {
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
 
     packages = with pkgs; [
       tree-sitter
@@ -58,42 +52,12 @@ in
 
   programs.neovim = {
     enable = true;
-
+    defaultEditor = true; # sets $EDITOR variable
     viAlias = true;
     vimAlias = true;
-    defaultEditor = true; # sets $EDITOR variable
-
-    #luafile ${./lua/neotest.lua}
-     extraConfig = '' 
-      luafile ${./lua/eprader/settings.lua}
-      luafile ${./lua/eprader/keymaps.lua}
-      luafile ${./lua/eprader/telescope.lua}
-      luafile ${./lua/eprader/treesitter.lua}
-      luafile ${./lua/eprader/lsp.lua}
-      luafile ${./lua/eprader/dressing.lua}
-      luafile ${./lua/eprader/cmp.lua}
-      luafile ${./lua/eprader/harpoon.lua}
-      luafile ${./lua/eprader/autopairs.lua}
-      luafile ${./lua/eprader/gitsigns.lua}
-      luafile ${./lua/eprader/dap.lua}
-      luafile ${./lua/eprader/dapui.lua}
-      luafile ${./lua/eprader/lualine.lua}
-      luafile ${./lua/eprader/notify.lua}
-      luafile ${./lua/eprader/nvim-r.lua}
-      luafile ${./lua/eprader/java.lua}
-      luafile ${./lua/eprader/trouble.lua}
-      luafile ${./lua/eprader/todo-comments.lua}
-      luafile ${./lua/eprader/comment.lua}
-      luafile ${./lua/eprader/toggleterm.lua}
-      luafile ${./lua/eprader/overseer.lua}
-      luafile ${./lua/eprader/vimtex.lua}
-      ''; 
-    /*extraConfig = ''
-      luafile ${./init.lua}
-    '';*/
 
     plugins = with pkgs.vimPlugins; [
-      #nvim-config
+      eprader-nvim
 
       #Eyecandy
       gruvbox-community
@@ -172,6 +136,9 @@ in
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
+
+    extraConfig = ''
+      lua require 'eprader'
+    '';
   };
 }
-
