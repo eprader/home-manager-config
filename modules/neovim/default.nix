@@ -37,7 +37,7 @@ in
       nil
       unstable.nixd
       ccls
-      sumneko-lua-language-server
+      lua-language-server
       haskell-language-server
       ltex-ls # language-tool / spelling
       sqls
