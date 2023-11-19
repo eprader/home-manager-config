@@ -19,6 +19,8 @@ require('dressing').setup({
                 -- 'editor' and 'win' will default to being centered
                 relative = "cursor",
                 -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+                -- FIXME: Error states that these are invalid options
+
                 --[[ prefer_width = 40,
                 width = nil,
                 -- min_width and max_width can be a list of mixed types.
