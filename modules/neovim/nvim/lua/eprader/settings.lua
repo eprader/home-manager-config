@@ -30,7 +30,7 @@ for k, v in pairs(settings) do
 end
 
 -- nvim-notify
-vim.notify = require 'notify'
+vim.notify = require 'eprader.notify'
 
 vim.api.nvim_command("set noswapfile")
 
