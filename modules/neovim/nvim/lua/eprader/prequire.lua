@@ -1,23 +1,38 @@
-local function render_src_path(path, depth, with_icon)
-    --- A Regular Expression to match the file and its two predecessor directories.
-    --- Example: "/foo/bar`/lua/eprader/init.lua`"
-    local regex = "(/[%a%d_.-]+/[%a%d_.-]+/[%a%d.-]+.[%a%d]+)$"
+local with_icons = true
+local number_of_dirs = 9
+
+local function render_src_path(full_path, with_icon, dir_depth)
+    --- Matches `/foobarbaz` dir_depth times
+    --- @type string
+    local dir_regex = string.rep("/[%a%d_.-]+", dir_depth, "")
+    --- Matches `foo.b.arbaz` or `/foo.b.arbaz` if `dir_depth > 1`
+    --- @type string
+    local file_regex = (dir_depth > 0 and "/" or "") .. "[%a%d.-]+.[%a%d]+"
 
     --- A Regular Expression to match the file name and file extention at the end of a path.
-    --- Example: "/lua/eprader/`init.lua`"
-    local file = "([%a%d.-]+.[%a%d]+)$"
+    --- Example: "/lua/eprader/`init.lua`" or "nvim/`lua/eprader/init.lua`"
+    --- @type string
+    local regex = "(".. dir_regex .. file_regex ..")$"
 
-    local rendered_path = string.match(path, regex)
+    -- local path = string.match(full_path, regex)
 
-    return rendered_path
+    path = (with_icon and "󰈮" or "file") .. "__: " .. path .. "__"
+
+    return path
 end
+
+
 
 local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
-    return "Unable to load module: \"" .. modname .. "\".\n"
-        .. "in " .. render_src_path(info.source, 3, true) .. " on line "
-        .. info.currentline .. "\n"
-        .. "```lua\n" .. "\n```"
+    local module = (with_icons and "󰆦" or "module") .. "__: " .. modname .. "__"
+    local path = render_src_path(info.source, with_icons, number_of_dirs)
+
+    return "Unable to load " .. module .. ".\n"
+        .. "in " .. path .. " on line "
+        .. info.currentline .. ".\n"
+        .. "```lua\n"
+        .. "\n```"
 end
 
 --- This function takes `modname` and returns the result of `require`
