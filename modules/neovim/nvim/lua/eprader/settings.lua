@@ -1,5 +1,3 @@
-local vim_api = vim.api
-
 local settings = {
     hidden = true, -- opening new buffer without writing old one
     swapfile = false,
@@ -7,7 +5,6 @@ local settings = {
     errorbells = false,
     number = true,
     relativenumber = true,
-    termguicolors = true,
     tabstop = 4,
     softtabstop = 4,
     shiftwidth = 4,
@@ -32,18 +29,6 @@ local settings = {
 for k, v in pairs(settings) do
     vim.opt[k] = v
 end
-
-vim.cmd.colorscheme('gruvbox')
-vim.g.gruvbox_contrast_dark = 'medium'
-
-if (vim.g.colors_name == "gruvbox") then
-    vim_api.nvim_set_hl(0, '@parameter.python', { link = 'GruvboxYellowBold' })
-    vim_api.nvim_set_hl(0, 'Delimiter', { link = 'GruvboxGray' })
-end
-
--- nvim-notify
-vim.notify = require 'notify' -- NOTE: Requires the plugin, not the personal `.lua` config
-
 -- TODO: check if system is WSL and apply condigional settings
 
 --[[ add to vim.cmd for clipboard in WSL
@@ -59,8 +44,8 @@ let g:clipboard = {
 \   },
 \   'cache_enabled': 0,
 \ } ]]
-
-vim_api.nvim_create_autocmd("TextYankPost", {
+local api = vim.api
+api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank {
             higroup = vim.fn["hlexists"]('HighlightedyankRegion') > 0
