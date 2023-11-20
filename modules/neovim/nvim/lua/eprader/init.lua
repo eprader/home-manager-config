@@ -1,12 +1,13 @@
 local success, prequire = pcall(require, 'eprader.prequire')
 if not success then
     vim.notify("From `init.lua`: `prequrie` failed to load.\n"
-        .. "Aborted loading configuration..."
+        .. "Aborted loading configuration...\n"
         .. prequire)
     return
 end
 
 -- NOTE: Load `notify` first to handle future `vim.notify` calls of `prequire` and others
+-- with custom config
 prequire 'eprader.notify'
 
 prequire 'eprader.settings'
