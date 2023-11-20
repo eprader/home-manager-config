@@ -1,32 +1,43 @@
 local with_icons = true
-local number_of_dirs = 9
+local predecessor_depth = 12
+
+local notify_options = {
+    title = "prequire",
+    on_open = function(win)
+        local buf = vim.api.nvim_win_get_buf(win)
+        vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+    end,
+}
+
+local function notify(message, level)
+    vim.schedule(function() vim.notify(message, level, notify_options) end)
+end
 
 local function render_src_path(full_path, with_icon, dir_depth)
-    --- Matches `/foobarbaz` dir_depth times
-    --- @type string
-    local dir_regex = string.rep("/[%a%d_.-]+", dir_depth, "")
-    --- Matches `foo.b.arbaz` or `/foo.b.arbaz` if `dir_depth > 1`
-    --- @type string
-    local file_regex = (dir_depth > 0 and "/" or "") .. "[%a%d.-]+.[%a%d]+"
+    local split_path = vim.split(full_path, "/")
 
-    --- A Regular Expression to match the file name and file extention at the end of a path.
-    --- Example: "/lua/eprader/`init.lua`" or "nvim/`lua/eprader/init.lua`"
-    --- @type string
-    local regex = "(".. dir_regex .. file_regex ..")$"
+    if #split_path < predecessor_depth then
+        local message =
+            "`predecessor_depth` was set to be larger than this path is deep.\n"
+            .. "  - `available_depth`: " .. #split_path .. "\n"
+            .. "  - `predecessor_depth`: " .. predecessor_depth .. "\n"
+            .. "\n"
+            .. "Falling back to `available_depth`..."
+        notify(message, "info")
+    end
 
-    -- local path = string.match(full_path, regex)
+    local path = table.concat(split_path, "/", math.max(1, #split_path - predecessor_depth), #split_path)
 
-    path = (with_icon and "󰈮" or "file") .. "__: " .. path .. "__"
+    path = (with_icon and "󰈮" or "file") .. ": __" .. path .. "__"
 
     return path
 end
 
 
-
 local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
-    local module = (with_icons and "󰆦" or "module") .. "__: " .. modname .. "__"
-    local path = render_src_path(info.source, with_icons, number_of_dirs)
+    local module = (with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
+    local path = render_src_path(info.source, with_icons, predecessor_depth)
 
     return "Unable to load " .. module .. ".\n"
         .. "in " .. path .. " on line "
@@ -42,16 +53,8 @@ end
 return function(modname)
     local success, module = pcall(require, modname)
     if not success then
-        local error_message = build_error_message(modname, module)
-        vim.schedule(function()
-            vim.notify(error_message, "error", {
-                title = "prequire",
-                on_open = function(win)
-                    local buf = vim.api.nvim_win_get_buf(win)
-                    vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-                end,
-            })
-        end)
+        local message = build_error_message(modname, module)
+        notify(message, "error")
     end
     return module
 end
