@@ -33,18 +33,18 @@ local function render_src_path(full_path, predecessor_depth, with_icon)
     return path
 end
 
-
 local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
     local module = (with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
     local path = render_src_path(info.source, pred_depth, with_icons)
+    local line_preview = "11 local needen = prequire 'this.is_not_available"
 
     return "Unable to load " .. module .. ".\n"
         .. "in " .. path .. " on line "
-        .. info.currentline .. ".\n"
-        .. "```lua\n"
-        .. "\n```"
+        .. info.currentline .. ".\n\n"
+        .. "```vim\n"
         .. module_error
+        .. "\n```"
 end
 
 --- This function takes `modname` and returns the result of `require`
