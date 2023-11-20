@@ -52,8 +52,7 @@ end
 --- @param modname string -- The path to the module
 --- @return table
 return function(modname)
-    local module
-    success, module = pcall(require, modname)
+    local success, module = pcall(require, modname)
     if not success then
         local message = build_error_message(modname, module)
         notify(message, "error")
