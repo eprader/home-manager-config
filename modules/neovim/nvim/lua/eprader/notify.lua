@@ -1,3 +1,23 @@
+--[[
+-- NOTE: Make sure this file is sourced before any other of your files that
+-- makes use of `vim.notify`.
+]]
+local prequire = require 'eprader.prequire'
+
+local notify = prequire 'notify'
+if not notify then return end
+
+vim.opt.termguicolors = true  -- INFO: Required to support opacity changes.
+vim.notify = notify
+
+--[[
+-- HACK: Notify requires the `NotifyBackground` highlight group to have a `background` highlight.
+-- By default `NotifyBackground` is linked to `Normal`.
+-- For Neovim (v0.9.1) `:colorscheme default` `Normal.background` is `nil`
+-- Requiring a colorscheme should set that value.
+--]]
+prequire 'eprader.colorscheme'
+
 local colors = {
     black = '#282828',
     dark_grey = '#928374',
@@ -19,22 +39,47 @@ local colors = {
     orange = '#fe8019'
 }
 
-vim.api.nvim_set_hl(0, 'NotifyERRORBorder', { fg = colors.dark_red })
-vim.api.nvim_set_hl(0, 'NotifyERRORIcon', { fg = colors.dark_red })
-vim.api.nvim_set_hl(0, 'NotifyERRORTitle', { fg = colors.red })
+local notify_hlgroup_colors = {
+    NotifyERRORBorder = { fg = colors.dark_red },
+    NotifyERRORIcon = { fg = colors.dark_red },
+    NotifyERRORTitle = { fg = colors.red },
 
-vim.api.nvim_set_hl(0, 'NotifyWARNBorder', { fg = colors.dark_yellow })
-vim.api.nvim_set_hl(0, 'NotifyWARNIcon', { fg = colors.dark_yellow })
-vim.api.nvim_set_hl(0, 'NotifyWARNTitle', { fg = colors.yellow })
+    NotifyWARNBorder = { fg = colors.dark_yellow },
+    NotifyWARNIcon = { fg = colors.dark_yellow },
+    NotifyWARNTitle = { fg = colors.yellow },
 
-vim.api.nvim_set_hl(0, 'NotifyINFOBorder', { fg = colors.dark_blue })
-vim.api.nvim_set_hl(0, 'NotifyINFOIcon', { fg = colors.dark_blue })
-vim.api.nvim_set_hl(0, 'NotifyINFOTitle', { fg = colors.blue })
+    NotifyINFOBorder = { fg = colors.dark_blue },
+    NotifyINFOIcon = { fg = colors.dark_blue },
+    NotifyINFOTitle = { fg = colors.blue },
 
-vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { fg = colors.dark_magenta })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGIcon', { fg = colors.dark_magenta })
-vim.api.nvim_set_hl(0, 'NotifyDEBUGTitle', { fg = colors.magenta })
+    NotifyDEBUGBorder = { fg = colors.dark_magenta },
+    NotifyDEBUGIcon = { fg = colors.dark_magenta },
+    NotifyDEBUGTitle = { fg = colors.magenta },
 
-vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { fg = colors.dark_cyan })
-vim.api.nvim_set_hl(0, 'NotifyTRACEIcon', { fg = colors.dark_cyan })
-vim.api.nvim_set_hl(0, 'NotifyTRACETitle', { fg = colors.cyan })
+    NotifyTRACEBorder = { fg = colors.dark_cyan },
+    NotifyTRACEIcon = { fg = colors.dark_cyan },
+    NotifyTRACETitle = { fg = colors.cyan },
+}
+
+for hl_group_name, hl_group_colors in pairs(notify_hlgroup_colors) do
+    vim.api.nvim_set_hl(0, hl_group_name, hl_group_colors)
+end
+
+notify.setup {
+    background_colour = "NotifyBackground",
+    fps = 60,
+    icons = {
+        DEBUG = "",
+        ERROR = "",
+        INFO = "",
+        TRACE = "✎",
+        WARN = ""
+    },
+    level = 0, -- Display all notifications
+    minimum_width = 50,
+    render = "default",
+    stages = "fade_in_slide_out",
+    timeout = 5000,
+    top_down = true
+}
+
