@@ -1,12 +1,13 @@
 local success, prequire = pcall(require, 'eprader.prequire')
 if not success then
-    vim.notify("Failed to load config: module `prequrie` Failed to load. Aborted loading configuration.")
+    vim.notify("From `init.lua`: `prequrie` failed to load.\n"
+        .. "Aborted loading configuration..."
+        .. prequire)
     return
 end
 
 -- NOTE: Load `notify` first to handle future `vim.notify` calls of `prequire` and others
 prequire 'eprader.notify'
-prequire 'failing'
 
 prequire 'eprader.settings'
 prequire 'eprader.keymaps'
