@@ -1,5 +1,12 @@
 local with_icons = true
 local pred_depth = 3
+local with_notify = true
+
+-- NOTE: Activate nvim-notify if available
+if with_notify then
+    local success, nvim_notify = pcall(require, 'notify')
+    if success then vim.notify = nvim_notify end
+end
 
 local notify_options = {
     title = "prequire",
@@ -51,7 +58,7 @@ end
 --- If require fails it will use `vim.notify` to display an expressive error message.
 --- @param modname string -- The path to the module
 --- @return table
-return function(modname)
+local prequire = function(modname)
     local success, module = pcall(require, modname)
     if not success then
         local message = build_error_message(modname, module)
@@ -59,3 +66,5 @@ return function(modname)
     end
     return module
 end
+
+return prequire
