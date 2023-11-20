@@ -46,9 +46,7 @@ local function build_error_message(modname, module_error)
     local path = render_src_path(info.source, pred_depth, with_icons)
     local line_preview = "11 local needen = prequire 'this.is_not_available"
 
-    return "Unable to load " .. module .. ".\n"
-        .. "in " .. path .. " on line "
-        .. info.currentline .. ".\n\n"
+    return "@ " .. path .. " on line " .. info.currentline .. ".\n"
         .. "```vim\n"
         .. module_error
         .. "\n```"
