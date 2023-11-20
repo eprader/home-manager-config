@@ -1,4 +1,6 @@
-require 'telescope'.setup {
+local telescope = require 'telescope'
+
+telescope.setup {
     defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
@@ -76,7 +78,8 @@ require 'telescope'.setup {
     }
 }
 
-require 'telescope'.load_extension('fzf')
+telescope.load_extension('fzf')
+telescope.load_extension('notify')
 
 -- KEYBINDS
 require 'eprader.mapleader'
