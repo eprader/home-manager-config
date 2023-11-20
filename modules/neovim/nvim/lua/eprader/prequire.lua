@@ -1,5 +1,5 @@
 local with_icons = true
-local predecessor_depth = 12
+local pred_depth = 3
 
 local notify_options = {
     title = "prequire",
@@ -13,7 +13,7 @@ local function notify(message, level)
     vim.schedule(function() vim.notify(message, level, notify_options) end)
 end
 
-local function render_src_path(full_path, with_icon, dir_depth)
+local function render_src_path(full_path, predecessor_depth, with_icon)
     local split_path = vim.split(full_path, "/")
 
     if #split_path < predecessor_depth then
@@ -37,13 +37,14 @@ end
 local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
     local module = (with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
-    local path = render_src_path(info.source, with_icons, predecessor_depth)
+    local path = render_src_path(info.source, pred_depth, with_icons)
 
     return "Unable to load " .. module .. ".\n"
         .. "in " .. path .. " on line "
         .. info.currentline .. ".\n"
         .. "```lua\n"
         .. "\n```"
+        .. module_error
 end
 
 --- This function takes `modname` and returns the result of `require`
@@ -51,7 +52,8 @@ end
 --- @param modname string -- The path to the module
 --- @return table
 return function(modname)
-    local success, module = pcall(require, modname)
+    local module
+    success, module = pcall(require, modname)
     if not success then
         local message = build_error_message(modname, module)
         notify(message, "error")
