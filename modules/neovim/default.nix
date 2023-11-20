@@ -75,7 +75,7 @@ in
       telescope-fzf-native-nvim
 
       #TreeSitter
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
 
       #HTML autotags
       nvim-ts-autotag
