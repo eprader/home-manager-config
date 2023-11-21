@@ -28,7 +28,13 @@ in
   home = {
     packages = with pkgs; [
       tree-sitter
+
+      #for Telescope
+      ripgrep
+      fd
+
       lldb
+
       # formatter
       yapf
 
