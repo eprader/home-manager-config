@@ -13,8 +13,10 @@ local settings = {
     smartindent = true,
     autoindent = true,
 
-    wrap = false,
+    signcolumn = "yes",
     colorcolumn = "80",
+    wrap = false,
+    showmode = false,
 
     swapfile = false,
     backup = false,
@@ -23,7 +25,6 @@ local settings = {
     errorbells = false,
     cursorline = true,
 
-    signcolumn = "yes",
 
     list = true,
     listchars = {
