@@ -1,21 +1,21 @@
 --[[
--- NOTE: Make sure this file is sourced before any other of your files that
--- makes use of `vim.notify`.
+ NOTE: Make sure this file is sourced before any other of your files that
+ makes use of `vim.notify`.
 ]]
 local prequire = require 'eprader.prequire'
 
 local notify = prequire 'notify'
 if not notify then return end
 
-vim.opt.termguicolors = true  -- INFO: Required to support opacity changes.
+vim.opt.termguicolors = true -- INFO: Required to support opacity changes.
 vim.notify = notify
 
 --[[
--- HACK: Notify requires the `NotifyBackground` highlight group to have a `background` highlight.
--- By default `NotifyBackground` is linked to `Normal`.
--- For Neovim (v0.9.1) `:colorscheme default` `Normal.background` is `nil`
--- Requiring a colorscheme should set that value.
---]]
+ HACK: Notify requires the `NotifyBackground` highlight group to have a `background` highlight.
+ By default `NotifyBackground` is linked to `Normal`.
+ For Neovim (v0.9.1) `:colorscheme default` `Normal.background` is `nil`
+ Requiring a colorscheme should set that value.
+]]
 prequire 'eprader.colorscheme'
 
 local colors = {
@@ -82,4 +82,3 @@ notify.setup {
     timeout = 5000,
     top_down = true
 }
-
