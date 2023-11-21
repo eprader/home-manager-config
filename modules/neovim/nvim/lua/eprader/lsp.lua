@@ -1,35 +1,40 @@
-require 'eprader.mapleader'
-local lsp_utils = require 'eprader.lsp_utils'
-local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local prequire = require "eprader.prequire"
+local cmp_lsp = prequire "cmp_nvim_lsp"
+if not cmp_lsp then return end
+
+local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require "eprader.mapleader"
+--local lsp_utils = prequire "eprader.lsp_utils"
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
+    vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })
     -- Mappings
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    map('n', '<leader>e', vim.diagnostic.open_float, opts)
-    map('n', '[d', vim.diagnostic.goto_prev, opts)
-    map('n', ']d', vim.diagnostic.goto_next, opts)
-    map('n', '<space>q', vim.diagnostic.setloclist, opts)
+    map("n", "<leader>e", vim.diagnostic.open_float, opts)
+    map("n", "[d", vim.diagnostic.goto_prev, opts)
+    map("n", "]d", vim.diagnostic.goto_next, opts)
+    map("n", "<space>q", vim.diagnostic.setloclist, opts)
 
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    map('n', 'gd', vim.lsp.buf.definition, bufopts)
-    map('n', 'K', vim.lsp.buf.hover, bufopts)
-    map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    map('n', '<leader>sh', vim.lsp.buf.signature_help, bufopts)
-    map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    map('n', '<leader>wl', function()
+    map("n", "gD", vim.lsp.buf.declaration, bufopts)
+    map("n", "gd", vim.lsp.buf.definition, bufopts)
+    map("n", "K", vim.lsp.buf.hover, bufopts)
+    map("n", "gi", vim.lsp.buf.implementation, bufopts)
+    map("n", "<leader>sh", vim.lsp.buf.signature_help, bufopts)
+    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+    map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+    map("n", "<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    map('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-    map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-    map('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-    map('n', 'gr', vim.lsp.buf.references, bufopts)
-    map('n', '<C-f>', vim.lsp.buf.format, bufopts)
+    map("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+    map("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    map("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
+    map("n", "gr", vim.lsp.buf.references, bufopts)
+    map("n", "<C-f>", vim.lsp.buf.format, bufopts)
     -- formatting on save
     --vim.cmd [[autocmd BufWritePre * :lua vim.lsp.buf.format()]]
 
@@ -43,10 +48,9 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-local lsconfig = require 'lspconfig'
-
--- local lsp_utils = require('lsp_utils')
-
+local lsconfig = prequire "lspconfig"
+if not lsconfig then return end
+--
 -- Server setup
 lsconfig.rnix.setup {
     on_attach = on_attach,
@@ -78,7 +82,7 @@ lsconfig.lua_ls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-    settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+    settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 }
 
 lsconfig.hls.setup {
@@ -111,9 +115,11 @@ lsconfig.pyright.setup {
     capabilities = capabilities,
 }
 
-lsconfig.ltex.setup {
-    on_attach = function(client, bufnr)
-        require 'ltex_extra'.setup {
+local ltex_extra = prequire "ltex_extra"
+local ltex_on_attach = on_attach
+if ltex_extra then
+    ltex_on_attach = function()
+        ltex_extra.setup {
             -- table <string> : languages for witch dictionaries will be loaded, e.g. { "es-AR", "en-US" }
             -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
             load_langs = { "de-DE" }, -- en-US as default
@@ -130,13 +136,17 @@ lsconfig.ltex.setup {
             server_opts = nil
         }
         on_attach()
-    end,
+    end
+end
+
+lsconfig.ltex.setup {
+    on_attach = ltex_on_attach,
     flags = lsp_flags,
     settings = {
         ltex = {
-            language = { 'de-DE' },
+            language = { "de-DE" },
             disabledRules = {
-                ['en-GB'] = { 'PROFANITY' },
+                ["en-GB"] = { "PROFANITY" },
             },
         },
     },
@@ -148,25 +158,28 @@ lsconfig.texlab.setup {
     capabilities = capabilities,
 }
 
-lsconfig.sqlls.setup {
-    on_attach = function(client, bufnr)
-        require 'sqls'.on_attach(client, bufnr)
-        on_attach()
-        ''
-        map({ 'n', 'v' }, '<leader>eq', ":SqlsExecuteQuery<cr>", opts)
-        map('n', '<leader>sd', ":SqlsSwitchDatabase<cr>", opts)
-        map('n', '<leader>sc', ":SqlsSwitchConnection<cr>", opts)
-    end,
+local sqls = prequire "sqls"
+if sqls then
+    lsconfig.sqlls.setup {
+        on_attach = function(client, bufnr)
+            sqls.on_attach(client, bufnr)
+            on_attach()
+            ""
+            map({ "n", "v" }, "<leader>eq", ":SqlsExecuteQuery<cr>", opts)
+            map("n", "<leader>sd", ":SqlsSwitchDatabase<cr>", opts)
+            map("n", "<leader>sc", ":SqlsSwitchConnection<cr>", opts)
+        end,
 
-    flags = lsp_flags,
-    capabilities = capabilities,
-    cmd = { "sqls", "-config", "/home/eprader/.config/sqls/config.yml" }
-}
+        flags = lsp_flags,
+        capabilities = capabilities,
+        cmd = { "sqls", "-config", "/home/eprader/.config/sqls/config.yml" }
+    }
+end
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = {
-            prefix = '≫',
+            prefix = "≫",
             spacing = 2,
         },
         signs = true,
@@ -174,10 +187,10 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
         severity_sort = true,
     })
 
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 local config = {

@@ -1,3 +1,6 @@
+local prequire = require "eprader.prequire"
+--local gruvbox = prequire "gruvbox_community"
+
 vim.cmd.colorscheme('gruvbox')
 vim.g.gruvbox_contrast_dark = 'medium'
 

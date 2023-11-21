@@ -1,7 +1,11 @@
 -- following two lines were needed as treesitter needed to be installed at read write location...
 --local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 --vim.fn.mkdir(parser_install_dir, "p")
-require 'nvim-treesitter.configs'.setup {
+local prequrie = require "eprader.prequire"
+local treesitter_configs = prequrie "nvim-treesitter.configs"
+if not treesitter_configs then return end
+
+treesitter_configs.setup {
     -- A list of parser names, or "all"
     ensure_installed = {},
 

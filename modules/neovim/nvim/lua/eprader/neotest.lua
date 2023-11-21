@@ -1,8 +1,17 @@
-require 'neotest'.setup({
-    adapters = {
-        require 'neotest-vim-test' ({
-        }),
-    },
+local prequire = require "eprader.prequire"
+local neotest = prequire "neotest"
+if not neotest then return end
+
+local adapters = {}
+local neotest_vim_test = prequire "neotest-vim-test"
+if neotest_vim_test then adapters = { neotest_vim_test } end
+
+local consumers = {}
+local overseer_consumer = prequire "neotest.consumers.overseer"
+if overseer_consumer then consumers = { overseer_consumer } end
+
+neotest.setup {
+    adapters = adapters,
 
     icons = {
         passed = "✔",
@@ -18,6 +27,7 @@ require 'neotest'.setup({
         child_indent = "│",
         final_child_indent = " ",
     },
+    -- TODO: use general highlightgroups
     highlights = {
         passed = "GruvboxGreenSign",
         running = "GruvboxYellowSign",
@@ -37,12 +47,11 @@ require 'neotest'.setup({
         target = "NeotestTarget",
         unknown = "GruvboxFg0",
     },
-    consumers = {
-        overseer = require("neotest.consumers.overseer"),
-    },
-})
+    consumers = consumers,
+}
 
 -- Keymaps
+prequire "eprader.mapleader"
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 

@@ -1,4 +1,8 @@
-require 'todo-comments'.setup {
+local prequire = require "eprader.prequire"
+local todo_comments = prequire "todo-comments"
+if not todo_comments then return end
+
+todo_comments.setup {
     signs = true,    -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments

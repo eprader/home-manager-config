@@ -1,4 +1,8 @@
-require 'trouble'.setup {
+local prequire = require "eprader.prequire"
+local trouble = prequire "trouble"
+if not trouble then return end
+
+trouble.setup {
     position = "bottom",            -- position of the list can be: bottom, top, left, right
     height = 10,                    -- height of the trouble list when position is top or bottom
     width = 50,                     -- width of the list when position is left or right
@@ -36,17 +40,17 @@ require 'trouble'.setup {
     auto_preview = true,               -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
     auto_fold = true,                  -- automatically fold a file trouble list at creation
     auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
-    signs = { Error = '', Warn = '', Hint = '', Info = '' },
+    signs = { Error = "", Warn = "", Hint = "", Info = "" },
     use_diagnostic_signs = false       -- enabling this will use the signs defined in your lsp client
 }
 
 -- KEYBINDS
-require 'eprader.mapleader'
+require "eprader.mapleader"
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map('n', '<leader>tt', "<cmd>TroubleToggle<cr>", opts)
-map('n', '<leader>dt', "<cmd>TroubleToggle document_diagnostics<cr>", opts)
-map('n', '<leader>gt', "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-map('n', '<leader>ft', "<cmd>TroubleToggle quickfix<cr>", opts)
+map("n", "<leader>tt", "<cmd>TroubleToggle<cr>", opts)
+map("n", "<leader>dt", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+map("n", "<leader>gt", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
+map("n", "<leader>ft", "<cmd>TroubleToggle quickfix<cr>", opts)

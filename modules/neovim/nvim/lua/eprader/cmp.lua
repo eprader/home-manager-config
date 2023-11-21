@@ -1,11 +1,18 @@
-local cmp = require 'cmp'
-require("luasnip.loaders.from_vscode").lazy_load()
+local prequire = require "eprader.prequire"
+local cmp = prequire "cmp"
+if not cmp then return end
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done()
-)
+local luasnip = prequire "luasnip"
+if not luasnip then return end
+prequire("luasnip.loaders.from_vscode").lazy_load()
+
+local cmp_autopairs = prequire "nvim-autopairs.completion.cmp"
+if cmp_autopairs then
+    cmp.event:on(
+        'confirm_done',
+        cmp_autopairs.on_confirm_done()
+    )
+end
 
 local kind_icons = {
     Text = "󰉿",
@@ -39,7 +46,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
     window = {

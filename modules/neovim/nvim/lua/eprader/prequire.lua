@@ -4,7 +4,7 @@ local with_notify = true
 
 -- NOTE: Activate nvim-notify if available
 if with_notify then
-    local success, nvim_notify = pcall(require, 'notify')
+    local success, nvim_notify = pcall(require, "notify")
     if success then vim.notify = nvim_notify end
 end
 

@@ -1,4 +1,8 @@
-require 'harpoon'.setup {
+local prequire = require "eprader.prequire"
+local harpoon = prequire "harpoon"
+if not harpoon then return end
+
+harpoon.setup {
     global_settings = {
         -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
         save_on_toggle = false,
@@ -32,13 +36,13 @@ require 'harpoon'.setup {
 }
 
 -- KEYBINDS
-require 'eprader.mapleader'
+prequire "eprader.mapleader"
 
 local map = vim.keymap.set
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")
-map('n', '<leader>ha', harpoon_mark.add_file)
-map('n', '<leader>hl', harpoon_ui.toggle_quick_menu)
-map('n', '<C-j>', function() harpoon_ui.nav_file(1) end)
-map('n', '<C-k>', function() harpoon_ui.nav_file(2) end)
-map('n', '<C-l>', function() harpoon_ui.nav_file(3) end)
+map("n", "<leader>ha", harpoon_mark.add_file)
+map("n", "<leader>hl", harpoon_ui.toggle_quick_menu)
+map("n", "<C-j>", function() harpoon_ui.nav_file(1) end)
+map("n", "<C-k>", function() harpoon_ui.nav_file(2) end)
+map("n", "<C-l>", function() harpoon_ui.nav_file(3) end)

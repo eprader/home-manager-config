@@ -1,4 +1,8 @@
-require('dressing').setup({
+local prequire = require "eprader.prequire"
+local dressing = prequire "dressing"
+if not dressing then return end
+
+dressing.setup{
     input = {
         -- Set to false to disable the vim.ui.input implementation
         enabled = true,
@@ -112,4 +116,4 @@ require('dressing').setup({
         -- see :help dressing_get_config
         get_config = nil,
     },
-})
+}
