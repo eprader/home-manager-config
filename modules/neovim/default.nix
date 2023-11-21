@@ -54,11 +54,11 @@ in
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
 
-      /* plenary-nvim
-        nvim-notify
-        nui-nvim
-        nvim-treesitter.withAllGrammars
-        noice-nvim */
+      plenary-nvim
+      nvim-treesitter.withAllGrammars
+      nvim-notify
+      /*nui-nvim
+        noice-nvim*/
 
       #Eyecandy
       gruvbox-community
