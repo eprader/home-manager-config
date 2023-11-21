@@ -54,6 +54,12 @@ in
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
 
+      /* plenary-nvim
+        nvim-notify
+        nui-nvim
+        nvim-treesitter.withAllGrammars
+        noice-nvim */
+
       #Eyecandy
       gruvbox-community
       # tokyonight-nvim
@@ -62,7 +68,6 @@ in
       # onedark-nvim
       nvim-web-devicons
       todo-comments-nvim
-      nvim-notify
       dressing-nvim
 
       #Git
@@ -70,12 +75,9 @@ in
       git-blame-nvim
 
       #Telescope
-      plenary-nvim
       telescope-nvim
       telescope-fzf-native-nvim
 
-      #TreeSitter
-      nvim-treesitter.withAllGrammars
 
       #HTML autotags
       nvim-ts-autotag
