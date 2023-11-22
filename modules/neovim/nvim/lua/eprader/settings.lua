@@ -15,7 +15,7 @@ local settings = {
 
     signcolumn = "yes",
     colorcolumn = "80",
-    wrap = false,
+    wrap = true,
     showmode = false,
 
     swapfile = false,
@@ -24,7 +24,6 @@ local settings = {
 
     errorbells = false,
     cursorline = true,
-
 
     list = true,
     listchars = {
