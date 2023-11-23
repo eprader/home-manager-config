@@ -51,7 +51,7 @@ telescope.setup {
         path_display = { "truncate" },
         winblend = 0,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require "telescope.previewers".vim_buffer_cat.new,
@@ -71,61 +71,49 @@ telescope.setup {
     },
     extensions = {
         fzf = {
-            fuzzy = true,             -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
         }
     }
 }
 
-telescope.load_extension("fzf")
-telescope.load_extension("notify")
+telescope.load_extension "fzf"
 
 -- KEYBINDS
-require "eprader.mapleader"
+prequire "eprader.mapleader"
 
 local map = vim.keymap.set
-map("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>")
-map("n", "<leader>ff", ":Telescope find_files<cr>")
-map("n", "<leader>fd", ":Telescope diagnostics<cr>")
+local opts = { noremap = true, silent = true }
 
-local colors = {
-    black = "#32302f",
-    black2 = "#3c3836",
-    dark_grey = "#928374",
-    dark_red = "#cc241d",
-    red = "#fb4934",
-    dark_green = "#98971a",
-    green = "#b8bb26",
-    dark_yellow = "#d79921",
-    yellow = "#fabd2f",
-    dark_blue = "#458588",
-    blue = "#83a598",
-    dark_magenta = "#b16286",
-    magenta = "#d3869b",
-    dark_cyan = "#689d6a",
-    cyan = "#8ec07c",
-    light_grey = "#a89984",
-    white = "#ebdbb2",
-    dark_orange = "#d65d0e",
-    orange = "#fe8019"
+map("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+map("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+map("n", "<leader>fd", ":Telescope diagnostics<cr>", opts)
+
+-- HIGHLIGHT GROUPS
+local highlights = {
+    TelescopeNormal = "Normal",
+    TelescopeSelection = "CursorLine",
+
+    TelescopeBorder = "NonText",
+
+    -- TODO: Should be default as in the sourcecode of telescope...
+    -- https://github.com/nvim-telescope/telescope.nvim/blob/18774ec7929c8a8003a91e9e1f69f6c32258bbfe/plugin/telescope.lua#L19
+    TelescopePromptBorder = "TelescopeBorder",
+    TelescopePreviewBorder = "TelescopeBorder",
+    TelescopeResultsBorder = "TelescopeBorder",
+
+    TelescopePromptTitle = "String",
+    TelescopePromptPrefix = "TelescopePromptTitle",
+
+    TelescopeResultsTitle = "Keyword",
+
+    TelescopePreviewTitle = "Number",
+    TelescopePreviewLine = "CursorLine",
 }
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.black2 })
 
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = colors.black2, bg = colors.black2 })
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = colors.black, bg = colors.dark_magenta })
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = colors.white, bg = colors.black2 })
-vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.dark_magenta, bg = colors.black2 })
-
-vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = colors.black, bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.black, bg = colors.blue })
-
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = colors.black, bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.black, bg = colors.black })
-
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { fg = colors.dark_green })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { fg = colors.dark_cyan })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { fg = colors.dark_red })
+for k, v in pairs(highlights) do
+    vim.api.nvim_set_hl(0, k, { link = v })
+end
