@@ -62,7 +62,7 @@ local notify_hlgroup_colors = {
 }
 
 for hl_group_name, hl_group_colors in pairs(notify_hlgroup_colors) do
-    vim.api.nvim_set_hl(0, hl_group_name, hl_group_colors)
+    vim.api.nvim_set_hl(0, hl_group_name,  hl_group_colors)
 end
 
 notify.setup {
@@ -82,3 +82,7 @@ notify.setup {
     timeout = 5000,
     top_down = true
 }
+
+-- Telescope extension
+local telescope = prequire "telescope"
+if telescope then telescope.load_extension "notify" end
