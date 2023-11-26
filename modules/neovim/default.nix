@@ -139,9 +139,9 @@ in
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
-
-    /* NOTE: The eprader-config-nvim plugin is accessible via 'eprader'. 
-      * This is the name of the subfolder in ./nvim/lua
+    /*
+      NOTE: The eprader-config-nvim plugin is accessible via 'eprader'. 
+      This is the name of the subfolder in ./nvim/lua
     */
     extraConfig = ''
       lua require 'eprader'
