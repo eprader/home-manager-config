@@ -71,7 +71,7 @@ in
       valgrind
       docker
       pre-commit
-      direnv
+      direnv # NOTE: If you remove this make sure to also remove the eval in the bash config
       nix-direnv
 
       # C
@@ -143,8 +143,16 @@ in
 
     };
 
-    #  add to initExtra for WSl source $HOME/.nix-profile/etc/profile.d/nix.sh
-    initExtra = '' source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+    /*
+      NOTE:
+      Add to initExtra for WSl source $HOME/.nix-profile/etc/profile.d/nix.sh
+      For `export DIRENV_LOG_FORMAT=` and `eval ...`: The order here is omportant it seems.
+    */
+    #
+    initExtra = ''
+      source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+      export DIRENV_LOG_FORMAT=
+      eval "$(direnv hook bash)"
     '';
   };
 
