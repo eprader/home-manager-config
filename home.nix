@@ -22,6 +22,11 @@ let
   ];
 in
 {
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   imports = [
@@ -51,8 +56,6 @@ in
       discord-ptb
       spotify
       whatsapp-for-linux
-      station
-      franz
       jetbrains.idea-ultimate
 
       # TERMINAL
@@ -62,12 +65,14 @@ in
       # Tools
       zip
       unzip
-      pre-commit
-      valgrind
-      docker
       htop
       linuxKernel.packages.linux_zen.perf
       strace
+      valgrind
+      docker
+      pre-commit
+      direnv
+      nix-direnv
 
       # C
       gnumake
