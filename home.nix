@@ -41,10 +41,6 @@ in
     homeDirectory = "/home/eprader";
     stateVersion = "23.05";
 
-    sessionVariables = {
-      VISUAL = "$EDITOR";
-    };
-
     packages = with pkgs; [
       #Desktop Environment
       wayland
@@ -71,8 +67,6 @@ in
       valgrind
       docker
       pre-commit
-      direnv # NOTE: If you remove this make sure to also remove the eval in the bash config
-      nix-direnv
 
       # C
       gnumake
@@ -127,34 +121,30 @@ in
     enable = true;
 
     shellAliases = {
+      hms = "systemctl --user reset-failed && home-manager switch";
+      nrs = "sudo nixos-rebuild switch";
+
       ll = "lsd -alF";
       la = "lsd -A";
-      l = "lsd -F";
       ls = "lsd";
-      dir = "dir --color=auto";
-      vdir = "vdir --color=auto";
 
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
-      hms = "systemctl --user reset-failed && home-manager switch";
-      nrs = "sudo nixos-rebuild switch";
-      cat = "bat";
 
     };
 
     /*
       NOTE:
       Add to initExtra for WSl source $HOME/.nix-profile/etc/profile.d/nix.sh
-      For `export DIRENV_LOG_FORMAT=` and `eval ...`: The order here is omportant it seems.
     */
     #
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
-      export DIRENV_LOG_FORMAT=
-      eval "$(direnv hook bash)"
     '';
   };
+
+  programs.direnv.enable = true;
 
   services.flameshot = {
     enable = true;
@@ -176,13 +166,6 @@ in
 
   /* services.network-manager-applet = { enable = true;
     }; */
-
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "gruvbox-dark";
-    };
-  };
 
   programs.dircolors = {
     enable = true;
