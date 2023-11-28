@@ -91,6 +91,7 @@ local opts = { noremap = true, silent = true }
 map("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 map("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 map("n", "<leader>fd", ":Telescope diagnostics<cr>", opts)
+map("n", ":h", ":Telescope help_tags<cr>", opts)
 
 -- HIGHLIGHT GROUPS
 local highlights = {
