@@ -41,6 +41,10 @@ in
     homeDirectory = "/home/eprader";
     stateVersion = "23.05";
 
+    sessionVariables = {
+      VISUAL = "$EDITOR";
+    };
+
     packages = with pkgs; [
       #Desktop Environment
       wayland
