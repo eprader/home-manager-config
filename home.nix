@@ -32,9 +32,9 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/nvim
-    ./modules/latex
     ./modules/terminals/kitty
+    ./modules/nvim
+    ./modules/languages/latex.nix
     ./modules/tools/direnv.nix
     # ./modules/terminals/alacritty
   ];

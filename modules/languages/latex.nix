@@ -18,11 +18,12 @@ in
   programs.zathura.enable = true;
 
   programs.neovim = {
-    extraConfig = '' 
-      lua require 'eprader.vimtex'
-    '';
     plugins = with pkgs.vimPlugins; [
       vimtex
     ];
+
+    extraConfig = '' 
+      lua require 'eprader.vimtex'
+    '';
   };
 }
