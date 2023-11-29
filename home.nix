@@ -35,8 +35,7 @@ in
     ./modules/terminals/kitty
     ./modules/nvim
     ./modules/languages/latex.nix
-    ./modules/tools/direnv.nix
-    # ./modules/terminals/alacritty
+    ./modules/programs/direnv.nix
   ];
 
   home = {
@@ -164,7 +163,6 @@ in
         undoLimit = 95;
       };
       Shortcuts = {
-
         TYPE_COPY = "Return";
       };
     };
@@ -172,13 +170,6 @@ in
 
   /* services.network-manager-applet = { enable = true;
     }; */
-
-  programs.dircolors = {
-    enable = true;
-    settings = {
-      ".sh" = "01;32";
-    };
-  };
 
   programs.starship = {
     enable = true;
