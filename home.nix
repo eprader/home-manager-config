@@ -35,7 +35,7 @@ in
     ./modules/nvim
     ./modules/latex
     ./modules/terminals/kitty
-    ./modules/tools/direnv
+    ./modules/tools/direnv.nix
     # ./modules/terminals/alacritty
   ];
 
