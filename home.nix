@@ -32,10 +32,10 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/terminals/kitty
+    ./modules/kitty
     ./modules/nvim
-    ./modules/languages/latex.nix
-    ./modules/programs/direnv.nix
+    ./modules/latex.nix
+    ./modules/direnv.nix
   ];
 
   home = {
