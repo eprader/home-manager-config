@@ -19,7 +19,7 @@ let
     opencv4
     redis
 
-    pygments
+    pygments # NOTE: This is needed for latex minted to work
   ];
 
 in
@@ -83,7 +83,6 @@ in
       cmake
 
       # Python
-      # (python311.withPackages (pkgs.lib.attrVals config.pythonPackages))
       (python311.withPackages pythonPackages)
 
       poetry # python project management
