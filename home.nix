@@ -1,5 +1,6 @@
 { pkgs, ... }:
 let
+  unstable = import <nixos-unstable> { };
   nodePackages = with pkgs.nodePackages; [
     pnpm
     typescript
@@ -20,6 +21,7 @@ let
 
     pygments
   ];
+
 in
 {
   nix = {
@@ -33,6 +35,7 @@ in
     ./modules/neovim
     ./modules/latex
     ./modules/terminals/kitty
+    ./modules/tools/direnv
     # ./modules/terminals/alacritty
   ];
 
@@ -46,6 +49,7 @@ in
     };
 
     packages = with pkgs; [
+      vscode
       #Desktop Environment
       wayland
       hyprland
@@ -147,8 +151,6 @@ in
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
   };
-
-  programs.direnv.enable = true;
 
   services.flameshot = {
     enable = true;
