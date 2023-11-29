@@ -32,7 +32,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/neovim
+    ./modules/nvim
     ./modules/latex
     ./modules/terminals/kitty
     ./modules/tools/direnv
