@@ -9,17 +9,14 @@ let
   pythonPackages = p: with p; [
     pip
 
-    # math
+    pygments # NOTE: This is needed for latex minted to work
+
     scipy
     numpy
     matplotlib
 
-    pyyaml
-    requests
-    opencv4
     redis
 
-    pygments # NOTE: This is needed for latex minted to work
   ];
 
 in
