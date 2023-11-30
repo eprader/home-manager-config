@@ -1,5 +1,5 @@
 local with_icons = true
-local pred_depth = 3
+local pred_depth = 2
 local with_notify = true
 
 -- NOTE: Activate nvim-notify if available
@@ -9,7 +9,7 @@ if with_notify then
 end
 
 local notify_options = {
-    title = "prequire",
+    title = "require",
     on_open = function(win)
         local buf = vim.api.nvim_win_get_buf(win)
         vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
@@ -44,9 +44,11 @@ local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
     local module = (with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
     local path = render_src_path(info.source, pred_depth, with_icons)
-    local line_preview = "11 local needen = prequire 'this.is_not_available"
 
-    return "@ " .. path .. " on line " .. info.currentline .. ".\n"
+    return
+        path .. " on line " .. info.currentline .. ".\n"
+        .. module .. ".\n"
+        .. "\n"
         .. "```vim\n"
         .. module_error
         .. "\n```"
@@ -56,7 +58,7 @@ end
 --- If require fails it will use `vim.notify` to display an expressive error message.
 --- @param modname string -- The path to the module
 --- @return table
-local prequire = function(modname)
+local function prequire(modname)
     local success, module = pcall(require, modname)
     if not success then
         local message = build_error_message(modname, module)
