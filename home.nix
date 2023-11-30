@@ -56,7 +56,6 @@ in
       discord-ptb
       spotify
       whatsapp-for-linux
-      jetbrains.idea-ultimate
 
       # TERMINAL
       lsd
@@ -84,6 +83,7 @@ in
       poetry # python project management
 
       # Java
+      jetbrains.idea-ultimate
       gradle
       maven
       #jdk11
@@ -137,11 +137,7 @@ in
 
     };
 
-    /*
-      NOTE:
-      Add to initExtra for WSl source $HOME/.nix-profile/etc/profile.d/nix.sh
-    */
-    #
+    # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
     '';
@@ -163,9 +159,6 @@ in
       };
     };
   };
-
-  /* services.network-manager-applet = { enable = true;
-    }; */
 
   programs.starship = {
     enable = true;
