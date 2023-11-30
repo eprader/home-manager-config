@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local dressing = prequire "dressing"
+local require = require "eprader.prequire"
+local dressing = require "dressing"
 if not dressing then return end
 
 dressing.setup{

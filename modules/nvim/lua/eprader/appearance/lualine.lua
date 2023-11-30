@@ -1,8 +1,8 @@
 --Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local prequire = require "eprader.prequire"
-local lualine = prequire "lualine"
+local require = require "eprader.prequire"
+local lualine = require "lualine"
 if not lualine then return end
 
 -- Color table for highlights

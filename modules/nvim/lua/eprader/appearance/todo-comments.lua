@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local todo_comments = prequire "todo-comments"
+local require = require "eprader.prequire"
+local todo_comments = require "todo-comments"
 if not todo_comments then return end
 
 todo_comments.setup {

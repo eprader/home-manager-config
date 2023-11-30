@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local trouble = prequire "trouble"
+local require = require "eprader.prequire"
+local trouble = require "trouble"
 if not trouble then return end
 
 trouble.setup {
