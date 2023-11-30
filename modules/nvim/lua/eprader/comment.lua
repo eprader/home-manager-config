@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local comment = prequire "Comment"
+local require = require "eprader.prequire"
+local comment = require "Comment"
 if not comment then return end
 
 comment.setup {

@@ -1,12 +1,12 @@
-local prequire = require "eprader.prequire"
-local cmp = prequire "cmp"
+local require = require "eprader.prequire"
+local cmp = require "cmp"
 if not cmp then return end
 
-local luasnip = prequire "luasnip"
+local luasnip = require "luasnip"
 if not luasnip then return end
-prequire("luasnip.loaders.from_vscode").lazy_load()
+require "luasnip.loaders.from_vscode".lazy_load()
 
-local cmp_autopairs = prequire "nvim-autopairs.completion.cmp"
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 if cmp_autopairs then
     cmp.event:on(
         'confirm_done',

@@ -1,9 +1,9 @@
-local prequire = require "eprader.prequire"
-local dap = prequire "dap"
+local require = require "eprader.prequire"
+local dap = require "dap"
 if not dap then return end
 
 -- Keymaps
-prequire "eprader.mapleader"
+require "eprader.mapleader"
 
 local map = function(lhs, rhs, desc)
     if desc then
