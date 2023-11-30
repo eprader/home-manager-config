@@ -1,7 +1,8 @@
-local prequire = require "eprader.prequire"
+local require = require "eprader.prequire"
 
-prequire 'eprader.appearance.colorscheme'
-prequire 'eprader.appearance.lualine'
-prequire 'eprader.appearance.todo-comments'
-prequire 'eprader.appearance.dressing'
-prequire 'eprader.appearance.trouble'
+require "eprader.appearance.colorscheme"
+require "eprader.appearance.lualine"
+require "eprader.appearance.todo-comments"
+require "eprader.appearance.dressing"
+require "eprader.appearance.trouble"
+require "eprader.appearance.colorizer"

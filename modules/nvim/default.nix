@@ -75,6 +75,7 @@ in
       nvim-web-devicons
       todo-comments-nvim
       dressing-nvim
+      nvim-colorizer-lua
 
       #Git
       gitsigns-nvim
