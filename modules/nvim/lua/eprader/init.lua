@@ -5,36 +5,36 @@ if vim.loader then vim.loader.enable() end
 
 -- WARN: Removing this might lead to a breaking config.
 -- This check ensures that protected require is available.
-local success, prequire = pcall(require, "eprader.prequire")
+local success, require = pcall(require, "eprader.prequire")
 if not success then
     vim.notify("From `init.lua`: `prequrie` failed to load.\n"
         .. "Aborted loading configuration...\n"
-        .. prequire)
+        .. require)
     return
 end
 
 -- NOTE: Load `notify` first to handle future `vim.notify` calls.
-prequire "eprader.notify"
+require "eprader.notify"
 
-prequire "eprader.settings"
-prequire "eprader.keymaps"
-prequire "eprader.treesitter"
-prequire "eprader.autopairs"
-prequire "eprader.comment"
+require "eprader.settings"
+require "eprader.keymaps"
+require "eprader.treesitter"
+require "eprader.autopairs"
+require "eprader.comment"
 
-prequire "eprader.telescope"
-prequire "eprader.lsp"
-prequire "eprader.cmp"
-prequire "eprader.harpoon"
-prequire "eprader.gitsigns"
+require "eprader.telescope"
+require "eprader.lsp"
+require "eprader.cmp"
+require "eprader.harpoon"
+require "eprader.gitsigns"
 
-prequire "eprader.appearance"
+require "eprader.appearance"
 
-prequire "eprader.toggleterm"
-prequire "eprader.overseer"
+require "eprader.toggleterm"
+require "eprader.overseer"
 
-prequire "eprader.dap"
-prequire "eprader.dapui"
+require "eprader.dap"
+require "eprader.dapui"
 
-prequire "eprader.nvim-r"
-prequire "eprader.java"
+require "eprader.nvim-r"
+require "eprader.java"
