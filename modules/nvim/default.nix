@@ -88,7 +88,6 @@ in
       git-blame-nvim
 
       #Telescope
-      prequire-nvim
       telescope-nvim
       telescope-fzf-native-nvim
 
