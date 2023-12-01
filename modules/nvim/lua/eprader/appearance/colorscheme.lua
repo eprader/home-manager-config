@@ -1,4 +1,4 @@
-local require = require "eprader.prequire"
+local require = require "sentinel"
 
 vim.cmd.colorscheme("gruvbox")
 vim.g.gruvbox_contrast_dark = "medium"

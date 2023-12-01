@@ -5,9 +5,9 @@ if vim.loader then vim.loader.enable() end
 
 -- WARN: Removing this might lead to a breaking config.
 -- This check ensures that protected require is available.
-local success, prequire = pcall(require, "eprader.prequire")
+local success, prequire = pcall(require, "sentinel")
 if not success then
-    vim.notify("From `init.lua`: `prequrie` failed to load.\n"
+    vim.notify("From `init.lua`: `sentinel` failed to load.\n"
         .. "Aborted loading configuration...\n"
         .. require)
     return

@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local dap_ui = prequire "dapui"
+local require = require "sentinel"
+local dap_ui = require "dapui"
 if not dap_ui then return end
 
 dap_ui.setup {
@@ -59,6 +59,6 @@ dap_ui.setup {
 }
 
 -- Virtual text
-local dap_v_text = prequire "nvim-dap-virtual-text"
+local dap_v_text = require "nvim-dap-virtual-text"
 if not dap_v_text then return end
 dap_v_text.setup()

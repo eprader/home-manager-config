@@ -1,4 +1,4 @@
-local require = require "eprader.prequire"
+local require = require "sentinel"
 local autopairs = require "nvim-autopairs"
 if not autopairs then return end
 

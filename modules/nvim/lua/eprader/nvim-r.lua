@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-prequire "eprader.mapleader"
+local require = require "sentinel"
+require "eprader.mapleader"
 
 local map = vim.keymap.set
 map("n", "<leader>rs", "<Plug>RStart")

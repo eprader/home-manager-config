@@ -1,4 +1,4 @@
-local require = require "eprader.prequire"
+local require = require "sentinel"
 local dap = require "dap"
 if not dap then return end
 

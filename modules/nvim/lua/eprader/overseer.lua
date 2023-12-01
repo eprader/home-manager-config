@@ -1,8 +1,8 @@
-local prequire = require "eprader.prequire"
-local overseer = prequire "overseer"
+local require = require "sentinel"
+local overseer = require "overseer"
 if not overseer then return end
 
-local toggleterm = prequire "toggleterm"
+local toggleterm = require "toggleterm"
 if toggleterm then
     overseer.setup {
         strategy = "toggleterm",

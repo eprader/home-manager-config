@@ -1,5 +1,5 @@
-local prequire = require "eprader.prequire"
-local harpoon = prequire "harpoon"
+local require = require "sentinel"
+local harpoon = require "harpoon"
 if not harpoon then return end
 
 harpoon.setup {
@@ -36,7 +36,7 @@ harpoon.setup {
 }
 
 -- KEYBINDS
-prequire "eprader.mapleader"
+require "eprader.mapleader"
 
 local map = vim.keymap.set
 local harpoon_mark = require("harpoon.mark")

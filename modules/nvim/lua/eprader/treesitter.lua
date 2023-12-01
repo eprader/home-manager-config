@@ -1,8 +1,8 @@
 -- following two lines were needed as treesitter needed to be installed at read write location...
 --local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
 --vim.fn.mkdir(parser_install_dir, "p")
-local prequrie = require "eprader.prequire"
-local treesitter_configs = prequrie "nvim-treesitter.configs"
+local require = require "sentinel"
+local treesitter_configs = require "nvim-treesitter.configs"
 if not treesitter_configs then return end
 
 treesitter_configs.setup {

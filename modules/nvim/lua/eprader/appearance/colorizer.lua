@@ -1,4 +1,4 @@
-local require = require "eprader.prequire"
+local require = require "sentinel"
 local colorizer = require "colorizer"
 if not colorizer then return end
 

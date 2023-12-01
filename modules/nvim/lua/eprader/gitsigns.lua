@@ -1,8 +1,8 @@
-local prequire = require "eprader.prequire"
-local gitsigns = prequire "gitsigns"
+local require = require "sentinel"
+local gitsigns = require "gitsigns"
 if not gitsigns then return end
 
-prequire "eprader.mapleader" -- See Mappings at the end
+require "eprader.mapleader" -- See Mappings at the end
 
 gitsigns.setup {
     signs = {

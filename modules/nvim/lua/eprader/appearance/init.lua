@@ -1,4 +1,4 @@
-local require = require "eprader.prequire"
+local require = require "sentinel"
 
 require "eprader.appearance.colorscheme"
 require "eprader.appearance.lualine"

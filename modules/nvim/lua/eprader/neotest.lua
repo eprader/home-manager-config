@@ -1,13 +1,13 @@
-local prequire = require "eprader.prequire"
-local neotest = prequire "neotest"
+local rrequire = require "sentinel"
+local neotest = rrequire "neotest"
 if not neotest then return end
 
 local adapters = {}
-local neotest_vim_test = prequire "neotest-vim-test"
+local neotest_vim_test = rrequire "neotest-vim-test"
 if neotest_vim_test then adapters = { neotest_vim_test } end
 
 local consumers = {}
-local overseer_consumer = prequire "neotest.consumers.overseer"
+local overseer_consumer = rrequire "neotest.consumers.overseer"
 if overseer_consumer then consumers = { overseer_consumer } end
 
 neotest.setup {
@@ -51,7 +51,7 @@ neotest.setup {
 }
 
 -- Keymaps
-prequire "eprader.mapleader"
+rrequire "eprader.mapleader"
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
