@@ -1,3 +1,4 @@
+local M = {}
 local with_icons = true
 local pred_depth = 2
 local with_notify = true

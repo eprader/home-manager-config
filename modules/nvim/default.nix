@@ -23,6 +23,11 @@ let
     name = "eprader-nvim";
     src = ./.;
   };
+
+  prequrie = pkgs.vimUtils.buildVimPlugin {
+    name = "prequire-nvim";
+    src = ./plugins/prequire;
+  };
 in
 {
   home = {
@@ -59,6 +64,7 @@ in
 
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
+      prequire-nvim # local prequire plugin
 
       plenary-nvim
       nvim-treesitter.withAllGrammars
@@ -82,6 +88,7 @@ in
       git-blame-nvim
 
       #Telescope
+      prequire-nvim
       telescope-nvim
       telescope-fzf-native-nvim
 
