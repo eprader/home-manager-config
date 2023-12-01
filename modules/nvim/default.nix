@@ -24,9 +24,9 @@ let
     src = ./.;
   };
 
-  prequrie = pkgs.vimUtils.buildVimPlugin {
-    name = "prequire-nvim";
-    src = ./plugins/prequire;
+  sentinel-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "sentinel-nvim";
+    src = ./plugins/sentinel;
   };
 in
 {
@@ -64,7 +64,7 @@ in
 
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
-      prequire-nvim # local prequire plugin
+      sentinel-nvim # local prequire plugin
 
       plenary-nvim
       nvim-treesitter.withAllGrammars
