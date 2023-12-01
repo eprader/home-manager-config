@@ -1,11 +1,13 @@
 local M = {}
-local with_icons = true
-local pred_depth = 2
-local with_notify = true
+M._real_require = _G.require
+
+M.with_icons = true
+M.pred_depth = 2
+M.with_notify = true
 
 -- NOTE: Activate nvim-notify if available
-if with_notify then
-    local success, nvim_notify = pcall(require, "notify")
+if M.with_notify then
+    local success, nvim_notify = pcall(M._real_require, "notify")
     if success then vim.notify = nvim_notify end
 end
 
@@ -43,8 +45,8 @@ end
 
 local function build_error_message(modname, module_error)
     local info = debug.getinfo(3, "Sl")
-    local module = (with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
-    local path = render_src_path(info.source, pred_depth, with_icons)
+    local module = (M.with_icons and "󰆦" or "module") .. ": __" .. modname .. "__"
+    local path = render_src_path(info.source, M.pred_depth, M.with_icons)
 
     return
         path .. " on line " .. info.currentline .. ".\n"
@@ -60,7 +62,7 @@ end
 --- @param modname string -- The path to the module
 --- @return table
 local function prequire(modname)
-    local success, module = pcall(require, modname)
+    local success, module = pcall(M._real_require, modname)
     if not success then
         local message = build_error_message(modname, module)
         notify(message, "error")
