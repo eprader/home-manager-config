@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local todo_comments = require "todo-comments"
 if not todo_comments then return end
 

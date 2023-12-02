@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local dressing = require "dressing"
 if not dressing then return end
 
