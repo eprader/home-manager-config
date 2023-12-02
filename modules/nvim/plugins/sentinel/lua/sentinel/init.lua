@@ -5,10 +5,8 @@ M._real_require = _G.require
 function M._proxy_require(modname)
     local success, module = pcall(M._real_require, modname)
     if not success then
-        -- TODO: import messaging
-
-        --[[ local message = build_error_message(modname, module)
-        notify(message, "error") ]]
+        local notifyer = M._real_require "sentinel.notifyer"
+        notifyer.notify(modname, module)
     end
     return module
 end
