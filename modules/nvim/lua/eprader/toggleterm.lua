@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local toggleterm = require "toggleterm"
 if not toggleterm then return end
 

@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local telescope = require "telescope"
 if not telescope then return end
 

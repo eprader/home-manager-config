@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local dap = require "dap"
 if not dap then return end
 

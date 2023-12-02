@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local cmp = require "cmp"
 if not cmp then return end
 

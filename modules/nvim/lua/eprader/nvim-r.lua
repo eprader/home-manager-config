@@ -1,4 +1,3 @@
-local require = require "sentinel"
 require "eprader.mapleader"
 
 local map = vim.keymap.set

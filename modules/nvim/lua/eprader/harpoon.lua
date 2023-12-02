@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local harpoon = require "harpoon"
 if not harpoon then return end
 

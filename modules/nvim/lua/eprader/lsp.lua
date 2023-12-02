@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local cmp_lsp = require "cmp_nvim_lsp"
 if not cmp_lsp then return end
 

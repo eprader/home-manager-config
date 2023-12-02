@@ -1,4 +1,3 @@
-local rrequire = require "sentinel"
 local neotest = rrequire "neotest"
 if not neotest then return end
 

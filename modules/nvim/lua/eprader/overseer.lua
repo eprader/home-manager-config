@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local overseer = require "overseer"
 if not overseer then return end
 

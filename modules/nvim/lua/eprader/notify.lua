@@ -2,8 +2,6 @@
  NOTE: Make sure this file is sourced before any other of your files that
  makes use of `vim.notify`.
 ]]
-local require = require "sentinel"
-
 local notify = require "notify"
 if not notify then return end
 

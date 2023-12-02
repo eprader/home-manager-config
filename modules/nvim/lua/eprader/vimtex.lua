@@ -10,7 +10,7 @@ vim.g.vimtex_compiler_tectonic = {
 vim.g.vimtex_compiler_method = "tectonic"
 
 -- KEYBINDS
-local require = require "sentinel"
+-- local require = require "sentinel"
 require "eprader.mapleader"
 
 local map = vim.keymap.set

@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local dap_ui = require "dapui"
 if not dap_ui then return end
 

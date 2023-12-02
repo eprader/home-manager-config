@@ -1,4 +1,3 @@
-local require = require "sentinel"
 local gitsigns = require "gitsigns"
 if not gitsigns then return end
 
