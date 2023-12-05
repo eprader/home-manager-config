@@ -17,6 +17,7 @@ function M._proxy_require(modname)
             return
         end
         notifyer.notify(modname, module)
+        return false
     end
     return module
 end
