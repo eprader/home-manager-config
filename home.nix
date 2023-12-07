@@ -126,7 +126,6 @@ in
 
     shellAliases = {
       hms = "systemctl --user reset-failed && home-manager switch";
-      nrs = "sudo nixos-rebuild switch";
 
       ls = "lsd";
       ll = "lsd -alF";
