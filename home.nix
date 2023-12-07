@@ -30,6 +30,7 @@ in
 
   imports = [
     ./modules/kitty
+    ./modules/lsd.nix
     ./modules/nvim
     ./modules/latex.nix
     ./modules/direnv.nix
@@ -56,9 +57,6 @@ in
       discord-ptb
       spotify
       whatsapp-for-linux
-
-      # TERMINAL
-      lsd
 
       # Tools
       zip
@@ -123,21 +121,13 @@ in
 
   programs.bash = {
     enable = true;
-
     shellAliases = {
       hms = "systemctl --user reset-failed && home-manager switch";
-
-      ls = "lsd";
-      ll = "lsd -alF";
-      la = "lsd -A";
-      tree = "lsd --tree";
 
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
-
     };
-
     # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
