@@ -122,7 +122,7 @@ in
   programs.bash = {
     enable = true;
     shellAliases = {
-      hms = "systemctl --user reset-failed && home-manager switch";
+      hms = "home-manager switch";
 
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
