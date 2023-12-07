@@ -64,6 +64,7 @@ in
       zip
       unzip
       htop
+      wget
       linuxKernel.packages.linux_zen.perf
       strace
       valgrind
@@ -84,9 +85,10 @@ in
 
       # Java
       jetbrains.idea-ultimate
+      jetbrains.mps
       gradle
       maven
-      #jdk11
+      jdk11
 
       # Haskell
       ghc
@@ -140,6 +142,9 @@ in
     # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh export XDG_DATA_DIRS="/home/your_user/.nix-profile/share:$XDG_DATA_DIRS"
+      runbg () {
+        "$@" >/dev/null 2>&1 &
+      }
     '';
   };
 
