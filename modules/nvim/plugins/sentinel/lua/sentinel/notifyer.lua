@@ -38,7 +38,16 @@ function M._render_src_path(full_path, predecessor_depth, with_icon)
 end
 
 function M._build_error_message(module_name, module_error)
-    local debug_info = M._get_debug_info(5, "Sl")
+    local debug_info = debug.getinfo(4, "Sl")
+    if debug_info.what == "C" then
+    --[[
+     INFO:
+     There might be a C function inserted in between two lua calls.
+     I suspect this to be due to JIT. The C function can just be skipped because
+     the preceeding function call is the actual call we are interested in.
+    ]]
+        debug_info = debug.getinfo(5, "Sl")
+    end
     local module = (M.with_icons and "󰆦" or "module") .. ": __" .. module_name .. "__"
     local path = M._render_src_path(debug_info.source, M.pred_depth, M.with_icons)
 
@@ -49,17 +58,6 @@ function M._build_error_message(module_name, module_error)
         .. "```vim\n"
         .. module_error
         .. "\n```"
-end
-
--- BUG: some function stack levels lead to strange debug_info.
--- They appear as path = [C] and currentline = -1
--- For an error in `.../eprader/init.lua` it can be reproduced with f = 6
-function M._get_debug_info(f, what)
-    local debug_info = debug.getinfo(f, what)
-    if debug_info then
-        return debug_info
-    end
-    return M._get_debug_info(f - 1, what)
 end
 
 return M
