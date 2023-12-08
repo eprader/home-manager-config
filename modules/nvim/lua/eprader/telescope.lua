@@ -88,10 +88,17 @@ prequire "eprader.mapleader"
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>fs", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+--[[
+ INFO: This overrides default search behaviour
+ `/` forward search
+ `?` backward search
+]]
+map("n", "/", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+map("n", "?", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+
 map("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 map("n", "<leader>fd", ":Telescope diagnostics<cr>", opts)
-map("n", ":h", ":Telescope help_tags<cr>", opts)
+map("n", ":h", ":Telescope help_tags<cr>", opts) -- INFO: overrides default help behaviour
 
 -- HIGHLIGHT GROUPS
 local highlights = {
