@@ -1,4 +1,3 @@
-local require = require "eprader.prequire"
 local comment = require "Comment"
 if not comment then return end
 

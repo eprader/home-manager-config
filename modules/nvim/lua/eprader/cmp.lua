@@ -1,10 +1,18 @@
-local require = require "eprader.prequire"
 local cmp = require "cmp"
 if not cmp then return end
 
 local luasnip = require "luasnip"
 if not luasnip then return end
+
+local sentinel = require "sentinel"
+sentinel.stop()
+--[[
+ NOTE:
+ Fixed in `https://github.com/L3MON4D3/LuaSnip/commit/b5e73afc82c5e0bf074a7cb47954d9432b2dde82`
+ Module `luasnip-jsregexp` not available. Handled by pcall so it is safe to stop sentinel
+]]
 require "luasnip.loaders.from_vscode".lazy_load()
+sentinel.start()
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 if cmp_autopairs then

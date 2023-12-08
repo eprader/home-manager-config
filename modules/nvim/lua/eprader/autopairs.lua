@@ -1,4 +1,3 @@
-local require = require "eprader.prequire"
 local autopairs = require "nvim-autopairs"
 if not autopairs then return end
 

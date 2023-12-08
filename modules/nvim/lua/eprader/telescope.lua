@@ -1,5 +1,4 @@
-local prequire = require "eprader.prequire"
-local telescope = prequire "telescope"
+local telescope = require "telescope"
 if not telescope then return end
 
 telescope.setup {
@@ -83,7 +82,7 @@ telescope.setup {
 telescope.load_extension "fzf"
 
 -- KEYBINDS
-prequire "eprader.mapleader"
+require "eprader.mapleader"
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }

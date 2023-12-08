@@ -2,9 +2,7 @@
  NOTE: Make sure this file is sourced before any other of your files that
  makes use of `vim.notify`.
 ]]
-local prequire = require "eprader.prequire"
-
-local notify = prequire "notify"
+local notify = require "notify"
 if not notify then return end
 
 vim.opt.termguicolors = true -- INFO: Required to support opacity changes.
@@ -16,7 +14,7 @@ vim.notify = notify
  For Neovim (v0.9.1) `:colorscheme default` `Normal.background` is `nil`
  Requiring a colorscheme should set that value.
 ]]
-prequire "eprader.appearance.colorscheme"
+require "eprader.appearance.colorscheme"
 
 local highlights = {
     NotifyERRORTitle = "DiagnosticFloatingError",
@@ -63,5 +61,5 @@ notify.setup {
 }
 
 -- Telescope extension
-local telescope = prequire "telescope"
+local telescope = require "telescope"
 if telescope then telescope.load_extension "notify" end

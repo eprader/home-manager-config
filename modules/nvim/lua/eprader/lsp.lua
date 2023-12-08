@@ -1,5 +1,4 @@
-local prequire = require "eprader.prequire"
-local cmp_lsp = prequire "cmp_nvim_lsp"
+local cmp_lsp = require "cmp_nvim_lsp"
 if not cmp_lsp then return end
 
 local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -48,7 +47,7 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-local lsconfig = prequire "lspconfig"
+local lsconfig = require "lspconfig"
 if not lsconfig then return end
 --
 -- Server setup
@@ -115,7 +114,7 @@ lsconfig.pyright.setup {
     capabilities = capabilities,
 }
 
-local ltex_extra = prequire "ltex_extra"
+local ltex_extra = require "ltex_extra"
 local ltex_on_attach = on_attach
 if ltex_extra then
     ltex_on_attach = function()
@@ -158,7 +157,7 @@ lsconfig.texlab.setup {
     capabilities = capabilities,
 }
 
-local sqls = prequire "sqls"
+local sqls = require "sqls"
 if sqls then
     lsconfig.sqlls.setup {
         on_attach = function(client, bufnr)

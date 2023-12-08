@@ -1,5 +1,4 @@
-local prequire = require "eprader.prequire"
-local toggleterm = prequire "toggleterm"
+local toggleterm = require "toggleterm"
 if not toggleterm then return end
 
 toggleterm.setup {

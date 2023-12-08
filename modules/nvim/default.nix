@@ -23,6 +23,11 @@ let
     name = "eprader-nvim";
     src = ./.;
   };
+
+  sentinel-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "sentinel-nvim";
+    src = ./plugins/sentinel;
+  };
 in
 {
   home = {
@@ -59,6 +64,7 @@ in
 
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
+      sentinel-nvim # local prequire plugin
 
       plenary-nvim
       nvim-treesitter.withAllGrammars

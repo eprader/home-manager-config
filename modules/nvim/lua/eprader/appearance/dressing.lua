@@ -1,4 +1,3 @@
-local require = require "eprader.prequire"
 local dressing = require "dressing"
 if not dressing then return end
 
