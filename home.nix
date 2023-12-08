@@ -43,14 +43,14 @@ in
     };
 
     packages = with pkgs; [
-      vscode
       #Desktop Environment
-      wayland
-      hyprland
+      # wayland
+      # hyprland
       xclip # clipboard
       tmux
 
       # programs
+      vscode
       discord-ptb
       spotify
       whatsapp-for-linux
