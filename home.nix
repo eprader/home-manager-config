@@ -59,28 +59,22 @@ in
       zip
       unzip
       htop
+      curl
       wget
-      linuxKernel.packages.linux_zen.perf
-      strace
-      valgrind
-      docker
-      pre-commit
 
       # C
       gnumake
       gcc
-      llvmPackages.openmp
       libclang
-      cmake
 
       # Python
       (python311.withPackages pythonPackages)
 
       poetry # python project management
 
+      jetbrains.mps
       # Java
       jetbrains.idea-ultimate
-      jetbrains.mps
       gradle
       maven
       jdk11
