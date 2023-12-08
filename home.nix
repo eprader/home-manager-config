@@ -14,9 +14,6 @@ let
     scipy
     numpy
     matplotlib
-
-    redis
-
   ];
 
 in
@@ -93,7 +90,6 @@ in
 
       # Javascript
       nodejs
-      yarn
 
       # AWS
       awscli2
@@ -101,9 +97,7 @@ in
       # Virtualisation
       virt-manager
 
-      apptainer
       redis
-
     ] ++ nodePackages;
 
   };
