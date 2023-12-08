@@ -77,24 +77,23 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  virtualisation.docker.enable = true;
-  /* virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
-    }; */
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 
   environment = {
     systemPackages = with pkgs; [
-        neovim
-        curl
+      curl
     ];
-
     interactiveShellInit = ''
       alias nrs="sudo nixos-rebuild switch"
     '';
-
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -102,6 +101,12 @@
     isNormalUser = true;
     description = "Emanuel Prader";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
   };
 
   # Virtualisation for virt-manager
