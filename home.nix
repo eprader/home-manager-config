@@ -13,7 +13,7 @@ let
 
     scipy
     numpy
-    matplotlib
+    # matplotlib # NOTE: collision on six.py. removed temporarily.
   ];
 
 in
