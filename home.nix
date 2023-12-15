@@ -48,6 +48,7 @@ in
       # hyprland
       xclip # clipboard
       tmux
+      neofetch
 
       # programs
       vscode
