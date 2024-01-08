@@ -79,7 +79,8 @@ in
       jetbrains.idea-ultimate
       gradle
       maven
-      jdk11
+      # jdk11
+      plantuml
 
       # Haskell
       ghc
