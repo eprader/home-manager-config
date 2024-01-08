@@ -150,7 +150,7 @@ in
       NOTE: The eprader-config-nvim plugin is accessible via 'eprader'. 
       This is the name of the subfolder in ./nvim/lua
     */
-    extraConfig = ''
+    extraConfig = /*lua*/ ''
       lua require 'eprader'
     '';
   };
