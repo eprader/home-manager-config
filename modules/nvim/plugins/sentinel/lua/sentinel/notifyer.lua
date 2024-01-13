@@ -2,7 +2,6 @@ local M = {}
 M.with_icons = true
 M.pred_depth = 2
 
--- NOTE: Activate nvim-notify if available
 local notify_options = {
     title = "require",
     on_open = function(win)
@@ -18,7 +17,6 @@ end
 
 function M._render_src_path(full_path, predecessor_depth, with_icon)
     local split_path = vim.split(full_path, "/")
-    -- print("split")
 
     if #split_path < predecessor_depth then
         local message =
@@ -40,12 +38,12 @@ end
 function M._build_error_message(module_name, module_error)
     local debug_info = debug.getinfo(4, "Sl")
     if debug_info.what == "C" then
-    --[[
-     INFO:
-     There might be a C function inserted in between two lua calls.
-     I suspect this to be due to JIT. The C function can just be skipped because
-     the preceeding function call is the actual call we are interested in.
-    ]]
+        --[[
+         INFO:
+         There might be a C function inserted in between two lua calls.
+         I suspect this to be due to JIT. The C function can just be skipped because
+         the preceeding function call is the actual call we are interested in.
+        ]]
         debug_info = debug.getinfo(5, "Sl")
     end
     local module = (M.with_icons and "󰆦" or "module") .. ": __" .. module_name .. "__"

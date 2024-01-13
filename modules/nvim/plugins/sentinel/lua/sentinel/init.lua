@@ -14,7 +14,7 @@ function M._proxy_require(modname)
                     { title = "Sentinel internal" }
                 )
             end)
-            return
+            return false
         end
         notifyer.notify(modname, module)
         return false
