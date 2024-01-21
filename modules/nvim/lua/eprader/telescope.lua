@@ -97,7 +97,7 @@ map("n", "?", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 
 map("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 map("n", "<leader>fd", ":Telescope diagnostics<cr>", opts)
-map("n", ":h", ":Telescope help_tags<cr>", opts) -- INFO: overrides default help behaviour
+map("n", ":h<space>", ":Telescope help_tags<cr>", opts) -- INFO: overrides default help behaviour
 
 -- HIGHLIGHT GROUPS
 local highlights = {
