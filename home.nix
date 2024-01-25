@@ -13,7 +13,7 @@ let
 
     scipy
     numpy
-    # matplotlib # NOTE: collision on six.py. removed temporarily.
+    matplotlib # NOTE: collision on six.py. removed temporarily.
   ];
 
 in
@@ -70,7 +70,7 @@ in
       libclang
 
       # Python
-      (python311.withPackages pythonPackages)
+      (python310.withPackages pythonPackages)
 
       poetry # python project management
 
