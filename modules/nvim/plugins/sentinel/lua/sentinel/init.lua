@@ -7,13 +7,11 @@ function M._proxy_require(modname)
     if not success then
         local ok, notifyer = pcall(M._real_require, "sentinel.notifyer")
         if not ok then
-            vim.schedule(function()
-                vim.notify(
-                    "Unable to load `sentinel.notifyer`",
-                    "error",
-                    { title = "Sentinel internal" }
-                )
-            end)
+            vim.notify(
+                "Unable to load `sentinel.notifyer`",
+                "error",
+                { title = "Sentinel internal" }
+            )
             return false
         end
         notifyer.notify(modname, module)
