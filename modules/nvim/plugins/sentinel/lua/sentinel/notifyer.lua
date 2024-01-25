@@ -12,7 +12,7 @@ local notify_options = {
 
 function M.notify(module_name, module_error)
     local message = M._build_error_message(module_name, module_error)
-    vim.schedule(function() vim.notify(message, "error", notify_options) end)
+    vim.notify(message, "error", notify_options)
 end
 
 function M._render_src_path(full_path, predecessor_depth, with_icon)
@@ -25,7 +25,7 @@ function M._render_src_path(full_path, predecessor_depth, with_icon)
             .. "  - `predecessor_depth`: " .. predecessor_depth .. "\n"
             .. "\n"
             .. "Falling back to `available_depth`..."
-        vim.schedule(function() vim.notify(message, "info", notify_options) end)
+        vim.notify(message, "info", notify_options)
     end
 
     local path = table.concat(split_path, "/", math.max(1, #split_path - predecessor_depth), #split_path)
@@ -50,12 +50,12 @@ function M._build_error_message(module_name, module_error)
     local path = M._render_src_path(debug_info.source, M.pred_depth, M.with_icons)
 
     return
-        path .. " on line " .. debug_info.currentline .. ".\n"
-        .. module .. ".\n"
+        path .. " on line " .. debug_info.currentline .. "\n"
+        .. module .. "\n"
         .. "\n"
-        .. "```vim\n"
+        -- .. "```\n"
         .. module_error
-        .. "\n```"
+        -- .. "\n```"
 end
 
 return M
