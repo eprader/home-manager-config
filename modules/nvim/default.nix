@@ -89,6 +89,8 @@ in
       todo-comments-nvim
       dressing-nvim
       nvim-colorizer-lua
+      nvim-ufo
+      statuscol-nvim # For ufo status column
 
       #Git
       gitsigns-nvim
