@@ -40,8 +40,11 @@ in
 
       lldb
 
-      # formatter
+      # formatters
       yapf
+
+      # linters
+      vale
 
       # LSP
       rnix-lsp
@@ -100,6 +103,9 @@ in
       lspsaga-nvim
       trouble-nvim
       ltex_extra-nvim
+
+      # lint
+      nvim-lint
 
       #Completion
       cmp-nvim-lsp

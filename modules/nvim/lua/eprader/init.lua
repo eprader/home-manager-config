@@ -24,6 +24,7 @@ require "eprader.comment"
 
 require "eprader.telescope"
 require "eprader.lsp"
+require "eprader.lint"
 require "eprader.cmp"
 require "eprader.harpoon"
 require "eprader.gitsigns"
