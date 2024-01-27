@@ -41,11 +41,13 @@ in
       lldb
 
       # formatters
+      nixpkgs-fmt
+
+      stylua
+
       yapf
       black
       isort
-
-      stylua
 
       # linters
       vale
@@ -76,8 +78,6 @@ in
       plenary-nvim
       nvim-treesitter.withAllGrammars
       nvim-notify
-      /*nui-nvim
-        noice-nvim*/
 
       #Eyecandy
       gruvbox-community
@@ -97,7 +97,6 @@ in
       #Telescope
       telescope-nvim
       telescope-fzf-native-nvim
-
 
       #HTML autotags
       nvim-ts-autotag
@@ -159,12 +158,13 @@ in
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
-    /*
-      NOTE: The eprader-config-nvim plugin is accessible via 'eprader'. 
-      This is the name of the subfolder in ./nvim/lua
-    */
-    extraConfig = /*lua*/ ''
-      lua require 'eprader'
-    '';
+    /* NOTE:
+     * The eprader-config-nvim plugin is accessible via 'eprader'.
+     * This is the name of the subfolder in ./nvim/lua
+     */
+    extraConfig = # lua
+      ''
+        lua require 'eprader'
+      '';
   };
 }

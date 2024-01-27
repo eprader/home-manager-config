@@ -7,6 +7,7 @@ conform.setup {
         lsp_fallback = true,
     },
     formatters_by_ft = {
+        nix = { "nixpkgs_fmt" },
         lua = { "stylua" },
         python = { "isort", "black" },
         javascript = { { "prettierd", "prettier" } },
