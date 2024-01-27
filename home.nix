@@ -166,15 +166,9 @@ in
     };
   };
 
-
   programs.zathura.enable = true;
 
-  programs.brave = {
-    enable = true;
-  };
+  programs.brave.enable = true;
 
-  programs.obs-studio = {
-    enable = true;
-  };
-
+  programs.obs-studio.enable = true;
 }
