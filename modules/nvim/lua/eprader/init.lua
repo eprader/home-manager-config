@@ -7,10 +7,12 @@ if vim.loader then vim.loader.enable() end
 -- This check ensures that protected require is available.
 local success, sentinel = pcall(require, "sentinel")
 if not success then
-   vim.notify("From `init.lua`: `sentinel` failed to load.\n"
-       .. "Aborted loading configuration...\n"
-       .. sentinel)
-   return
+    vim.notify(
+        "From `init.lua`: `sentinel` failed to load.\n"
+            .. "Aborted loading configuration...\n"
+            .. sentinel
+    )
+    return
 end
 
 -- NOTE: Load `notify` first to handle future `vim.notify` calls.
@@ -25,6 +27,7 @@ require "eprader.comment"
 require "eprader.telescope"
 require "eprader.lsp"
 require "eprader.lint"
+require "eprader.conform"
 require "eprader.cmp"
 require "eprader.harpoon"
 require "eprader.gitsigns"

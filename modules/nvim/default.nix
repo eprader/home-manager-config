@@ -42,6 +42,10 @@ in
 
       # formatters
       yapf
+      black
+      isort
+
+      stylua
 
       # linters
       vale
@@ -106,6 +110,9 @@ in
 
       # lint
       nvim-lint
+
+      # formatting
+      conform-nvim
 
       #Completion
       cmp-nvim-lsp
