@@ -10,7 +10,7 @@
 
   programs.kitty = {
     enable = true;
-    extraConfig = builtins.readFile(./kitty.conf);
+    extraConfig = builtins.readFile ./kitty.conf;
   };
 
   programs.ssh = {
