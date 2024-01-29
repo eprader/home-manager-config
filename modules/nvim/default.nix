@@ -93,7 +93,6 @@ in
 
       #Git
       gitsigns-nvim
-      git-blame-nvim
 
       #Telescope
       telescope-nvim
