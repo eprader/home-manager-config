@@ -1,1 +1,1 @@
-return require "sentinel"
+return require("sentinel")
