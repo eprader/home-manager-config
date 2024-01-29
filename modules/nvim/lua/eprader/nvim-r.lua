@@ -1,4 +1,4 @@
-require("eprader.mapleader")
+require "eprader.mapleader"
 
 local map = vim.keymap.set
 map("n", "<leader>rs", "<Plug>RStart")

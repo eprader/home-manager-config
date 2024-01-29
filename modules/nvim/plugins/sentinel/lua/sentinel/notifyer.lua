@@ -31,7 +31,8 @@ function M._render_src_path(full_path, predecessor_depth, with_icon)
         vim.notify(message, "info", notify_options)
     end
 
-    local path = table.concat(split_path, "/", math.max(1, #split_path - predecessor_depth), #split_path)
+    local path =
+        table.concat(split_path, "/", math.max(1, #split_path - predecessor_depth), #split_path)
 
     path = (with_icon and "󰈮" or "file") .. ": __" .. path .. "__"
 
