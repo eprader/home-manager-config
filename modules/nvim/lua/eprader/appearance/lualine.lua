@@ -114,7 +114,7 @@ local lspname = {
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", hint = " ", info = " " },
+    symbols = { error = " ", warn = " ", hint = " ", info = " " },
     colored = true,
     always_visible = true,
 }
@@ -128,7 +128,7 @@ local branch = {
 local diff = {
     "diff",
     -- Is it me or the symbol for modified us really weird
-    symbols = { added = " ", modified = "柳", removed = " " },
+    symbols = { added = " ", modified = " ", removed = " " },
     diff_color = {
         added = { fg = colors.dark_green },
         modified = { fg = colors.dark_cyan },
