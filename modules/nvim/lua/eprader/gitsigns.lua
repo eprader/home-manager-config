@@ -82,3 +82,20 @@ gitsigns.setup {
         map("n", "<leader>hp", gs.preview_hunk)
     end,
 }
+-- git_status = {
+--           symbols = {
+--             -- Change type
+--             NOTE: for these I prefer the lualine ones
+--             added     = "✚",
+--             modified  = "",
+--             deleted   = "✖",
+--
+--             renamed   = "󰁕",
+--             -- Status type
+--             untracked = "",
+--             ignored   = "",
+--             unstaged  = "󰄱",
+--             staged    = "",
+--             conflict  = "",
+--           }
+--         },
