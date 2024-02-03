@@ -159,12 +159,14 @@ in
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
     /* NOTE:
-     * The eprader-config-nvim plugin is accessible via 'eprader'.
-     * This is the name of the subfolder in ./nvim/lua
+     * The `extraConfig` is exported to vimscript therefore the lua prefix needs to be added
+     * before using the init.lua file.
      */
-    extraConfig = # lua
+    extraConfig =
       ''
-        lua require 'eprader'
+        lua << EOF
+        ${builtins.readFile ./init.lua}
+        EOF
       '';
   };
 }
