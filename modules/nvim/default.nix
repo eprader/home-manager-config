@@ -158,15 +158,7 @@ in
       (fromGit "sqls-nvim" "nanotee/sqls.nvim")
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
-    /* NOTE:
-     * The `extraConfig` is exported to vimscript therefore the lua prefix needs to be added
-     * before using the init.lua file.
-     */
-    extraConfig =
-      ''
-        lua << EOF
-        ${builtins.readFile ./init.lua}
-        EOF
-      '';
+
+    extraLuaConfig = builtins.readFile ./init.lua;
   };
 }
