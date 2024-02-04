@@ -130,9 +130,9 @@ local diff = {
     -- Is it me or the symbol for modified us really weird
     symbols = { added = " ", modified = " ", removed = " " },
     diff_color = {
-        added = { fg = colors.dark_green },
-        modified = { fg = colors.dark_cyan },
-        removed = { fg = colors.dark_red },
+        added = { link = "GitSignsAdd" },
+        modified = { link = "GitSignsChange" },
+        removed = { link = "GitSignsDelete" },
     },
     cond = conditions.hide_in_width,
 }
@@ -147,20 +147,14 @@ local encoding = {
 local fileformat = {
     "fileformat",
     fmt = string.upper,
-    icons_enabled = true, -- I think icons are cool but Eviline doesn"t have them. sigh
+    icons_enabled = true,
     color = { fg = colors.dark_green, gui = "bold" },
 }
 
 local filetype = {
     "filetype",
-    fmt = string.lower,
-    icons_enabled = true, -- I think icons are cool but Eviline doesn"t have them. sigh
-    color = { fg = colors.dark_grey, gui = "bold" },
+    icons_enabled = true,
 }
-
-local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
 
 -- Config
 local config = {
@@ -175,9 +169,9 @@ local config = {
         -- these are to remove the defaults
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { mode, filename, branch, diff, location },
-        lualine_x = { lspname, diagnostics },
-        lualine_y = { spaces, filetype, fileformat, encoding },
+        lualine_c = { mode, filetype, filename, lspname, diagnostics, branch, diff },
+        lualine_x = { location, fileformat, encoding },
+        lualine_y = {},
         lualine_z = {},
     },
 }
