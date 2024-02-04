@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  unstable = import <nixos-unstable> { };
+  # unstable = import <nixos-unstable> { };
   nodePackages = with pkgs.nodePackages; [
     pnpm
     typescript
