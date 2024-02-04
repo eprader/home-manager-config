@@ -4,6 +4,7 @@ if not lualine then return end
 -- Color table for highlights
 local colours = {
     black = "#282828",
+
     dark_grey = "#928374",
 
     dark_red = "#cc241d",
@@ -112,8 +113,9 @@ local filename = {
     hide_filename_extension = true,
     symbols = {
         modified = "",
-        alternate_file = "#",
-        directory = "",
+        readonly = "", -- Text to show when the file is non-modifiable or readonly.
+        unnamed = "∅", -- Text to show for unnamed buffers.
+        newfile = "", -- Text to show for newly created file before first write
     },
     padding = 1,
     color = { fg = colours.dark_blue, bg = "#1b3536", gui = "bold" },
@@ -175,7 +177,7 @@ local fileformat = {
     fmt = string.upper,
     icons_enabled = true,
     padding = 0,
-    color = { fg = "#44430b", bg = colours.dark_green, gui = "bold" },
+    color = { fg = "#44430b", bg = colours.dark_green },
     separator = { left = "", right = "" },
 }
 
