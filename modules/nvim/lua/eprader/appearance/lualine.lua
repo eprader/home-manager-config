@@ -174,7 +174,7 @@ local fileformat = {
     "fileformat",
     fmt = string.upper,
     icons_enabled = true,
-    padding = 1,
+    padding = 0,
     color = { fg = "#44430b", bg = colours.dark_green, gui = "bold" },
     separator = { left = "", right = "" },
 }
