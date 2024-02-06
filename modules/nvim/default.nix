@@ -65,6 +65,10 @@ in
     ] ++ nodePackages;
   };
 
+  # home.file."test.lua" = {
+  #   text = ''print "from test"'';
+  # };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true; # sets $EDITOR variable
