@@ -32,6 +32,7 @@ in
     ./modules/nvim
     ./modules/latex.nix
     ./modules/direnv.nix
+    ./modules/lazygit
   ];
 
   home = {
