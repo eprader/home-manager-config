@@ -1,0 +1,10 @@
+[user]
+    email = "56026248+eprader@users.noreply.github.com"
+    name = "eprader"
+
+[pull]
+    prune = true
+    rebase = true
+
+[fetch]
+    prune = true

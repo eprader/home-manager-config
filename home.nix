@@ -26,6 +26,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ./modules/git
     ./modules/kitty
     ./modules/starship
     ./modules/lsd.nix
@@ -146,11 +147,14 @@ in
     };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "eprader";
-    userEmail = "56026248+eprader@users.noreply.github.com";
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = "eprader";
+  #   userEmail = "56026248+eprader@users.noreply.github.com";
+  #   # extraConfig = ''
+  #   #   fetch.prune true
+  #   # '';
+  # };
 
   programs.ssh = {
     enable = true;
