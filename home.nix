@@ -147,15 +147,6 @@ in
     };
   };
 
-  # programs.git = {
-  #   enable = true;
-  #   userName = "eprader";
-  #   userEmail = "56026248+eprader@users.noreply.github.com";
-  #   # extraConfig = ''
-  #   #   fetch.prune true
-  #   # '';
-  # };
-
   programs.ssh = {
     enable = true;
     matchBlocks = {
