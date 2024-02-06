@@ -191,6 +191,15 @@ local encoding = {
 
 lualine.setup {
     options = {
+        -- INFO: not working as transitionals bg_colour seems to not default to bg...
+        -- theme = {
+        --     normal = {
+        --         a = "StatusLine",
+        --         b = "StatusLine",
+        --         c = "StatusLine",
+        --         z = "StatusLine",
+        --     },
+        -- },
         globalstatus = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
