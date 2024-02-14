@@ -5,7 +5,7 @@
     settings = {
       add_newline = false;
       format = ''
-        $username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $cmd_duration)( $character) '';
+        $username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $nix_shell)( $cmd_duration)( $character) '';
       username = {
         format = "[$user]($style)";
         show_always = true;
@@ -21,12 +21,17 @@
         threshold = 2;
         repeat = true;
       };
-      cmd_duration = {
-        format = "took [$duration]($style)";
-      };
       directory = {
         format = "[$path]($style)( [$read_only]($read_only_style))";
         style = "bold blue";
+      };
+      nix_shell = {
+        format = "via [$symbol]($style)";
+        symbol = "󱄅";
+        style = "blue";
+      };
+      cmd_duration = {
+        format = "took [$duration]($style)";
       };
       character = {
         success_symbol = "[➜](bold green)";
