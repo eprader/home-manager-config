@@ -51,7 +51,6 @@ in
       # hyprland
       xclip # clipboard
       tmux
-      neofetch
 
       # programs
       vscode
@@ -76,11 +75,9 @@ in
 
       poetry # python project management
 
-      jetbrains.mps
       # Java
       jetbrains.idea-ultimate
-      gradle
-      maven
+      # gradle
       # jdk11
       plantuml
 
@@ -95,8 +92,6 @@ in
 
       # Virtualisation
       virt-manager
-
-      redis
     ] ++ nodePackages;
 
   };
