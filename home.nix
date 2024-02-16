@@ -9,11 +9,10 @@ let
   pythonPackages = p: with p; [
     pip
 
-    pygments # NOTE: This is needed for latex minted to work
-
+    pygments # NOTE: This is needed for latex minted to work.
     scipy
     numpy
-    matplotlib # NOTE: collision on six.py. removed temporarily.
+    matplotlib # NOTE: collision on six.py, removed temporarily.
   ];
 
 in
