@@ -171,7 +171,23 @@ local diff = {
     color = { bg = "#492435" },
     separator = { left = "", right = "" },
 }
+--[[if require "gitsigns" then
+    diff["source"] = function()
+        local current_buffer = vim.api.nvim_get_current_buf()
+        vim.notify("info", vim.inspect(current_buffer))
+        local status_dict =
+            -- INFO: `gitsigns_status_dict` is not immediately available therefore
+            -- the exectuion is defered by 1000ms.
+            vim.defer_fn(vim.api.nvim_buf_get_var(current_buffer, "gitsigns_status_dict"), 10000)
 
+        return {
+            added = status_dict["added"],
+            modified = status_dict["changed"],
+            removed = status_dict["removed"],
+        }
+    end
+end
+]]
 local fileformat = {
     "fileformat",
     fmt = string.upper,
