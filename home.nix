@@ -76,22 +76,20 @@ in
 
       # Java
       jetbrains.idea-ultimate
-      # gradle
-      # jdk11
       plantuml
 
       # Haskell
       ghc
 
       # Javascript
-      nodejs
+      # nodejs
 
       # AWS
       awscli2
 
       # Virtualisation
       virt-manager
-    ] ++ nodePackages;
+    ];
 
   };
 
