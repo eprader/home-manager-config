@@ -94,6 +94,7 @@ in
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
+      headlines-nvim
 
       #Git
       gitsigns-nvim
