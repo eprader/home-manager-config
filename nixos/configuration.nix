@@ -89,10 +89,14 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # NOTE: For dynamically linked libs
+  programs.nix-ld.enable = true;
+
   environment = {
     systemPackages = with pkgs; [
       curl
       git
+
     ];
     interactiveShellInit = ''
       alias nrs="sudo nixos-rebuild switch"
@@ -115,6 +119,9 @@
   # Virtualisation for virt-manager
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "eprader" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
