@@ -112,6 +112,8 @@ in
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
+
+      idea = "runbg ${pkgs.jetbrains.idea-ultimate}/idea-ultimate/bin/idea.sh";
     };
     # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
