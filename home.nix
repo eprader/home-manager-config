@@ -10,9 +10,6 @@ let
     pip
 
     pygments # NOTE: This is needed for latex minted to work.
-    scipy
-    numpy
-    matplotlib # NOTE: collision on six.py, removed temporarily.
   ];
 
 in
@@ -72,20 +69,12 @@ in
       # Python
       (python310.withPackages pythonPackages)
 
-      poetry # python project management
-
       # Java
       jetbrains.idea-ultimate
       plantuml
 
       # Haskell
       ghc
-
-      # Javascript
-      # nodejs
-
-      # AWS
-      awscli2
 
       # Virtualisation
       virt-manager
@@ -113,7 +102,7 @@ in
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
 
-      idea = "runbg ${pkgs.jetbrains.idea-ultimate}/idea-ultimate/bin/idea.sh";
+      idea = "runbg idea-ultimate";
     };
     # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
@@ -159,6 +148,4 @@ in
   programs.zathura.enable = true;
 
   programs.brave.enable = true;
-
-  programs.obs-studio.enable = true;
 }
