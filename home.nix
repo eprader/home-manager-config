@@ -139,8 +139,8 @@ in
       };
 
       "lcc" = {
-        user = "cb761119";
-        hostname = "lcc2.uibk.ac.at";
+        user = "cb761224";
+        hostname = "login.lcc3.uibk.ac.at";
       };
     };
   };
