@@ -42,14 +42,14 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   services.xserver = {
+    enable = true;
     layout = "de";
     xkbVariant = "qwerty";
+
+    displayManager.sddm.enable = true;
+
+    desktopManager.plasma5.enable = true;
   };
 
   console.keyMap = "de";
@@ -85,12 +85,15 @@
         setSocketVariable = true;
       };
     };
+    virtualbox.host.enable = true;
   };
+
+  users.extraGroups.vboxusers.members = [ "eprader" ];
 
   nixpkgs.config.allowUnfree = true;
 
-  # NOTE: For dynamically linked libs
-  programs.nix-ld.enable = true;
+  # # NOTE: For dynamically linked libs
+  # programs.nix-ld.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
@@ -116,12 +119,10 @@
     viAlias = true;
   };
 
-  # Virtualisation for virt-manager
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
+  # # Virtualisation for virt-manager
+  # virtualisation.libvirtd.enable = true;
+  # programs.dconf.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "eprader" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
