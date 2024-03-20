@@ -75,9 +75,6 @@ in
 
       # Haskell
       ghc
-
-      # Virtualisation
-      virt-manager
     ];
 
   };
