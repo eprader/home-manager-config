@@ -12,14 +12,16 @@ vim.keymap.set("n", "zR", ufo.openAllFolds)
 vim.keymap.set("n", "zM", ufo.closeAllFolds)
 
 ufo.setup {
-    close_fold_kinds = { "imports", "comment" },
+    close_fold_kinds = {
+        "imports", --[[ "comment"  ]]
+    },
     provider_selector = function()
         return { "lsp", "indent" }
     end,
 
     fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
         local newVirtText = {}
-        local suffix = ""
+        local suffix = " "
         local sufWidth = vim.fn.strdisplaywidth(suffix)
         local targetWidth = width - sufWidth
         local curWidth = 0
