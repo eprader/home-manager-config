@@ -49,7 +49,7 @@ cmp.setup {
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body)
         end,
     },
     window = {
@@ -70,24 +70,24 @@ cmp.setup {
         format = function(entry, vim_item)
             vim_item.kind = kind_icons[vim_item.kind]
             vim_item.menu = ({
+                buffer = "",
                 nvim_lsp = "",
                 nvim_lua = "",
                 luasnip = "",
-                buffer = "",
                 path = "",
                 emoji = "",
             })[entry.source.name]
             return vim_item
         end,
     },
-    sources = cmp.config.sources({
+    sources = {
         { name = "nvim_lsp" },
+        { name = "luasnip" },
         { name = "nvim_lua" },
-        { name = "luasnip" }, -- For luasnip users.
-    }, {
+        { name = "nvim_lsp_signature_help" },
         { name = "buffer" },
         { name = "path" },
-    }),
+    },
 }
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -95,6 +95,7 @@ cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer" },
+        { name = "cmp_nvim_lsp_signature_help" },
     },
 })
 
@@ -107,3 +108,9 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     }),
 })
+
+-- cmp.setup {
+--     sources = {
+--         { name = "nvim_lsp_signature_help" },
+--     },
+-- }
