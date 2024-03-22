@@ -60,7 +60,8 @@ function M._build_error_message(module_name, module_error)
         .. module
         .. "\n"
         .. "\n"
-        -- .. "```\n"
+        -- NOTE: seems to cause issues in message rendering.
+        -- .. "```\n" 
         .. module_error
     -- .. "\n```"
 end
