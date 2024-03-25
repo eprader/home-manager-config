@@ -60,6 +60,7 @@ in
       htop
       curl
       wget
+      file
 
       # C
       gnumake
