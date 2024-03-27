@@ -2,7 +2,7 @@ local lint = require "lint"
 if not lint then return end
 
 lint.linters_by_ft = {
-    markdown = { "vale" },
+    -- markdown = { "vale" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
