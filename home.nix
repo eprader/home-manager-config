@@ -71,7 +71,7 @@ in
       (python310.withPackages pythonPackages)
 
       # Java
-      jetbrains.idea-ultimate
+      jetbrains.idea-community
       plantuml
 
       # Haskell
