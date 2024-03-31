@@ -93,7 +93,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # # NOTE: For dynamically linked libs
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
