@@ -10,6 +10,8 @@ let
     pip
 
     pygments # NOTE: This is needed for latex minted to work.
+    pandas
+    matplotlib
   ];
 
 in
