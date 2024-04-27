@@ -9,6 +9,8 @@
 
   # Bootloader.
   boot = {
+    # INFO: Needed to fix "failed to find memory cgroup" error in `docker`
+    kernelParams = [ "cgroup_enable=cpuset cgroup_memory=1" "cgroup_enable=memory" ];
     # kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
