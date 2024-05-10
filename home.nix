@@ -12,6 +12,7 @@ let
     pygments # NOTE: This is needed for latex minted to work.
     pandas
     matplotlib
+    unidecode
   ];
 
 in
@@ -59,10 +60,10 @@ in
       # Tools
       zip
       unzip
-      htop
       curl
       wget
-      file
+      htop
+      jq
 
       # C
       gnumake
@@ -78,6 +79,7 @@ in
 
       # Haskell
       ghc
+
     ];
 
   };
