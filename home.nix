@@ -11,8 +11,6 @@ let
 
     pygments # NOTE: This is needed for latex minted to work.
     pandas
-    matplotlib
-    unidecode
   ];
 
 in
@@ -49,7 +47,6 @@ in
       # wayland
       # hyprland
       xclip # clipboard
-      tmux
 
       # programs
       vscode
@@ -62,7 +59,7 @@ in
       unzip
       curl
       wget
-      htop
+      btop
       jq
 
       # C
@@ -88,12 +85,12 @@ in
   programs.home-manager.enable = true;
 
   # Virtualisation / VMs
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-  };
+  # dconf.settings = {
+  #   "org/virt-manager/virt-manager/connections" = {
+  #     autoconnect = [ "qemu:///system" ];
+  #     uris = [ "qemu:///system" ];
+  #   };
+  # };
 
   programs.bash = {
     enable = true;
@@ -105,6 +102,7 @@ in
       egrep = "egrep --color=auto";
 
       idea = "runbg idea-ultimate";
+      top = "btop";
     };
     # NOTE:Add for WSl `source $HOME/.nix-profile/etc/profile.d/nix.sh`
     initExtra = ''
@@ -135,6 +133,9 @@ in
   programs.ssh = {
     enable = true;
     matchBlocks = {
+      "*" = {
+        setEnv = { TERM = "xterm-256color"; };
+      };
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
@@ -145,9 +146,9 @@ in
         hostname = "login.lcc3.uibk.ac.at";
       };
     };
+    # extraConfig = "RemoteCommand alias vi=vim";
   };
 
   programs.zathura.enable = true;
 
   programs.brave.enable = true;
-}
