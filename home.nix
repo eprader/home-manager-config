@@ -152,3 +152,4 @@ in
   programs.zathura.enable = true;
 
   programs.brave.enable = true;
+}
