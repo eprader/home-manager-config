@@ -81,6 +81,8 @@
   virtualisation = {
     docker = {
       enable = true;
+      # NOTE: Will be available with `24.05` to set to either `docker_25` or `docker_26`
+      # package = pkgs.docker_26;
       # NOTE: Disabled due to `cgroup` issues with `k3d`
       # rootless = {
       #   enable = true;
@@ -95,7 +97,12 @@
   nixpkgs.config.allowUnfree = true;
 
   # # NOTE: For dynamically linked libs
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    # libraries = with pkgs; [
+    #   stdenv.cc.cc.lib
+    # ];
+  };
 
   environment = {
     systemPackages = with pkgs; [
