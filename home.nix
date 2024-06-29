@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  # unstable = import <nixos-unstable> { };
+  unstable = import <nixos-unstable> { };
   nodePackages = with pkgs.nodePackages; [
     pnpm
     typescript
@@ -133,9 +133,6 @@ in
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "*" = {
-        setEnv = { TERM = "xterm-256color"; };
-      };
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
@@ -146,10 +143,12 @@ in
         hostname = "login.lcc3.uibk.ac.at";
       };
     };
-    # extraConfig = "RemoteCommand alias vi=vim";
   };
 
   programs.zathura.enable = true;
 
-  programs.brave.enable = true;
+  programs.chromium = {
+    enable = true;
+    package = unstable.brave;
+  };
 }
