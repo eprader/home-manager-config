@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  unstable = import <nixos-unstable> { };
+  # unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -53,9 +53,8 @@ in
       vale
 
       # LSP
-      rnix-lsp
       nil
-      unstable.nixd
+      nixd
       ccls
       lua-language-server
       haskell-language-server
