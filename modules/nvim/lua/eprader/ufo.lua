@@ -12,9 +12,10 @@ vim.keymap.set("n", "zR", ufo.openAllFolds)
 vim.keymap.set("n", "zM", ufo.closeAllFolds)
 
 ufo.setup {
-    close_fold_kinds = {
-        "imports", --[[ "comment"  ]]
-    },
+    -- BUG: `Use close_fold_kinds_for_ft` instead
+    -- close_fold_kinds = {
+    --     "imports", --[[ "comment"  ]]
+    -- },
     provider_selector = function()
         return { "lsp", "indent" }
     end,
