@@ -1,162 +1,135 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./modules/hyprland.nix
+    ./modules/thunar.nix
+  ];
 
-  # Bootloader.
   boot = {
-    # INFO: Needed to fix "failed to find memory cgroup" error in `docker`
-    # kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot.enable = true;
-      # systemd-boot.editor = false;
-      efi.canTouchEfiVariables = true;
-    };
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "ENVY-EP";
+    networkmanager.enable = true;
+  };
+  users.extraGroups.networkmanager.members = [ "root" "eprader" ];
 
   time.timeZone = "Europe/Berlin";
-
-  i18n.defaultLocale = "en_GB.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-
-  services.xserver = {
-    enable = true;
-    layout = "de";
-    xkbVariant = "qwerty";
-
-    displayManager.sddm.enable = true;
-
-    desktopManager.plasma5.enable = true;
-  };
-
-  console.keyMap = "de";
-
-  services.printing.enable = true;
-
-  hardware.bluetooth.enable = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      # NOTE: Will be available with `24.05` to set to either `docker_25` or `docker_26`
-      # package = pkgs.docker_26;
-      # NOTE: Disabled due to `cgroup` issues with `k3d`
-      # rootless = {
-      #   enable = true;
-      #   setSocketVariable = true;
-      # };
+  i18n = {
+    defaultLocale = "en_GB.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_AT.UTF-8";
+      LC_IDENTIFICATION = "de_AT.UTF-8";
+      LC_MEASUREMENT = "de_AT.UTF-8";
+      LC_MONETARY = "de_AT.UTF-8";
+      LC_NAME = "de_AT.UTF-8";
+      LC_NUMERIC = "de_AT.UTF-8";
+      LC_PAPER = "de_AT.UTF-8";
+      LC_TELEPHONE = "de_AT.UTF-8";
+      LC_TIME = "de_AT.UTF-8";
     };
-    virtualbox.host.enable = true;
   };
 
-  users.extraGroups.vboxusers.members = [ "eprader" ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  # # NOTE: For dynamically linked libs
-  programs.nix-ld = {
-    enable = true;
-    # libraries = with pkgs; [
-    #   stdenv.cc.cc.lib
-    # ];
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      curl
-      git
-
-    ];
+    # systemPackages = with pkgs; [
+    # ];
     interactiveShellInit = ''
       alias nrs="sudo nixos-rebuild switch"
     '';
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.eprader = {
-    isNormalUser = true;
-    description = "Emanuel Prader";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+  virtualisation = {
+    docker = {
+      enable = true;
+      package = pkgs.docker_26;
+      # BUG: Not working with `k3d` due to `cgroup` issue
+      # rootles = {
+      #     enable = true;
+      #     setSocketVariable = true;
+      # };
+    };
+    # virtualbox.host.enable = true;
+  };
+  # users.extragroups.vboxusers.members = [ "eprader" ];
+
+  services = {
+    pipewire = {
+      enable = true;
+      jack.enable = true;
+      pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+    };
+
+    openssh.enable = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    viAlias = true;
+
+
+
+  programs = {
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+
+    nix-ld = {
+      enable = true;
+      # libraries = with pkgs; [
+      #   stdenv.cc.cc.lib
+      # ];
+    };
   };
 
-  # # Virtualisation for virt-manager
-  # virtualisation.libvirtd.enable = true;
-  # programs.dconf.enable = true;
+  users = {
+    # INFO: `mutableUsers` allows to change password dynamically.
+    mutableUsers = true;
+    users.eprader = {
+      isNormalUser = true;
+      description = "Emanuel Prader";
+      extraGroups = [ "wheel" ];
+      # INFO:
+      # This password will only set during the initial creation of this user.
+      # Make sure to change the password using `passwd`
+      password = "42";
+    };
+  };
 
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  system.copySystemConfiguration = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
+
