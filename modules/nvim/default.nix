@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
-  # unstable = import <nixos-unstable> { };
+  # unstable = import <unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixos-unstable> { };
 
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -68,6 +69,13 @@ in
   #   text = ''print "from test"'';
   # };
 
+  # NOTE: Install neovim from `unstable` channel.
+  nixpkgs.overlays = [
+    (self: super: {
+      neovim-unwrapped = unstable.neovim-unwrapped;
+    })
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true; # sets $EDITOR variable
@@ -93,7 +101,7 @@ in
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
-      headlines-nvim
+      (fromGit "markview" "OXY2DEV/markview.nvim")
 
       #Git
       gitsigns-nvim
