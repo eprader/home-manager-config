@@ -1,0 +1,15 @@
+{
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "layer": "top",
+    "modules-left": [],
+    "modules-center": ["clock"],
+    "modules-right": ["battery"],
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    }
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+}
