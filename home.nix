@@ -42,6 +42,7 @@
       curl
       wget
       jq
+      flink
 
       fastfetch
 
@@ -74,6 +75,9 @@
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
+    extensions = [
+      { id = "oldceeleldhonbafppcapldpdifcinji"; } # languagetool
+    ];
   };
 
   services.flameshot = {
