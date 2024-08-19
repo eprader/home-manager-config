@@ -1,10 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  programs.waybar.enable = true;
-
   home.packages = with pkgs; [
     networkmanagerapplet
     pavucontrol
   ];
+
+  programs.waybar = {
+    enable = true;
+    settings = lib.importJSON ./config.jsonc;
+  };
 }
 
