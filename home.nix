@@ -36,6 +36,7 @@
     packages = with pkgs; [
       wl-clipboard
       rofi-wayland
+      libreoffice-qt
 
       zip
       unzip
@@ -50,6 +51,7 @@
 
       jetbrains.idea-community
       vscode
+      gcc
     ];
   };
 
@@ -77,6 +79,8 @@
     package = pkgs.brave;
     extensions = [
       { id = "oldceeleldhonbafppcapldpdifcinji"; } # languagetool
+      { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
+
     ];
   };
 
