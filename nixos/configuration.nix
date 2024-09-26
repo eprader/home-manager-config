@@ -9,7 +9,7 @@
 
   boot = {
     loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.efi.canTouchEfiVariables = false;
   };
 
   networking = {
@@ -75,9 +75,6 @@
     openssh.enable = true;
   };
 
-
-
-
   programs = {
     neovim = {
       enable = true;
@@ -101,7 +98,7 @@
       description = "Emanuel Prader";
       extraGroups = [ "wheel" ];
       # INFO:
-      # This password will only set during the initial creation of this user.
+      # This password will only be set during the initial creation of this user.
       # Make sure to change the password using `passwd`
       password = "42";
     };
