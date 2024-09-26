@@ -6,7 +6,6 @@
   };
 
   environment.sessionVariables = {
-    # INFO: This option hints electron apps to use wayland
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
   };
@@ -27,6 +26,7 @@
 
   services.xserver = {
     enable = true;
+    xkb.layout = "de";
     displayManager.gdm = {
       enable = true;
       wayland = true;
