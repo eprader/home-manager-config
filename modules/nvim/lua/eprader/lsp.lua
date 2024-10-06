@@ -49,27 +49,20 @@ local lsp_flags = {
 
 local lsconfig = require "lspconfig"
 if not lsconfig then return end
---
--- Server setup
-lsconfig.rnix.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
 
+-- Server setup
 lsconfig.nil_ls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
--- NOTE: nixd seems to not be added to my current version of lspconfig so I wait a bit.
-
---[[ lsconfig.nixd.setup {
+lsconfig.nixd.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
-} ]]
+}
+
 lsconfig.ccls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
