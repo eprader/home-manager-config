@@ -15,6 +15,7 @@
     ./modules/lsd.nix
     ./modules/lazygit
     ./modules/nvim
+    ./modules/latex.nix
     ./modules/hypr
     ./modules/waybar
     ./modules/direnv.nix
