@@ -10,6 +10,7 @@
     direnv
     nix-direnv
   ];
+
   programs.bash = {
     enable = true;
 
