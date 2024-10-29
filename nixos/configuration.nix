@@ -5,6 +5,7 @@
     /etc/nixos/hardware-configuration.nix
     ./modules/hyprland.nix
     ./modules/thunar.nix
+    ./modules/steam.nix
   ];
 
   boot = {
