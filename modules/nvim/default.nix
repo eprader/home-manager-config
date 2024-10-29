@@ -101,7 +101,7 @@ in
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
-      (fromGit "markview" "OXY2DEV/markview.nvim")
+      # (fromGit "markview" "OXY2DEV/markview.nvim")
 
       #Git
       gitsigns-nvim
