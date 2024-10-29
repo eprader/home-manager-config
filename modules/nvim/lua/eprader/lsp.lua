@@ -57,11 +57,11 @@ lsconfig.nil_ls.setup {
     capabilities = capabilities,
 }
 
-lsconfig.nixd.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
+-- lsconfig.nixd.setup {
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+--     capabilities = capabilities,
+-- }
 
 lsconfig.ccls.setup {
     on_attach = on_attach,
