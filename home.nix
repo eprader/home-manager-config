@@ -72,6 +72,15 @@
       [[ -f ~/.profile ]] && . ~/.profile
     '';
   };
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "uibk" = {
+        user = "csaz9581";
+        hostname = "zid-gpl.uibk.ac.at";
+      };
+    };
+  };
 
   programs.zathura.enable = true;
 
