@@ -74,6 +74,7 @@
   };
 
   programs.ssh = {
+    enable = true;
     matchBlocks = {
       "*" = {
         /* NOTE: Sometimes the remote server does not know how to handle TERM=alacritty.
