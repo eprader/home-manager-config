@@ -92,12 +92,11 @@
   };
 
   users = {
-    # INFO: `mutableUsers` allows to change password dynamically.
     mutableUsers = true;
     users.eprader = {
       isNormalUser = true;
       description = "Emanuel Prader";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
       # INFO:
       # This password will only be set during the initial creation of this user.
       # Make sure to change the password using `passwd`
