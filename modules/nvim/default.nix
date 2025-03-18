@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
-  # unstable = import <unstable> { config = { allowUnfree = true; }; };
-  unstable = import <nixos-unstable> { };
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 
   # function for importing git repository directly
   fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
