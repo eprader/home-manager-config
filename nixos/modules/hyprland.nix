@@ -40,12 +40,22 @@ in
     enable = true;
     xkb.layout = "de";
   };
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
         user = "greeter";
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --sessions ${pkgs.hyprland}/share/wayland-sessions \
+          --time \
+          --remember \
+          --remember-session \
+          --theme 'text=cyan;time=blue;container=black;border=yellow;title=yellow;greet=orange;prompt=green;input=red;action=magenta;button=grey;' \
+          --asterisks \
+          --asterisks-char O
+        '';
       };
     };
     # serviceConfig = {
