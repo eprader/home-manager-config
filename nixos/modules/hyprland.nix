@@ -1,5 +1,16 @@
 { pkgs, ... }:
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        hyprland = unstable.hyprland;
+      })
+    ];
+  };
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -28,9 +39,23 @@
   services.xserver = {
     enable = true;
     xkb.layout = "de";
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+  };
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        user = "greeter";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+      };
     };
+    # serviceConfig = {
+    #   Type = "idle";
+    #   StandardInput = "tty";
+    #   StandardOutput = "tty";
+    #   StandardError = "journal";
+    #   TTYReset = true;
+    #   TTYHangup = true;
+    #   TTYVTDisallocate = true;
+    # };
   };
 }
