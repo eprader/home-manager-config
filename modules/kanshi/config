@@ -1,0 +1,7 @@
+profile standalone {
+    output "AU Optronics 0xF38C" mode 1920x1080@60Hz position 0,0 scale 1.25
+}
+profile home {
+    output "BNQ BenQ GW2480 87K0193501Q" mode 1920x1080@60Hz position 0,0 scale 1.0
+    output "AU Optronics 0xF38C" mode 1920x1080@60Hz position 1920,0 scale 1.0
+}

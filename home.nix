@@ -17,6 +17,7 @@
     ./modules/nvim
     ./modules/latex.nix
     ./modules/hypr
+    ./modules/kanshi
     ./modules/waybar
     ./modules/direnv.nix
     ./modules/btop.nix
