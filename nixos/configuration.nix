@@ -38,6 +38,27 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "de";
+
+    colors = [
+      "282828" # black
+      "cc241d" # red
+      "98971a" # green
+      "d79921" # yellow
+      "458588" # blue
+      "b16286" # magenta
+      "689d6a" # cyan
+      "a89984" # white
+
+      # bright versions of above
+      "928374"
+      "fb4934"
+      "b8bb26"
+      "fabd2f"
+      "83a598"
+      "d3869b"
+      "8ec07c"
+      "ebdbb2"
+    ];
   };
 
   environment = {
