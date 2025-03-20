@@ -49,7 +49,7 @@
       "689d6a" # cyan
       "a89984" # white
 
-      # bright versions of above
+      # bright versions of the above
       "928374"
       "fb4934"
       "b8bb26"
@@ -146,7 +146,7 @@
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
   #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion.
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
