@@ -58,14 +58,14 @@ in
         '';
       };
     };
-    # serviceConfig = {
-    #   Type = "idle";
-    #   StandardInput = "tty";
-    #   StandardOutput = "tty";
-    #   StandardError = "journal";
-    #   TTYReset = true;
-    #   TTYHangup = true;
-    #   TTYVTDisallocate = true;
-    # };
+  };
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+    TTYReset = true;
+    TTYHangup = true;
+    TTYVTDisallocate = true;
   };
 }
