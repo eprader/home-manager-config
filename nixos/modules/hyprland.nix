@@ -52,20 +52,28 @@ in
           --time \
           --remember \
           --remember-session \
-          --theme 'text=cyan;time=blue;container=black;border=yellow;title=yellow;greet=orange;prompt=green;input=red;action=magenta;button=grey;' \
+          --theme '${
+            builtins.concatStringsSep ";" [
+              "text=cyan"
+              "time=blue"
+              "container=black"
+              "border=yellow"
+              "title=yellow"
+              "greet=orange"
+              "prompt=green"
+              "input=red"
+              "action=magenta"
+              "button=grey"
+            ]
+          }' \
           --asterisks \
           --asterisks-char O
         '';
       };
     };
   };
+  # NOTE: Setting this fixes the pollution of the login screen by preboot log messages.
   systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-    StandardInput = "tty";
     StandardOutput = "tty";
-    StandardError = "journal";
-    TTYReset = true;
-    TTYHangup = true;
-    TTYVTDisallocate = true;
   };
 }
