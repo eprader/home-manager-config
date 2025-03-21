@@ -74,6 +74,7 @@ in
   };
   # NOTE: Setting this fixes the pollution of the login screen by preboot log messages.
   systemd.services.greetd.serviceConfig = {
+    # TODO: See if `journal` might be a better fit... ref: https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#StandardOutput=
     StandardOutput = "tty";
   };
 }
