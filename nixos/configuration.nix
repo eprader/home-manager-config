@@ -83,6 +83,9 @@
   };
   # users.extragroups.vboxusers.members = [ "eprader" ];
 
+  # NOTE: used by pipewire
+  security.rtkit.enable = true;
+
   services = {
     pipewire = {
       enable = true;
