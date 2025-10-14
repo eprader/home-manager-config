@@ -60,6 +60,9 @@ in
       haskell-language-server
       ltex-ls # language-tool / spelling
       sqls
+      phpactor
+      tailwindcss-language-server
+      metals
       #jdt-language-server
     ] ++ nodePackages;
   };
