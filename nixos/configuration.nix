@@ -11,6 +11,8 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
+    kernelModules = [ "rtc_cmos" ];
+    # kernelParams = [ "video=DP-1:1920x1080@60" "video=eDP-1:1920x1080@60" ];
   };
 
   networking = {
@@ -80,6 +82,7 @@
       # };
     };
     # virtualbox.host.enable = true;
+    # waydroid.enable = true;
   };
   # users.extragroups.vboxusers.members = [ "eprader" ];
 
@@ -87,6 +90,7 @@
   security.rtkit.enable = true;
 
   services = {
+    chrony.enable = true;
     pipewire = {
       enable = true;
       jack.enable = true;
