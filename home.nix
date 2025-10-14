@@ -54,6 +54,9 @@
       jetbrains.idea-community
       vscode
       gcc
+
+      # NOTE: Kerberos for university zidgpl
+      krb5
     ];
   };
 
@@ -80,6 +83,14 @@
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
+        # extraOptions = {
+        #   ChallengeResponseAuthentication = "yes";
+        #   GSSAPIAuthentication = "yes";
+        # };
+      };
+      "lcc3" = {
+        user = "cb761029";
+        hostname = "login.lcc3.uibk.ac.at";
       };
     };
   };
