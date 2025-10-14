@@ -46,22 +46,21 @@
             }
             {
               criteria = "eDP-1";
-              # mode = "1920x1080@60Hz";
-              # position = "1920,0";
-              # scale = 1.25;
+              mode = "1920x1080@60Hz";
+              position = "1920,0";
+              scale = 1.25;
               # BUG:
               # Currently the display will not turn back on after
-              # unpluging the laptop from the hub.
-
-              status = "disable";
+              # unpluging the laptop from the hub if set to `disable`.
+              status = "enable";
             }
           ];
         }
+        # NOTE:
+        # This profile exists asuming the default usecase for docking
+        # is to mirror the laptop screen.
         {
-          # NOTE:
-          # This profile exists asuming the default requirement for docking
-          # is to mirror the laptop screen.
-          profile.name = "docked-presentation";
+          profile.name = "mirrored";
           profile.outputs = [
             {
               criteria = "eDP-1";
@@ -70,13 +69,10 @@
               scale = 1.25;
               status = "enable";
             }
-            {
-              criteria = "*";
-              # mode = "1920x1080@60Hz";
-              position = "0,-1080";
-              scale = 1.0;
-              status = "enable";
-            }
+            { criteria = "*"; }
+          ];
+          profile.exec = [
+            "hyprctl keyword monitor DP-1,preferred,0x0,1,mirror,eDP-1"
           ];
         }
       ];
