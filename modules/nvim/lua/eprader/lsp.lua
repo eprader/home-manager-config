@@ -83,7 +83,7 @@ lsconfig.hls.setup {
     capabilities = capabilities,
 }
 
-lsconfig.tsserver.setup {
+lsconfig.ts_ls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
@@ -162,22 +162,22 @@ lsconfig.texlab.setup {
     capabilities = capabilities,
 }
 
-local sqls = require "sqls"
-if sqls then
-    lsconfig.sqlls.setup {
-        on_attach = function(client, bufnr)
-            sqls.on_attach(client, bufnr)
-            on_attach() ""
-            map({ "n", "v" }, "<leader>eq", ":SqlsExecuteQuery<cr>", opts)
-            map("n", "<leader>sd", ":SqlsSwitchDatabase<cr>", opts)
-            map("n", "<leader>sc", ":SqlsSwitchConnection<cr>", opts)
-        end,
-
-        flags = lsp_flags,
-        capabilities = capabilities,
-        cmd = { "sqls", "-config", "/home/eprader/.config/sqls/config.yml" },
-    }
-end
+-- local sqls = require "sqls"
+-- if sqls then
+--     lsconfig.sqlls.setup {
+--         on_attach = function(client, bufnr)
+--             sqls.on_attach(client, bufnr)
+--             on_attach() ""
+--             map({ "n", "v" }, "<leader>eq", ":SqlsExecuteQuery<cr>", opts)
+--             map("n", "<leader>sd", ":SqlsSwitchDatabase<cr>", opts)
+--             map("n", "<leader>sc", ":SqlsSwitchConnection<cr>", opts)
+--         end,
+--
+--         flags = lsp_flags,
+--         capabilities = capabilities,
+--         cmd = { "sqls", "-config", "/home/eprader/.config/sqls/config.yml" },
+--     }
+-- end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -190,16 +190,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         severity_sort = true,
     })
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
-
 local config = {
     virtual_text = true,
     signs = {
-        active = signs,
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+        },
     },
     update_in_insert = true,
     underline = true,
