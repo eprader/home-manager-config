@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       gui = {
-        timeFormat = "2006-01-02";
+        timeFormat = "2020-12-28";
         shortTimeFromat = "13:52";
       };
     };
