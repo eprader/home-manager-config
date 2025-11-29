@@ -109,13 +109,13 @@ local filetype = {
 local filename = {
     "filename",
     cond = conditions.buffer_not_empty,
-    path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+    path = 0, -- INFO: 0 = just filename, 1 = relative path, 2 = absolute path
     hide_filename_extension = true,
     symbols = {
         modified = "",
-        readonly = "", -- Text to show when the file is non-modifiable or readonly.
-        unnamed = "∅", -- Text to show for unnamed buffers.
-        newfile = "", -- Text to show for newly created file before first write
+        readonly = "",
+        unnamed = "∅",
+        newfile = "",
     },
     padding = 1,
     color = { fg = colours.dark_blue, bg = "#1b3536", gui = "bold" },
@@ -126,7 +126,7 @@ local lsp_icon = icon_component("", "#563d0d", colours.dark_yellow)
 
 local lspname = {
     function()
-        local active_clients = vim.lsp.get_active_clients()
+        local active_clients = vim.lsp.get_clients()
         if #active_clients == 0 then return "∅" end
 
         local active_clients_names = {}
