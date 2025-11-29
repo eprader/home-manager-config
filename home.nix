@@ -38,27 +38,31 @@
     packages = with pkgs; [
       wl-clipboard
       rofi-wayland
-      libreoffice-qt
+      # neo4j-desktop
 
       zip
       unzip
       curl
       wget
       jq
-      flink
-
-      fastfetch
 
       discord-ptb
 
       jetbrains.idea-community
-      vscode
-      gcc
+      # vscode
+      # gcc
 
       # NOTE: Kerberos for university zidgpl
-      krb5
+      # krb5
     ];
   };
+
+  # xdg.desktopEntries.neo4j-desktop = {
+  #   name = "Neo4j Desktop (Wayland)";
+  #   exec = "env NIXOS_OZONE_WL=1 QT_QPA_PLATFORM=wayland SDL_VIDEODRIVER=wayland WAYLAND_DISPLAY=wayland-0 neo4j-desktop %U";
+  #   icon = "neo4j-desktop";
+  #   categories = [ "Development" ];
+  # };
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -95,7 +99,7 @@
     };
   };
 
-  programs.zathura.enable = true;
+  # programs.zathura.enable = true;
 
   programs.chromium = {
     enable = true;
@@ -107,22 +111,22 @@
     ];
   };
 
-  services.flameshot = {
-    enable = true;
-    settings = {
-      General = {
-        buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
-        contrastOpacity = 188;
-        contrastUiColor = "#282828";
-        showSidePanelButton = true;
-        uiColor = "#b6b2b7";
-        undoLimit = 95;
-      };
-      Shortcuts = {
-        TYPE_COPY = "Return";
-      };
-    };
-  };
+  # services.flameshot = {
+  #   enable = true;
+  #   settings = {
+  #     General = {
+  #       buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
+  #       contrastOpacity = 188;
+  #       contrastUiColor = "#282828";
+  #       showSidePanelButton = true;
+  #       uiColor = "#b6b2b7";
+  #       undoLimit = 95;
+  #     };
+  #     Shortcuts = {
+  #       TYPE_COPY = "Return";
+  #     };
+  #   };
+  # };
 
   programs.home-manager.enable = true;
 
