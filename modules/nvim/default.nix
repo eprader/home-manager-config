@@ -12,7 +12,6 @@ let
   };
 
   nodePackages = with pkgs.nodePackages; [
-    pyright
     prettier
     typescript-language-server
     svelte-language-server
@@ -22,11 +21,13 @@ let
   eprader-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "eprader-nvim";
     src = ./.;
+    doCheck = false;
   };
 
   sentinel-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "sentinel-nvim";
     src = ./plugins/sentinel;
+    doCheck = false;
   };
 in
 {
@@ -45,6 +46,7 @@ in
 
       stylua
 
+      pyright
       yapf
       black
       isort
@@ -70,7 +72,6 @@ in
   # home.file."test.lua" = {
   #   text = ''print "from test"'';
   # };
-
   # NOTE: Install neovim from `unstable` channel.
   nixpkgs.overlays = [
     (self: super: {
@@ -116,6 +117,7 @@ in
       nvim-ts-autotag
 
       #LSP
+      lspkind-nvim
       nvim-lspconfig
       lspsaga-nvim
       trouble-nvim
@@ -155,9 +157,9 @@ in
       nvim-dap-virtual-text
 
       #Testing
-      (fromGit "neotest" "nvim-neotest/neotest")
-      (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
-      vim-test
+      # (fromGit "neotest" "nvim-neotest/neotest")
+      # (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
+      # vim-test
 
       #Helpful
       comment-nvim
@@ -166,11 +168,11 @@ in
       toggleterm-nvim
 
       #Tasks / code runner
-      (fromGit "overseer" "stevearc/overseer.nvim")
+      # (fromGit "overseer" "stevearc/overseer.nvim")
 
       #Language specifics
-      (fromGit "nvim-r" "jalvesaq/nvim-r")
-      (fromGit "sqls-nvim" "nanotee/sqls.nvim")
+      # (fromGit "nvim-r" "jalvesaq/nvim-r")
+      # (fromGit "sqls-nvim" "nanotee/sqls.nvim")
       #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
 
