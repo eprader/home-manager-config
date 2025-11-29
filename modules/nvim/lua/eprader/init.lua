@@ -36,10 +36,10 @@ require "eprader.appearance"
 require "eprader.ufo"
 
 require "eprader.toggleterm"
-require "eprader.overseer"
+-- require "eprader.overseer"
 
 require "eprader.dap"
 require "eprader.dapui"
 
-require "eprader.nvim-r"
-require "eprader.java"
+-- require "eprader.nvim-r"
+-- require "eprader.java"
