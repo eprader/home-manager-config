@@ -71,6 +71,17 @@
     '';
   };
 
+
+  # TODO: Move to home-manager config with version `25.11`
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
+  };
+
   virtualisation = {
     docker = {
       enable = true;
@@ -113,9 +124,16 @@
 
     nix-ld = {
       enable = true;
-      # libraries = with pkgs; [
-      #   stdenv.cc.cc.lib
-      # ];
+      libraries = with pkgs; [
+        # xorg.libX11
+        # xorg.libXext
+        # xorg.libXi
+        # xorg.libXrender
+        # xorg.libXtst
+        # freetype
+        # fontconfig
+        # stdenv.cc.cc.lib
+      ];
     };
   };
 
