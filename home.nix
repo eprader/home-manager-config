@@ -51,9 +51,6 @@
       jetbrains.idea-community
       # vscode
       # gcc
-
-      # NOTE: Kerberos for university zidgpl
-      # krb5
     ];
   };
 
