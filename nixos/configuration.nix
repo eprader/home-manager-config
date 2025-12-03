@@ -5,7 +5,7 @@
     /etc/nixos/hardware-configuration.nix
     ./modules/hyprland.nix
     ./modules/thunar.nix
-    ./modules/steam.nix
+    # ./modules/steam.nix
   ];
 
   boot = {
@@ -125,14 +125,6 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        # xorg.libX11
-        # xorg.libXext
-        # xorg.libXi
-        # xorg.libXrender
-        # xorg.libXtst
-        # freetype
-        # fontconfig
-        # stdenv.cc.cc.lib
       ];
     };
   };
