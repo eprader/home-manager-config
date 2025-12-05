@@ -14,7 +14,7 @@ local settings = {
     autoindent = true,
 
     signcolumn = "yes",
-    colorcolumn = "80",
+    colorcolumn = "100",
     wrap = true,
     showmode = false,
 
