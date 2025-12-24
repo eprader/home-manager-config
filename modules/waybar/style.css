@@ -1,0 +1,20 @@
+* {
+  font-size: 14px;
+  font-family: "FiraCode Nerd Font Propo";
+}
+
+window#waybar { background: none; }
+
+.module {
+  color: #ebdbb2;
+  background: #282828;
+  margin:3px 3px 0px 3px;
+  padding: 0px 8px;
+  border-radius: 10px;
+}
+.module:hover { background: #3c3836; }
+
+#pulseaudio { color: #d3869b; }
+
+#backlight { color: #fabd2f; }
+
