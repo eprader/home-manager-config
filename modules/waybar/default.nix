@@ -7,7 +7,7 @@
 
   programs.waybar = {
     enable = true;
-    settings = lib.importJSON ./config.jsonc;
+    settings = lib.importJSON ./config.json;
     style = ./style.css;
   };
 }
