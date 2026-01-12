@@ -38,6 +38,7 @@
     packages = with pkgs; [
       wl-clipboard
       rofi-wayland
+      slack
       # neo4j-desktop
 
       zip
