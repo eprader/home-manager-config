@@ -19,9 +19,6 @@ in
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    # SDL_VIDEODRIVER = "wayland";
-    # WAYLAND_DISPLAY = "wayland-0";
   };
 
   xdg = {
