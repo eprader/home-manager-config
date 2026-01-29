@@ -38,7 +38,6 @@
     packages = with pkgs; [
       wl-clipboard
       rofi-wayland
-      slack
       # neo4j-desktop
 
       zip
@@ -116,7 +115,7 @@
     };
   };
 
-  # programs.zathura.enable = true;
+  programs.hyprshot.enable = true;
 
   programs.chromium = {
     enable = true;
