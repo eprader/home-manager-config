@@ -85,7 +85,7 @@
   virtualisation = {
     docker = {
       enable = true;
-      package = pkgs.docker_26;
+      package = pkgs.docker_28;
       # BUG: Not working with `k3d` due to `cgroup` issue
       # rootles = {
       #     enable = true;
