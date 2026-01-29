@@ -79,9 +79,28 @@
     '';
   };
 
+  # trace: warning: `programs.ssh` default values will be removed in the future.
+  # Consider setting `programs.ssh.enableDefaultConfig` to false,
+  # and manually set the default values you want to keep at
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
+      # "*" =
+      # {
+      # ForwardAgent = false;
+      # AddKeysToAgent = false;
+      #
+      # ServerAliveInterval = 30;
+      # ServerAliveCountMax = 2;
+      #
+      # Compression = false;
+      # HashKnownHosts no
+      # UserKnownHostsFile ~/.ssh/known_hosts
+      # ControlMaster no
+      # ControlPath ~/.ssh/master-%r@%n:%p
+      # ControlPersist no
+      # };
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
