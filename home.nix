@@ -37,8 +37,7 @@
 
     packages = with pkgs; [
       wl-clipboard
-      rofi-wayland
-      # neo4j-desktop
+      rofi
 
       zip
       unzip
@@ -52,12 +51,6 @@
     ];
   };
 
-  # xdg.desktopEntries.neo4j-desktop = {
-  #   name = "Neo4j Desktop (Wayland)";
-  #   exec = "env NIXOS_OZONE_WL=1 QT_QPA_PLATFORM=wayland SDL_VIDEODRIVER=wayland WAYLAND_DISPLAY=wayland-0 neo4j-desktop %U";
-  #   icon = "neo4j-desktop";
-  #   categories = [ "Development" ];
-  # };
 
   home.pointerCursor = {
     gtk.enable = true;
