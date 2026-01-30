@@ -69,9 +69,6 @@
     '';
   };
 
-  # trace: warning: `programs.ssh` default values will be removed in the future.
-  # Consider setting `programs.ssh.enableDefaultConfig` to false,
-  # and manually set the default values you want to keep at
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -94,10 +91,6 @@
       "uibk" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
-        # extraOptions = {
-        #   ChallengeResponseAuthentication = "yes";
-        #   GSSAPIAuthentication = "yes";
-        # };
       };
       "lcc3" = {
         user = "cb761029";
