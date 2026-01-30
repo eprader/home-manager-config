@@ -10,17 +10,18 @@
 
   imports = [
     ./modules/git
+    ./modules/hypr
+    ./modules/kanshi
+    ./modules/waybar
+    ./modules/dunst
     ./modules/kitty
     ./modules/starship
     ./modules/lsd.nix
     ./modules/lazygit
-    ./modules/nvim
-    ./modules/latex.nix
-    ./modules/hypr
-    ./modules/kanshi
-    ./modules/waybar
     ./modules/direnv.nix
     ./modules/btop.nix
+    ./modules/nvim
+    ./modules/latex.nix
   ];
 
   home = {
