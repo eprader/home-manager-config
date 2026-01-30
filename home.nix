@@ -107,8 +107,9 @@
     enable = true;
     package = pkgs.brave;
     extensions = [
-      { id = "oldceeleldhonbafppcapldpdifcinji"; } # languagetool
-      { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
+      { id = "fphegifdehlodcepfkgofelcenelpedj"; } # 7tv
+      { id = "oldceeleldhonbafppcapldpdifcinji"; } # LanguageTool
+      { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
 
     ];
   };
