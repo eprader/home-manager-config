@@ -99,7 +99,9 @@
     };
   };
 
-  programs.hyprshot.enable = true;
+  programs.hyprshot = {
+    enable = true;
+  };
 
   programs.chromium = {
     enable = true;
