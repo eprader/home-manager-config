@@ -113,22 +113,23 @@
     ];
   };
 
-  # services.flameshot = {
-  #   enable = true;
-  # settings = {
-  #   General = {
-  #     buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
-  #     contrastOpacity = 188;
-  #     contrastUiColor = "#282828";
-  #     showSidePanelButton = true;
-  #     uiColor = "#b6b2b7";
-  #     undoLimit = 95;
-  #   };
-  #   Shortcuts = {
-  #     TYPE_COPY = "Return";
-  #   };
-  # };
-  # };
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        # INFO: On `wayland` grim should be used.
+        useGrimAdapter = true;
+        buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
+        contrastOpacity = 188;
+        contrastUiColor = "#282828";
+        # showSidePanelButton = true;
+        uiColor = "#b6b2b7";
+      };
+      Shortcuts = {
+        TYPE_COPY = "Return";
+      };
+    };
+  };
 
   programs.home-manager.enable = true;
 
