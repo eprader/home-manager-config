@@ -14,6 +14,9 @@ in
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+
+    # INFO: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
+    withUWSM = true;
   };
 
   environment.sessionVariables = {

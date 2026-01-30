@@ -4,22 +4,9 @@
     enable = true;
     # settings = builtins.readFile ./config;
 
-    # profile standalone {
-    #     output "AU Optronics 0xF38C" mode 1920x1080@60Hz position 0,0 scale 1.25
-    # }
-    # profile home {
-    #     output "BNQ BenQ GW2480 87K0193501Q" {
-    #         mode 1920x1080@60Hz
-    #         position 0,0
-    #         scale 1.0
-    #     }
-    #     output "AU Optronics 0xF38C" {
-    #         mode 1920x1080@60Hz
-    #         position 1920,0
-    #         scale 1.0
-    #     }
-    # }
-    systemdTarget = "hyprland-session.target";
+    # INFO: Since we switched from systemd to uwsm in hyprland,
+    # the session name changes from `hyprland-session` to `graphical-session`.
+    systemdTarget = "graphical-session.target";
     settings =
       [
         {
