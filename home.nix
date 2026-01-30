@@ -48,9 +48,7 @@
 
       discord-ptb
 
-      jetbrains.idea-community
-      # vscode
-      # gcc
+      jetbrains.idea-oss
     ];
   };
 
