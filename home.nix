@@ -124,11 +124,17 @@
         # https://github.com/flameshot-org/flameshot/pull/4498
         useGrimAdapter = true;
         disabledGrimWarning = true;
+
         buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
-        contrastOpacity = 188;
-        contrastUiColor = "#282828";
-        showSidePanelButton = false;
         uiColor = "#b6b2b7";
+        contrastUiColor = "#282828";
+        contrastOpacity = 188;
+
+        startupLaunch = false;
+        showStartupLaunchMessage = false;
+        showSidePanelButton = false;
+        showAbortNotification = false;
+        disabledTrayIcon = true;
       };
       Shortcuts = {
         TYPE_COPY = "Return";
