@@ -8,14 +8,6 @@ if not notify then return end
 vim.opt.termguicolors = true -- INFO: Required to support opacity changes.
 vim.notify = notify
 
---[[
- HACK: Notify requires the `NotifyBackground` highlight group to have a `background` highlight.
- By default `NotifyBackground` is linked to `Normal`.
- For Neovim (v0.9.1) `:colorscheme default` `Normal.background` is `nil`
- Requiring a colorscheme should set that value.
-]]
-require "eprader.appearance.colorscheme"
-
 local highlights = {
     NotifyERRORTitle = "DiagnosticFloatingError",
     NotifyERRORBorder = "NotifyERRORTitle",
@@ -41,9 +33,8 @@ local highlights = {
 for k, v in pairs(highlights) do
     vim.api.nvim_set_hl(0, k, { link = v })
 end
-
 notify.setup {
-    background_colour = "NotifyBackground",
+    background_colour = "282828",
     fps = 60,
     icons = {
         ERROR = "",
