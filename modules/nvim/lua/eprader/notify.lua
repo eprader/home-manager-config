@@ -34,7 +34,7 @@ for k, v in pairs(highlights) do
     vim.api.nvim_set_hl(0, k, { link = v })
 end
 notify.setup {
-    background_colour = "282828",
+    background_colour = "#282828",
     fps = 60,
     icons = {
         ERROR = "",
