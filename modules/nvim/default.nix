@@ -62,9 +62,6 @@ in
     ] ++ nodePackages;
   };
 
-  # home.file."test.lua" = {
-  #   text = ''print "from test"'';
-  # };
   # NOTE: Install neovim from `unstable` channel.
   nixpkgs.overlays = [
     (self: super: {
@@ -88,16 +85,12 @@ in
 
       #Eyecandy
       gruvbox-community
-      # tokyonight-nvim
-      # (fromGit "one-monokai" "cpea2506/one_monokai.nvim")
-      # (fromGit "catpuccin" "catppuccin/nvim")
-      # onedark-nvim
       nvim-web-devicons
       todo-comments-nvim
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
-      # (fromGit "markview" "OXY2DEV/markview.nvim")
+      markview-nvim
 
       #Git
       gitsigns-nvim
@@ -114,7 +107,6 @@ in
       nvim-lspconfig
       lspsaga-nvim
       trouble-nvim
-      ltex_extra-nvim
 
       # lint
       nvim-lint
@@ -160,13 +152,8 @@ in
       #Terminal
       toggleterm-nvim
 
-      #Tasks / code runner
+      # Tasks / code runner
       # (fromGit "overseer" "stevearc/overseer.nvim")
-
-      #Language specifics
-      # (fromGit "nvim-r" "jalvesaq/nvim-r")
-      # (fromGit "sqls-nvim" "nanotee/sqls.nvim")
-      #(fromGit "typescript.nvim" "jose-elias-alvarez/typescript.nvim")
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;
