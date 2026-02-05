@@ -14,8 +14,6 @@ let
   nodePackages = with pkgs.nodePackages; [
     prettier
     typescript-language-server
-    svelte-language-server
-    # grammarly-languageserver
   ];
 
   eprader-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -60,12 +58,7 @@ in
       ccls
       lua-language-server
       haskell-language-server
-      ltex-ls # language-tool / spelling
-      sqls
-      phpactor
       tailwindcss-language-server
-      metals
-      #jdt-language-server
     ] ++ nodePackages;
   };
 

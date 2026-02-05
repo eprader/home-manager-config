@@ -24,6 +24,11 @@ require "eprader.treesitter"
 
 require "eprader.telescope"
 require "eprader.lsp"
+vim.lsp.enable {
+    "lua_ls",
+    "nil_ls",
+    "yamlls",
+}
 require "eprader.lint"
 require "eprader.conform"
 require "eprader.cmp"
@@ -38,8 +43,5 @@ require "eprader.ufo"
 require "eprader.toggleterm"
 -- require "eprader.overseer"
 
-require "eprader.dap"
-require "eprader.dapui"
-
--- require "eprader.nvim-r"
--- require "eprader.java"
+-- require "eprader.dap"
+-- require "eprader.dapui"
