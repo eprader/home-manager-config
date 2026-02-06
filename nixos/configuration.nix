@@ -101,7 +101,7 @@
       };
     };
 
-    openssh.enable = true;
+    openssh.enable = false;
   };
 
   programs = {
