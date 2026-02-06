@@ -12,11 +12,10 @@
   };
 
   programs.ssh = {
-    enable = true;
     matchBlocks = {
       "*" = {
         /*
-          NOTE: Sometimes the remote server does not know how to handle TERM=xterm-kitty.
+          HACK: Sometimes the remote server does not know how to handle TERM=xterm-kitty.
           Therefore we set the TERM variable on the remote server to 
           xterm-256color which should be more widely supported.
         */
