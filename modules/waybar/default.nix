@@ -1,8 +1,10 @@
 { pkgs, lib, ... }:
 {
+
   home.packages = with pkgs; [
     networkmanagerapplet
     pavucontrol
+    nerd-fonts.fira-code
   ];
 
   programs.waybar = {
