@@ -5,7 +5,6 @@
   ];
 
   programs.bash = {
-    enable = true;
     shellAliases = {
       ls = "lsd";
       ll = "lsd -alF";
