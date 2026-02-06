@@ -1,10 +1,10 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    lsd
-  ];
+  home = {
+    packages = with pkgs; [
+      lsd
+    ];
 
-  programs.bash = {
     shellAliases = {
       ls = "lsd";
       ll = "lsd -alF";
