@@ -1,0 +1,22 @@
+set keyseq-timeout 10
+
+set editing-mode vi
+set show-mode-in-prompt on
+# INFO:
+# It is possible to use non-printing characters.
+# https://tiswww.case.edu/php/chet/readline/readline.html#index-vi_002dcmd_002dmode_002dstring
+
+# Beam cursor in insert mode
+set vi-ins-mode-string " \e[32m\e[0m "
+# Block cursor in normal mode
+set vi-cmd-mode-string " \e[35m\e[0m "
+
+# set keymap vi-insert
+# RETURN: "\e\n"
+
+# NOTE: Allow <Ctrl-l> to work in insert mode
+$if keymap == vi-insert
+"\C-l": clear-screen
+$endif
+
+

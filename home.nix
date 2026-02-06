@@ -15,6 +15,7 @@
     ./modules/waybar
     ./modules/dunst
     ./modules/kitty
+    ./modules/readline
     ./modules/starship
     ./modules/lsd.nix
     ./modules/lazygit
