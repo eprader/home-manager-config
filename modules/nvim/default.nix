@@ -59,6 +59,7 @@ in
       lua-language-server
       haskell-language-server
       tailwindcss-language-server
+      yaml-language-server
     ] ++ nodePackages;
   };
 
