@@ -60,6 +60,7 @@ in
       haskell-language-server
       tailwindcss-language-server
       yaml-language-server
+      helm-ls
     ] ++ nodePackages;
   };
 

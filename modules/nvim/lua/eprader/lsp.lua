@@ -1,6 +1,20 @@
 local cmp_lsp = require "cmp_nvim_lsp"
 if not cmp_lsp then return end
 
+vim.filetype.add {
+    pattern = {
+        [".*/templates/.*%.tpl"] = "helm",
+        [".*/templates/.*%.ya?ml"] = "helm",
+        [".*/templates/.*%.txt"] = "helm",
+        ["helmfile.*%.ya?ml"] = "helm",
+        ["helmfile.*%.ya?ml.gotmpl"] = "helm",
+        ["values.*%.yaml"] = "yaml.helm-values",
+    },
+    filename = {
+        ["Chart.yaml"] = "yaml.helm-chartfile",
+    },
+}
+
 -- Set the capabilities for every lsp using the `*` wildcard
 vim.lsp.config("*", {
     capabilities = cmp_lsp.default_capabilities(),

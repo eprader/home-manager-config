@@ -1,7 +1,11 @@
 -- PERF: This enables the experimental loader of nvim >=v.0.9
 -- See https://neovim.io/doc/user/lua.html#vim.loader
 -- Improved startup time by about 25%!
-if vim.loader then vim.loader.enable() end
+if vim.loader then
+    vim.loader.enable()
+else
+    vim.notify("`vim.loader` not found.", vim.log.levels.INFO)
+end
 
 -- WARN: Removing this might lead to a breaking config.
 -- This check ensures that protected require is available.
@@ -28,6 +32,7 @@ vim.lsp.enable {
     "lua_ls",
     "nil_ls",
     "yamlls",
+    "helm_ls",
 }
 require "eprader.lint"
 require "eprader.conform"
