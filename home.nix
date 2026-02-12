@@ -1,5 +1,7 @@
 { pkgs, ... }:
-
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   nix = {
     package = pkgs.nix;
