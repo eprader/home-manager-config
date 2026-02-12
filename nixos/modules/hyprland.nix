@@ -50,9 +50,8 @@ in
       default_session = {
         user = "greeter";
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          ${pkgs.tuigreet}/bin/tuigreet \
           --sessions ${pkgs.hyprland}/share/wayland-sessions \
-          --time \
           --remember \
           --remember-session \
           --theme '${
