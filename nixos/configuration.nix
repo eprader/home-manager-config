@@ -64,8 +64,9 @@
   };
 
   environment = {
-    # systemPackages = with pkgs; [
-    # ];
+    systemPackages = with pkgs; [
+    ];
+
     interactiveShellInit = ''
       alias nrs="sudo nixos-rebuild switch"
     '';
