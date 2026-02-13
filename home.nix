@@ -16,6 +16,8 @@ in
     ./modules/kanshi
     ./modules/waybar
     ./modules/dunst
+    ./modules/gtk.nix
+    ./modules/rofi
     ./modules/kitty
     ./modules/readline
     ./modules/starship
@@ -25,7 +27,6 @@ in
     ./modules/btop.nix
     ./modules/nvim
     ./modules/latex.nix
-    ./modules/gtk.nix
   ];
 
   home = {
@@ -42,7 +43,6 @@ in
 
     packages = with pkgs; [
       wl-clipboard
-      rofi
 
       zip
       unzip
@@ -73,6 +73,7 @@ in
       [[ -f ~/.profile ]] && . ~/.profile
     '';
   };
+
 
   programs.ssh = {
     enable = true;
