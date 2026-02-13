@@ -25,6 +25,7 @@ in
     ./modules/btop.nix
     ./modules/nvim
     ./modules/latex.nix
+    ./modules/gtk.nix
   ];
 
   home = {
@@ -53,16 +54,16 @@ in
 
       jetbrains.idea-oss
     ];
+
+    pointerCursor = {
+      x11.enable = true; # INFO: Sets `XCURSOR_THEME` and `XCURSOR_SIZE`
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+      size = 24;
+    };
   };
 
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true; # INFO: Sets `XCURSOR_THEME` and `XCURSOR_SIZE`
-    package = pkgs.capitaine-cursors;
-    name = "capitaine-cursors";
-    size = 24;
-  };
 
   programs.bash = {
     enable = true;
