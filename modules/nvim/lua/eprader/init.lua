@@ -28,12 +28,6 @@ require "eprader.treesitter"
 
 require "eprader.telescope"
 require "eprader.lsp"
-vim.lsp.enable {
-    "lua_ls",
-    "nil_ls",
-    "yamlls",
-    "helm_ls",
-}
 require "eprader.lint"
 require "eprader.conform"
 require "eprader.cmp"

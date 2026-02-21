@@ -82,3 +82,11 @@ vim.api.nvim_create_autocmd("LSPAttach", {
         end, opts)
     end,
 })
+
+vim.lsp.enable {
+    "lua_ls",
+    "nil_ls",
+    "yamlls",
+    "helm_ls",
+    "tsgo",
+}

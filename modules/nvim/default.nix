@@ -13,7 +13,6 @@ let
 
   nodePackages = with pkgs.nodePackages; [
     prettier
-    typescript-language-server
   ];
 
   eprader-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -57,8 +56,8 @@ in
       nixd
       ccls
       lua-language-server
-      haskell-language-server
       tailwindcss-language-server
+      typescript-go
       yaml-language-server
       helm-ls
     ] ++ nodePackages;
