@@ -6,6 +6,7 @@
     ];
     shellAliases = {
       top = "btop";
+      htop = "btop";
     };
   };
 }
