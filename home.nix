@@ -56,10 +56,14 @@ in
       curl
       wget
       jq
+      tailspin
 
       discord-ptb
+      cheese # camera program
+      thunderbird
 
       jetbrains.idea-oss
+      minisat
     ];
 
     pointerCursor = {
@@ -70,8 +74,6 @@ in
     };
   };
 
-
-
   programs.bash = {
     enable = true;
     # INFO:
@@ -80,7 +82,6 @@ in
       [[ -f ~/.profile ]] && . ~/.profile
     '';
   };
-
 
   programs.ssh = {
     enable = true;
