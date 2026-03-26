@@ -117,14 +117,14 @@ in
     enable = true;
   };
 
-  programs.chromium = {
+  programs.brave = {
     enable = true;
-    package = pkgs.brave;
+    package = unstable.brave;
     extensions = [
-      { id = "fphegifdehlodcepfkgofelcenelpedj"; } # 7tv
-      { id = "oldceeleldhonbafppcapldpdifcinji"; } # LanguageTool
-      { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
-
+      "fphegifdehlodcepfkgofelcenelpedj" # 7tv
+      "oldceeleldhonbafppcapldpdifcinji" # LanguageTool
+      "ghbmnnjooekpmoecnnnilnnbdlolhkhi" # Google Docs Offline
+      "eljmjmgjkbmpmfljlmklcfineebidmlo" # p s o n o
     ];
   };
 
