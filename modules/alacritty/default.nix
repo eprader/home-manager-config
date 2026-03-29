@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  fonts.fontconfig.enable = true;
-
-  home.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
-
   programs.alacritty = {
     enable = true;
 
@@ -27,7 +21,7 @@
       };
 
       font = {
-        normal.family = "FiraCode Nerd Font Mono";
+        normal.family = "Monospace";
         size = 12;
         bold = { style = "Bold"; };
       };

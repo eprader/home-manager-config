@@ -1,6 +1,6 @@
 * {
     // INFO: Let font be handled through fontconfig
-    // font: "SansSerif 14";
+    font: "SansSerif 14";
     foreground: #ebdbb2;
     background-color: #282828;
     active-background: #928374;

@@ -49,6 +49,11 @@ in
     };
 
     packages = with pkgs; [
+
+      # NOTE: These packages are used for `fonts.fontconfig`.
+      nerd-fonts.fira-code
+      noto-fonts-color-emoji
+
       wl-clipboard
 
       zip
@@ -60,11 +65,13 @@ in
 
       discord-ptb
       cheese # camera program
+
       thunderbird
       birdtray # system tray icon for thunderbird
 
       jetbrains.idea-oss
       minisat
+      ghc
     ];
 
     pointerCursor = {
@@ -72,6 +79,16 @@ in
       package = pkgs.capitaine-cursors;
       name = "capitaine-cursors";
       size = 24;
+    };
+  };
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "FiraCode Nerd Font Mono" ];
+      sansSerif = [ "FiraCode Nerd Font" ];
+      serif = [ "FiraCode Nerd Font" ];
     };
   };
 

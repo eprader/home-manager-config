@@ -1,6 +1,7 @@
 * {
   font-size: 14px;
-  font-family: "FiraCode Nerd Font Propo";
+  /* INFO: Font configured via `fonts.fontconfig`  */
+  font-family: "SansSerif";
 }
 
 window#waybar { background: none; }

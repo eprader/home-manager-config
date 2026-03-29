@@ -21,7 +21,8 @@
           background = "#282828";
           corner_radius = 5;
           corners = "all";
-          font = "Fira Code Nerd Font Mono 12";
+          # INFO: Font is configured through `fonts.fontconfig` in home.nix
+          font = "SansSerif 10";
           gap_size = 8;
 
           notification_limit = 5;
