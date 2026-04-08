@@ -31,8 +31,12 @@
                 "youtube": "",
                 "discord": "󰙯",
                 "spotify": "󰓇",
+                "whatsapp": "󰖣",
                 "gmail": "󰊫",
-                "chat": "󱋊",
+                "claude": "",
+                "chatgpt": "",
+                "gemini": "",
+                "title<.* chat .*>": "󱋊",
                 "class<thunderbird>": "",
                 "class<thunar>": "󰥩",
                 "title<.*@johanniter.at.*>": "󰴢"
