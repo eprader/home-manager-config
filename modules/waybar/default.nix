@@ -4,8 +4,9 @@
   home.packages = with pkgs; [
     networkmanagerapplet
     pavucontrol
-    nerd-fonts.fira-code
   ];
+
+  services.blueman-applet.enable = true;
 
   programs.waybar = {
     enable = true;

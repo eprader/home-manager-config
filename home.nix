@@ -131,10 +131,6 @@ in
     };
   };
 
-  programs.hyprshot = {
-    enable = true;
-  };
-
   programs.brave = {
     enable = true;
     package = unstable.brave;
@@ -143,6 +139,7 @@ in
       "oldceeleldhonbafppcapldpdifcinji" # LanguageTool
       "ghbmnnjooekpmoecnnnilnnbdlolhkhi" # Google Docs Offline
       "eljmjmgjkbmpmfljlmklcfineebidmlo" # p s o n o
+      "mlomiejdfkolichcflejclcbmpeaniij" # ghostery
     ];
   };
 

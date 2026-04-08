@@ -8,6 +8,12 @@
     # ./modules/steam.nix
   ];
 
+  hardware = {
+    bluetooth.enable = true;
+  };
+
+  services.blueman.enable = true;
+
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
