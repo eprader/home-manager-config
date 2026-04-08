@@ -1,10 +1,11 @@
 {
     "mainBar": {
-            "layer": "top",
-            "height": 30,
-            "spacing": 4,
+        "layer": "top",
+        "height": 20,
+        "spacing": 4,
 
         "modules-left": [
+            "hyprland/workspaces"
         ],
         "modules-center": [
             "clock"
@@ -15,9 +16,27 @@
             "tray",
             "battery"
         ],
-
         "tray": {
             "spacing": 10
+        },
+
+        "hyprland/workspaces": {
+            "format": "{name} {windows}",
+            "format-window-separator": " ",
+            "window-rewrite-default": "",
+            "window-rewrite": {
+                "nvim": "",
+                "vi": "",
+                "vim": "",
+                "youtube": "",
+                "discord": "󰙯",
+                "spotify": "󰓇",
+                "gmail": "󰊫",
+                "chat": "󱋊",
+                "class<thunderbird>": "",
+                "class<thunar>": "󰥩",
+                "title<.*@johanniter.at.*>": "󰴢"
+            }
         },
         "backlight": {
             "format": "{percent}% {icon}",
@@ -36,10 +55,10 @@
             "format-icons": ["", "", "", "", ""]
         },
         "pulseaudio": {
-            "format": "{volume}% {icon} {format_source}",
-            "format-muted": "󰖁 {format_source}",
-            "format-bluetooth": "{volume}% {icon}{format_source}",
-            "format-bluetooth-muted": "󰖁 {format_source}",
+            "format": "{volume}% {icon}  {format_source}",
+            "format-muted": "󰖁  {format_source}",
+            "format-bluetooth": "{volume}% {icon}  {format_source}",
+            "format-bluetooth-muted": "󰖁  {format_source}",
             "format-source": "{volume}% 󰍬",
             "format-source-muted": "󰍭",
             "format-icons": {
