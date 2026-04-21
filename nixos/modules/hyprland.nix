@@ -1,16 +1,5 @@
 { pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
 {
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        hyprland = unstable.hyprland;
-      })
-    ];
-  };
-
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
