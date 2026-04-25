@@ -20,7 +20,7 @@ in
   imports = [
     ./modules/git
     ./modules/hypr
-    ./modules/kanshi
+    # ./modules/kanshi
     ./modules/waybar
     ./modules/dunst
     ./modules/gtk.nix
@@ -34,6 +34,7 @@ in
     ./modules/btop.nix
     ./modules/nvim
     ./modules/latex.nix
+    ./modules/hyprmoncfg.nix
   ];
 
   home = {
@@ -169,6 +170,8 @@ in
       };
     };
   };
+
+  services.hyprmoncfg.enable = true;
 
   programs.home-manager.enable = true;
 
