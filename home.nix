@@ -137,7 +137,9 @@ in
     package = unstable.brave;
     extensions = [
       "fphegifdehlodcepfkgofelcenelpedj" # 7tv
-      "oldceeleldhonbafppcapldpdifcinji" # LanguageTool
+      # TODO: Figure out way to use language tool with local server.
+      "oldceeleldhonbafppcapldpdifcinji" # LanguageTool (not free unless own server hosted)
+      "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly (current alternative)
       "ghbmnnjooekpmoecnnnilnnbdlolhkhi" # Google Docs Offline
       "eljmjmgjkbmpmfljlmklcfineebidmlo" # p s o n o
       "mlomiejdfkolichcflejclcbmpeaniij" # ghostery
