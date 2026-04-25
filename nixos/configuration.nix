@@ -71,6 +71,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      brightnessctl
     ];
 
     interactiveShellInit = ''
