@@ -12,4 +12,6 @@
   home.packages = with pkgs; [
     capitaine-cursors
   ];
+
+  programs.hyprlock.enable = true;
 }
