@@ -64,11 +64,11 @@ in
   };
 
   # NOTE: Install neovim from `unstable` channel.
-  nixpkgs.overlays = [
-    (self: super: {
-      neovim-unwrapped = unstable.neovim-unwrapped;
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     neovim-unwrapped = unstable.neovim-unwrapped;
+  #   })
+  # ];
 
   programs.neovim = {
     enable = true;
@@ -91,7 +91,7 @@ in
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
-      markview-nvim
+      # markview-nvim
 
       #Git
       gitsigns-nvim
