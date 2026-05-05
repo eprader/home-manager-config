@@ -146,6 +146,10 @@ in
 
   services.flameshot = {
     enable = true;
+    # TODO:
+    # Currently flameshort is timing out in version 14.0.0
+    # Related to the linked below pull request.
+    # package = unstable.flameshot;
     settings = {
       General = {
         # INFO: On `wayland` grim should be used.
