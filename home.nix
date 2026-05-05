@@ -133,7 +133,6 @@ in
 
   programs.brave = {
     enable = true;
-    package = unstable.brave;
     extensions = [
       "fphegifdehlodcepfkgofelcenelpedj" # 7tv
       # TODO: Figure out way to use language tool with local server.
