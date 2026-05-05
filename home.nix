@@ -20,7 +20,6 @@ in
   imports = [
     ./modules/git
     ./modules/hypr
-    # ./modules/kanshi
     ./modules/waybar
     ./modules/dunst
     ./modules/gtk.nix
