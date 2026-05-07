@@ -1,5 +1,11 @@
 # Cleanup The Nix Store
 
+
+After the initial clone use 
+```bash
+git remote set-url origin git@github.com:eprader/home-manager-config.git
+```
+
 > [!WARNING]
 > Removes all but the last generation!
 
