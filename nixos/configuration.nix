@@ -25,7 +25,10 @@
     hostName = "ENVY-EP";
     networkmanager.enable = true;
   };
-  users.extraGroups.networkmanager.members = [ "root" "eprader" ];
+  users.extraGroups.networkmanager.members = [
+    "root"
+    "eprader"
+  ];
 
   time.timeZone = "Europe/Berlin";
   i18n = {
@@ -131,7 +134,10 @@
     users.eprader = {
       isNormalUser = true;
       description = "Emanuel Prader";
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
       # INFO:
       # This password will only be set during the initial creation of this user.
       # Make sure to change the password using `passwd`

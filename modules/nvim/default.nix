@@ -1,15 +1,21 @@
 { pkgs, ... }:
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-
-  # function for importing git repository directly
-  fromGit = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = name;
-    version = "2023-14-11";
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
     };
   };
+
+  # function for importing git repository directly
+  fromGit =
+    name: repo:
+    pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = name;
+      version = "2023-14-11";
+      src = builtins.fetchGit {
+        url = "https://github.com/${repo}.git";
+      };
+    };
 
   nodePackages = with pkgs.nodePackages; [
     prettier
@@ -29,38 +35,41 @@ let
 in
 {
   home = {
-    packages = with pkgs; [
-      tree-sitter
+    packages =
+      with pkgs;
+      [
+        tree-sitter
 
-      #for Telescope
-      ripgrep
-      fd
+        #for Telescope
+        ripgrep
+        fd
 
-      lldb
+        lldb
 
-      # formatters
-      nixpkgs-fmt
+        # formatters
+        nixfmt-tree
 
-      stylua
+        stylua
 
-      pyright
-      yapf
-      black
-      isort
+        pyright
+        yapf
+        black
+        isort
 
-      # linters
-      vale
+        # linters
+        vale
 
-      # LSP
-      nil
-      nixd
-      ccls
-      lua-language-server
-      tailwindcss-language-server
-      typescript-go
-      yaml-language-server
-      helm-ls
-    ] ++ nodePackages;
+        # LSP
+        nil
+        nixd
+        ccls
+        lua-language-server
+        tailwindcss-language-server
+        typescript-go
+        yaml-language-server
+        helm-ls
+      ]
+      ++ nodePackages;
   };
 
   # NOTE: Install neovim from `unstable` channel.

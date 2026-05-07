@@ -22,7 +22,7 @@ in
       vimtex
     ];
 
-    extraConfig = '' 
+    extraConfig = ''
       lua require 'eprader.vimtex'
     '';
   };

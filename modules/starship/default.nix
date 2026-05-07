@@ -4,8 +4,7 @@
     enable = true;
     settings = {
       add_newline = false;
-      format = ''
-        $username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $nix_shell)( $cmd_duration)( $character) '';
+      format = "$username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $nix_shell)( $cmd_duration)( $character) ";
       username = {
         format = "[$user]($style)";
         show_always = true;

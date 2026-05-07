@@ -23,9 +23,10 @@
       font = {
         normal.family = "Monospace";
         size = 12;
-        bold = { style = "Bold"; };
+        bold = {
+          style = "Bold";
+        };
       };
-
 
       colors = {
         primary = {
@@ -44,8 +45,7 @@
           blue = "0x458588";
           magenta = "0xb16286";
           cyan = "0x689d6a";
-          white =
-            "0xa89984";
+          white = "0xa89984";
         };
         bright = {
           black = "0x928374";
@@ -55,8 +55,7 @@
           blue = "0x83a598";
           magenta = "0xd3869b";
           cyan = "0x8ec07c";
-          white =
-            "0xebdbb2";
+          white = "0xebdbb2";
         };
       };
 
@@ -68,11 +67,14 @@
   programs.ssh = {
     matchBlocks = {
       "*" = {
-        /* NOTE: Sometimes the remote server does not know how to handle TERM=alacritty.
-          * Therefore we set the TERM variable on the remote server to 
+        /*
+          NOTE: Sometimes the remote server does not know how to handle TERM=alacritty.
+          * Therefore we set the TERM variable on the remote server to
           * xterm-256color which should be more widely supported.
         */
-        setEnv = { TERM = "xterm-256color"; };
+        setEnv = {
+          TERM = "xterm-256color";
+        };
       };
     };
   };

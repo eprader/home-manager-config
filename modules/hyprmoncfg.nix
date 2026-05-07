@@ -1,10 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.services.hyprmoncfg;
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   hyprmonPkg = unstable.buildGoModule {
     pname = "hyprmoncfg";
@@ -20,7 +29,10 @@ let
     vendorHash = "sha256-gQbjvdKtO0hCXrs9RnWo1s0YeHf5W9t+8AgS2ELXlPo=";
     doCheck = false;
 
-    ldflags = [ "-s" "-w" ];
+    ldflags = [
+      "-s"
+      "-w"
+    ];
     postInstall = ''
       install -D packaging/systemd/hyprmoncfgd.local.service $out/lib/systemd/user/hyprmoncfgd.service
 

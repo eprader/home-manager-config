@@ -7,7 +7,7 @@ conform.setup {
         lsp_fallback = true,
     },
     formatters_by_ft = {
-        nix = { "nixpkgs_fmt" },
+        nix = { "treefmt" }, -- INFO: This is the CLI command for `nixfmt-tree`.
         lua = { "stylua" },
         python = { "isort", "black" },
         javascript = { { "prettierd", "prettier" } },
