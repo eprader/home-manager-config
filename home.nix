@@ -72,6 +72,7 @@ in
       jetbrains.idea-oss
       minisat
       ghc
+      k9s
     ];
 
     pointerCursor = {
