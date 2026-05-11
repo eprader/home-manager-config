@@ -99,6 +99,10 @@ in
     # `.profile` include is needed for `home.sessionVariables` to work.
     initExtra = /* bash */ ''
       [[ -f ~/.profile ]] && . ~/.profile
+      # NOTE: Allow `source` and POSIX `.` to complete commands from `$PATH`
+      # INFO: This requires the files to be executable!
+      complete -c source
+      complete -c .
     '';
   };
 
