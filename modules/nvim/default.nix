@@ -47,7 +47,7 @@ in
         lldb
 
         # formatters
-        nixfmt-tree
+        nixfmt
 
         stylua
 
