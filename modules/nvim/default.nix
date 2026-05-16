@@ -99,7 +99,7 @@ in
       dressing-nvim
       nvim-colorizer-lua
       nvim-ufo
-      # markview-nvim
+      markview-nvim
 
       #Git
       gitsigns-nvim
