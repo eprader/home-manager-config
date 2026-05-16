@@ -33,7 +33,6 @@ require "eprader.conform"
 require "eprader.cmp"
 require "eprader.harpoon"
 require "eprader.autopairs"
-require "eprader.comment"
 
 require "eprader.gitsigns"
 require "eprader.appearance"

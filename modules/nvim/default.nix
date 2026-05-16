@@ -156,7 +156,7 @@ in
       # vim-test
 
       #Helpful
-      comment-nvim
+      #comment-nvim
 
       #Terminal
       toggleterm-nvim
