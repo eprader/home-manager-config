@@ -34,6 +34,7 @@ in
     ./modules/nvim
     ./modules/latex.nix
     ./modules/hyprmoncfg.nix
+    ./modules/k9s
   ];
 
   home = {
@@ -72,7 +73,6 @@ in
       jetbrains.idea-oss
       minisat
       ghc
-      k9s
     ];
 
     pointerCursor = {
