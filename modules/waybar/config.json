@@ -35,7 +35,8 @@
                 "title<.* chat .*>": "󱋊",
                 "class<thunderbird>": "",
                 "class<thunar>": "󰥩",
-                "title<.*@johanniter.at.*>": "󰴢"
+                "title<.*@johanniter.at.*>": "󰴢",
+                "title<.*Webmail.*>": ""
             }
         },
         "backlight": {
