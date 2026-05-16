@@ -108,9 +108,6 @@ in
       telescope-nvim
       telescope-fzf-native-nvim
 
-      #HTML autotags
-      nvim-ts-autotag
-
       #LSP
       lspkind-nvim
       nvim-lspconfig
