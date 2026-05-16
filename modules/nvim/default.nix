@@ -100,6 +100,11 @@ in
       nvim-colorizer-lua
       nvim-ufo
       markview-nvim
+      # {
+      #   plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+      #   optional = true; # don't auto-load the plugin lua
+      # }
+      # nvim-treesitter.withAllGrammars
 
       #Git
       gitsigns-nvim
