@@ -1,13 +1,8 @@
-local treesitter_configs = require "nvim-treesitter.configs"
-if not treesitter_configs then return end
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        pcall(vim.treesitter.start)
+    end,
+})
 
--- NOTE: To enable folding:
 vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-
-treesitter_configs.setup {
-    -- INFO: The grammars are managed by the home-manager module.
-    auto_install = false,
-    highlight = { enable = true },
-    indent = { enable = true },
-}
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"

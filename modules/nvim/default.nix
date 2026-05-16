@@ -73,11 +73,11 @@ in
   };
 
   # NOTE: Install neovim from `unstable` channel.
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     neovim-unwrapped = unstable.neovim-unwrapped;
-  #   })
-  # ];
+  nixpkgs.overlays = [
+    (self: super: {
+      neovim-unwrapped = unstable.neovim-unwrapped;
+    })
+  ];
 
   programs.neovim = {
     enable = true;
@@ -90,7 +90,6 @@ in
       sentinel-nvim # local prequire plugin
 
       plenary-nvim
-      nvim-treesitter.withAllGrammars
       nvim-notify
 
       #Eyecandy
