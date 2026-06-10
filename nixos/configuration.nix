@@ -25,7 +25,11 @@
 
   networking = {
     hostName = "ENVY-EP";
-    networkmanager.enable = true;
+    networkmanager = {
+
+      enable = true;
+      plugins = with pkgs; [ networkmanager-openconnect ];
+    };
   };
   users.extraGroups.networkmanager.members = [
     "root"
