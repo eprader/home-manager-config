@@ -12,7 +12,8 @@
       global = {
         width = "(300, 600)";
         height = "(0, 300)";
-        offset = "(16, 16)";
+        origin = "top-center";
+        offset = "(0, 16)";
 
         frame_width = 1;
         frame_color = "#ebdbb2";
