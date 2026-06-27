@@ -63,16 +63,12 @@ in
       wget
       jq
       tailspin
+      ncdu # disk usage explorer
 
       discord-ptb
       cheese # camera program
 
-      thunderbird
-      birdtray # system tray icon for thunderbird
-
       jetbrains.idea-oss
-      minisat
-      ghc
     ];
 
     pointerCursor = {
