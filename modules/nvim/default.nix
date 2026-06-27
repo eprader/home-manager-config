@@ -56,7 +56,6 @@ in
 
         stylua
 
-        pyright
         yapf
         black
         isort
@@ -65,6 +64,7 @@ in
         vale
 
         # LSP
+        pyright
         nil
         nixd
         ccls
