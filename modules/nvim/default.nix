@@ -32,6 +32,11 @@ let
     src = ./plugins/sentinel;
     doCheck = false;
   };
+
+  treesitter-languages = import ./treesitter_languages.nix;
+  treesitterParsers = builtins.map (
+    lang: pkgs.vimPlugins.nvim-treesitter-parsers.${lang}
+  ) treesitter-languages;
 in
 {
   home = {
@@ -85,87 +90,81 @@ in
     viAlias = true;
     vimAlias = true;
 
-    plugins = with pkgs.vimPlugins; [
-      eprader-nvim # The lua config in ./config as a plugin
-      sentinel-nvim # local prequire plugin
+    plugins =
+      with pkgs.vimPlugins;
+      [
+        eprader-nvim # The lua config in ./config as a plugin
+        sentinel-nvim # local prequire plugin
+        plenary-nvim
+        nvim-notify
 
-      plenary-nvim
-      nvim-notify
+        #Eyecandy
+        gruvbox-community
+        nvim-web-devicons
+        todo-comments-nvim
+        dressing-nvim
+        nvim-colorizer-lua
+        nvim-ufo
+        markview-nvim
 
-      #Eyecandy
-      gruvbox-community
-      nvim-web-devicons
-      todo-comments-nvim
-      dressing-nvim
-      nvim-colorizer-lua
-      nvim-ufo
-      markview-nvim
-      # {
-      #   plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-      #   optional = true; # don't auto-load the plugin lua
-      # }
-      # nvim-treesitter.withAllGrammars
+        #Git
+        gitsigns-nvim
 
-      #Git
-      gitsigns-nvim
+        #Telescope
+        telescope-nvim
+        telescope-fzf-native-nvim
 
-      #Telescope
-      telescope-nvim
-      telescope-fzf-native-nvim
+        #LSP
+        lspkind-nvim
+        nvim-lspconfig
+        lspsaga-nvim
+        trouble-nvim
 
-      #LSP
-      lspkind-nvim
-      nvim-lspconfig
-      lspsaga-nvim
-      trouble-nvim
+        # lint
+        nvim-lint
 
-      # lint
-      nvim-lint
+        # formatting
+        conform-nvim
 
-      # formatting
-      conform-nvim
+        #Completion
+        cmp-nvim-lsp
+        cmp-buffer
+        cmp-path
+        cmp-cmdline
+        cmp-nvim-lsp-signature-help
+        nvim-cmp
 
-      #Completion
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      cmp-nvim-lsp-signature-help
-      nvim-cmp
+        nvim-autopairs
 
-      nvim-autopairs
+        #Snippets
+        luasnip
+        cmp_luasnip
+        friendly-snippets
 
-      #Snippets
-      luasnip
-      cmp_luasnip
-      friendly-snippets
+        #Statusline
+        lualine-nvim
 
-      #Statusline
-      lualine-nvim
+        #Harpoon by the CEO of TheStartup™ ThePrimeagen
+        harpoon
 
-      #Harpoon by the CEO of TheStartup™ ThePrimeagen
-      harpoon
+        #DAP
+        nvim-dap
+        nvim-dap-ui
+        telescope-dap-nvim
+        nvim-dap-virtual-text
 
-      #DAP
-      nvim-dap
-      nvim-dap-ui
-      telescope-dap-nvim
-      nvim-dap-virtual-text
+        #Testing
+        # (fromGit "neotest" "nvim-neotest/neotest")
+        # (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
+        # vim-test
 
-      #Testing
-      # (fromGit "neotest" "nvim-neotest/neotest")
-      # (fromGit "neotest-vim-test" "nvim-neotest/neotest-vim-test")
-      # vim-test
+        #Terminal
+        toggleterm-nvim
 
-      #Helpful
-      #comment-nvim
-
-      #Terminal
-      toggleterm-nvim
-
-      # Tasks / code runner
-      # (fromGit "overseer" "stevearc/overseer.nvim")
-    ];
+        # Tasks / code runner
+        # (fromGit "overseer" "stevearc/overseer.nvim")
+      ]
+      ++ treesitterParsers;
 
     extraLuaConfig = builtins.readFile ./init.lua;
   };
