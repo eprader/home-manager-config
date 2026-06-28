@@ -59,6 +59,7 @@ in
         yapf
         black
         isort
+        ruff
 
         # linters
         vale
