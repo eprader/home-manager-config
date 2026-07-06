@@ -65,7 +65,8 @@ in
         vale
 
         # LSP
-        pyright
+        # pyright
+        pyrefly
         nil
         nixd
         ccls

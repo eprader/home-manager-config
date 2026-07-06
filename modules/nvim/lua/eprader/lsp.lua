@@ -89,5 +89,5 @@ vim.lsp.enable {
     "yamlls",
     "helm_ls",
     "tsgo",
-    "pyright",
+    "pyrefly",
 }
