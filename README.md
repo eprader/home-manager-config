@@ -14,3 +14,10 @@ sudo nix-collect-garbage -d
 nix-collect-garbage -d
 
 TODO: look into bloat / cache cleanup tools e.g. null-e or rasa.
+
+
+## Docker
+
+```bash
+docker system prune
+```
