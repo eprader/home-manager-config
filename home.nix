@@ -121,7 +121,7 @@ in
       # ControlPath ~/.ssh/master-%r@%n:%p
       # ControlPersist no
       # };
-      "uibk" = {
+      "gpl" = {
         user = "csaz9581";
         hostname = "zid-gpl.uibk.ac.at";
       };
@@ -132,6 +132,7 @@ in
     };
   };
 
+  programs.chromium.enable = true;
   programs.brave = {
     enable = true;
     extensions = [
