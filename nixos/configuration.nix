@@ -11,7 +11,6 @@
   ];
 
   nix.settings.download-buffer-size = 1073741824; # 1 GiB in bytes
-  nixpkgs.config.allowUnfree = true;
 
   hardware = {
     bluetooth.enable = true;
