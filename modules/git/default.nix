@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.git = {
     enable = true;
@@ -15,5 +15,10 @@
         prune = true;
       };
     };
+    lfs.enable = true; # installs git-lfs and runs `git lfs install --global` for you
   };
+
+  home.packages = with pkgs; [
+    git-filter-repo
+  ];
 }

@@ -67,6 +67,7 @@ in
 
       discord-ptb
       cheese # camera program
+      unstable.pangolin-cli
 
       jetbrains.idea-oss
     ];
