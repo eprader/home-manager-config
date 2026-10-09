@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -14,47 +13,13 @@ let
       allowUnfree = true;
     };
   };
-
-  hyprmonPkg = unstable.buildGoModule {
-    pname = "hyprmoncfg";
-    version = "main";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "crmne";
-      repo = "hyprmoncfg";
-      rev = "main";
-      hash = "sha256-FljZI9rgDrNsnz9rQcu+VlnbwN72PPVRMXzrY2D5M1A=";
-    };
-
-    vendorHash = "sha256-gQbjvdKtO0hCXrs9RnWo1s0YeHf5W9t+8AgS2ELXlPo=";
-    doCheck = false;
-
-    ldflags = [
-      "-s"
-      "-w"
-    ];
-    postInstall = ''
-      install -D packaging/systemd/hyprmoncfgd.local.service $out/lib/systemd/user/hyprmoncfgd.service
-
-      substituteInPlace $out/lib/systemd/user/hyprmoncfgd.service \
-        --replace "/usr/bin/hyprmoncfgd" "$out/bin/hyprmoncfgd" \
-        --replace "ExecStart=hyprmoncfgd" "ExecStart=$out/bin/hyprmoncfgd"
-    '';
-
-    meta = {
-      description = "Terminal-first monitor configurator for Hyprland";
-      homepage = "https://github.com/crmne/hyprmoncfg";
-      license = licenses.mit;
-      platforms = platforms.linux;
-    };
-  };
 in
 {
   options.services.hyprmoncfg = {
     enable = mkEnableOption "hyprmoncfg daemon for Hyprland";
     package = mkOption {
       type = types.package;
-      default = hyprmonPkg;
+      default = unstable.hyprmoncfg;
       description = "The hyprmoncfg package to use.";
     };
   };
