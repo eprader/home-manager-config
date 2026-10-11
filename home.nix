@@ -70,6 +70,7 @@ in
       unstable.pangolin-cli
 
       jetbrains.idea-oss
+      unstable.opencode
     ];
 
     pointerCursor = {
