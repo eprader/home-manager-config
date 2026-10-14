@@ -10,6 +10,7 @@ git remote set-url origin git@github.com:eprader/home-manager-config.git
 > Removes all but the last generation!
 
 sudo nix-collect-garbage -d
+sudo nix-store --optimise
 
 nix-collect-garbage -d
 
@@ -19,5 +20,5 @@ TODO: look into bloat / cache cleanup tools e.g. null-e or rasa.
 ## Docker
 
 ```bash
-docker system prune
+docker system prune -af
 ```
