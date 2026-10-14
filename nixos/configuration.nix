@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{ pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -8,12 +7,17 @@
     ./modules/hyprland.nix
     ./modules/thunar.nix
     # ./modules/steam.nix
+    ./modules/nvidia.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.download-buffer-size = 1073741824; # 1 GiB in bytes
 
   hardware = {
     bluetooth.enable = true;
+    graphics.enable = true;
+    graphics.enable32Bit = true;
   };
 
   services.blueman.enable = true;
@@ -21,6 +25,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = false;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     kernelModules = [ "rtc_cmos" ];
     # kernelParams = [ "video=DP-1:1920x1080@60" "video=eDP-1:1920x1080@60" ];
   };
@@ -155,6 +160,21 @@
       password = "42";
     };
   };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
+  services.ipp-usb.enable = true; # Discovery of USB printers
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
