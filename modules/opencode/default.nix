@@ -2,8 +2,7 @@
 {
   programs.opencode = {
     enable = true;
-    settings = lib.importJSON ./config.json;
-    # settings = lib.importJSON ./opencode.json;
-    # tui = builtins.readFile ./tui.json;
+    settings = lib.importJSON ./opencode.json;
+    tui = lib.importJSON ./tui.json;
   };
 }

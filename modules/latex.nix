@@ -19,11 +19,11 @@ in
 
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
-      vimtex
+      # vimtex
     ];
 
     extraConfig = ''
-      lua require 'eprader.vimtex'
+      # lua require 'eprader.vimtex'
     '';
   };
 }

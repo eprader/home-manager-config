@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  unstable = import <nixos-unstable> {
+  unstable = import <unstable> {
     config = {
       allowUnfree = true;
     };
@@ -16,10 +16,6 @@ let
         url = "https://github.com/${repo}.git";
       };
     };
-
-  nodePackages = with pkgs.nodePackages; [
-    prettier
-  ];
 
   eprader-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "eprader-nvim";
@@ -41,57 +37,57 @@ let
 in
 {
   home = {
-    packages =
-      with pkgs;
-      [
-        tree-sitter
+    packages = with pkgs; [
+      tree-sitter
 
-        #for Telescope
-        ripgrep
-        fd
+      #for Telescope
+      ripgrep
+      fd
 
-        lldb
+      lldb
 
-        # formatters
-        nixfmt
+      # formatters
+      nixfmt
+      prettier
 
-        stylua
+      stylua
 
-        yapf
-        black
-        isort
-        ruff
+      yapf
+      black
+      isort
+      ruff
 
-        # linters
-        vale
+      # linters
+      vale
 
-        # LSP
-        # pyright
-        pyrefly
-        nil
-        nixd
-        ccls
-        lua-language-server
-        tailwindcss-language-server
-        typescript-go
-        yaml-language-server
-        helm-ls
-      ]
-      ++ nodePackages;
+      # LSP
+      # pyright
+      pyrefly
+      nil
+      nixd
+      ccls
+      lua-language-server
+      tailwindcss-language-server
+      typescript-go
+      yaml-language-server
+      helm-ls
+    ];
   };
 
   # NOTE: Install neovim from `unstable` channel.
-  nixpkgs.overlays = [
-    (self: super: {
-      neovim-unwrapped = unstable.neovim-unwrapped;
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     neovim-unwrapped = unstable.neovim-unwrapped;
+  #   })
+  # ];
 
   programs.neovim = {
     enable = true;
     defaultEditor = true; # sets $EDITOR variable
     viAlias = true;
     vimAlias = true;
+    withRuby = false;
+    withPython3 = false;
 
     plugins = with pkgs.vimPlugins; [
       eprader-nvim # The lua config in ./config as a plugin
@@ -107,9 +103,7 @@ in
       nvim-colorizer-lua
       nvim-ufo
       markview-nvim
-      # INFO: The 25.11 branch has an old version of nvim-treesitter
-      # which is not compatible with the latest unstable nvim version.
-      unstable.vimPlugins.nvim-treesitter.withAllGrammars
+      nvim-treesitter.withAllGrammars
 
       #Git
       gitsigns-nvim
@@ -170,6 +164,6 @@ in
     ];
     # ++ treesitterParsers;
 
-    extraLuaConfig = builtins.readFile ./init.lua;
+    initLua = builtins.readFile ./init.lua;
   };
 }

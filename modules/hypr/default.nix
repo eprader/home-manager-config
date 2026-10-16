@@ -2,6 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     extraConfig = builtins.readFile ./hyprland.conf;
 
     # INFO: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm

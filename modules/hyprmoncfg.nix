@@ -8,7 +8,7 @@ with lib;
 
 let
   cfg = config.services.hyprmoncfg;
-  unstable = import <nixos-unstable> {
+  unstable = import <unstable> {
     config = {
       allowUnfree = true;
     };

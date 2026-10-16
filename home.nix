@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   unstable = import <nixos-unstable> {
     config = {
@@ -30,9 +30,9 @@ in
     ./modules/lsd.nix
     ./modules/lazygit
     ./modules/direnv.nix
-    ./modules/btop.nix
+    ./modules/btop
     ./modules/nvim
-    ./modules/latex.nix
+    # ./modules/latex.nix
     # ./modules/hyprmoncfg.nix
     ./modules/k9s
     ./modules/opencode
@@ -43,7 +43,7 @@ in
     homeDirectory = "/home/eprader";
 
     sessionVariables = {
-      VISUAL = "$EDITOR";
+      VISUAL = lib.mkDefault "$EDITOR";
     };
 
     shellAliases = {
@@ -68,9 +68,9 @@ in
 
       discord-ptb
       cheese # camera program
-      unstable.pangolin-cli
+      pangolin-cli
 
-      jetbrains.idea-oss
+      jetbrains.idea
     ];
 
     pointerCursor = {
@@ -107,7 +107,7 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       # "*" =
       # {
       # ForwardAgent = false;

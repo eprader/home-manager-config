@@ -7,6 +7,7 @@
   };
 
   gtk = {
+    gtk4.theme = null;
     enable = true;
     # INFO: Handled via `fonts.fontconfig`
     font = {

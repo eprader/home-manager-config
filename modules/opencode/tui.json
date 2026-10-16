@@ -3,6 +3,6 @@
   "theme": "gruvbox",
   "mouse": true,
   "cursor": {
-    "style": "default",
-  },
+    "style": "default"
+  }
 }
