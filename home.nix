@@ -33,8 +33,9 @@ in
     ./modules/btop.nix
     ./modules/nvim
     ./modules/latex.nix
-    ./modules/hyprmoncfg.nix
+    # ./modules/hyprmoncfg.nix
     ./modules/k9s
+    ./modules/opencode
   ];
 
   home = {
@@ -70,7 +71,6 @@ in
       unstable.pangolin-cli
 
       jetbrains.idea-oss
-      unstable.opencode
     ];
 
     pointerCursor = {
@@ -179,7 +179,7 @@ in
     };
   };
 
-  services.hyprmoncfg.enable = true;
+  # services.hyprmoncfg.enable = true;
 
   programs.home-manager.enable = true;
 
