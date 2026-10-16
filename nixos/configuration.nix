@@ -7,10 +7,8 @@
     ./modules/hyprland.nix
     ./modules/thunar.nix
     # ./modules/steam.nix
-    ./modules/nvidia.nix
+    # ./modules/nvidia.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   nix.settings.download-buffer-size = 1073741824; # 1 GiB in bytes
 
