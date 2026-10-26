@@ -33,7 +33,7 @@ in
     ./modules/btop
     ./modules/nvim
     # ./modules/latex.nix
-    # ./modules/hyprmoncfg.nix
+    ./modules/hyprmoncfg.nix
     ./modules/k9s
     ./modules/opencode
   ];
@@ -65,12 +65,16 @@ in
       jq
       tailspin
       ncdu # disk usage explorer
+      tectonic
 
       discord-ptb
       cheese # camera program
       pangolin-cli
 
       jetbrains.idea
+
+      grim # flameshot
+      slurp # flameshot
     ];
 
     pointerCursor = {
@@ -150,18 +154,9 @@ in
 
   services.flameshot = {
     enable = true;
-    # TODO:
-    # Currently flameshort is timing out in version 14.0.0
-    # Related to the linked below pull request.
-    # package = unstable.flameshot;
+    package = unstable.flameshot;
     settings = {
       General = {
-        # INFO: On `wayland` grim should be used.
-        # Could become obsolete with:
-        # https://github.com/flameshot-org/flameshot/pull/4498
-        useGrimAdapter = true;
-        disabledGrimWarning = true;
-
         buttons = "@Variant(\\0\\0\\0\\x7f\\0\\0\\0\\vQList<int>\\0\\0\\0\\0\\x4\\0\\0\\0\\x2\\0\\0\\0\\x3\\0\\0\\0\\x5\\0\\0\\0\\x6)";
         uiColor = "#b6b2b7";
         contrastUiColor = "#282828";
@@ -179,7 +174,7 @@ in
     };
   };
 
-  # services.hyprmoncfg.enable = true;
+  services.hyprmoncfg.enable = true;
 
   programs.home-manager.enable = true;
 
