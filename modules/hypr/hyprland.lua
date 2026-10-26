@@ -1,20 +1,8 @@
 require("keybindings")
 require("animations")
+require("monitors")
 
-hl.monitor({
-	output = "eDP-1",
-	mode = "preferred",
-	position = "auto",
-	scale = "1.5",
-})
-
-hl.monitor({
-	output = "DP-1",
-	mode = "preferred",
-	position = "auto",
-	scale = "1",
-	mirror = "eDP-1",
-})
+dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
 
 -- AUTOSTART
 hl.on("hyprland.start", function()
@@ -57,6 +45,7 @@ hl.config({
 	misc = {
 		force_default_wallpaper = 0,
 		disable_hyprland_logo = true,
+		disable_splash_rendering = true,
 		focus_on_activate = true,
 	},
 	-- https://wiki.hypr.land/Configuring/Basics/Variables/#input
@@ -88,4 +77,15 @@ hl.window_rule({
 	name = "suppress-maximize-events",
 	match = { class = ".*" },
 	suppress_event = "maximize",
+})
+
+hl.window_rule({
+	name = "flameshot-multi-display-fix",
+	match = { title = "^flameshot$" },
+	rounding = 0,
+	border_size = 0,
+	float = true,
+	pin = true,
+	move = { 0, 0 },
+	size = { "monitor_w", "monitor_h" },
 })

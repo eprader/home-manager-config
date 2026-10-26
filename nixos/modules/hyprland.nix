@@ -13,18 +13,8 @@
     QT_QPA_PLATFORM = "wayland";
   };
 
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-hyprland
-      ];
-      config.common.default = "*";
-    };
-  };
+  # NOTE: XDG portal config is managed by home-manager (modules/hypr/default.nix).
+  # `programs.hyprland` still enables the system portal service.
 
   hardware = {
     graphics.enable = true;

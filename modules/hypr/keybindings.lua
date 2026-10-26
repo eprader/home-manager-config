@@ -1,10 +1,6 @@
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 
 -- $browser = brave
--- # NOTE: flameshot has issues with screens might in the future be solved by:
--- # https://github.com/flameshot-org/flameshot/pull/4498
--- # Used to counteract the scaling of the screens... laptop screen is scaled with 1.25
--- $screenshot = QT_SCALE_FACTOR=0.8 flameshot gui
 --
 -- $volumeUp10 = wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%+
 -- $volumeDown10 = wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
@@ -35,9 +31,6 @@ hl.bind("SUPER + M", function()
 	hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "m", window = "class:^(discord)$" }))
 end)
 
--- NOTE: flameshot has issues with screens might in the future be solved by:
--- https://github.com/flameshot-org/flameshot/pull/4498
--- Used to counteract the scaling of the screens... laptop screen is scaled with 1.25
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("flameshot gui"))
 
 hl.bind(

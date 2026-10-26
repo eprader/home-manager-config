@@ -1,5 +1,24 @@
 { pkgs, ... }:
 {
+  # INFO: Portal config lives here, not in the NixOS module, so it also works on
+  # non-NixOS systems. The Hyprland module adds the hyprland backend itself.
+  xdg.portal = {
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      common.default = "*";
+      hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+      };
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
@@ -16,5 +35,6 @@
   ];
   xdg.configFile."hypr/keybindings.lua".source = ./keybindings.lua;
   xdg.configFile."hypr/animations.lua".source = ./animations.lua;
+  xdg.configFile."hypr/monitors.lua".source = ./monitors.lua;
   programs.hyprlock.enable = true;
 }
