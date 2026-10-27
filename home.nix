@@ -67,7 +67,9 @@ in
       ncdu # disk usage explorer
       tectonic
 
-      discord-ptb
+      (discord-ptb.override {
+        commandLineArgs = "--force-device-scale-factor=1.4";
+      })
       cheese # camera program
       pangolin-cli
 
@@ -141,6 +143,9 @@ in
   programs.chromium.enable = true;
   programs.brave = {
     enable = true;
+    # INFO: Font size is managed via `gtk.nix`.
+    # default pagesize needs to be scaled separately.
+    commandLineArgs = [ "--force-device-scale-factor=1.4" ];
     extensions = [
       "fphegifdehlodcepfkgofelcenelpedj" # 7tv
       # TODO: Figure out way to use language tool with local server.
@@ -149,6 +154,7 @@ in
       "ghbmnnjooekpmoecnnnilnnbdlolhkhi" # Google Docs Offline
       "eljmjmgjkbmpmfljlmklcfineebidmlo" # p s o n o
       "mlomiejdfkolichcflejclcbmpeaniij" # ghostery
+      "kplfenefaakjhjkklghidleljeocgdap" # Qwant
     ];
   };
 

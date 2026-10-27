@@ -12,7 +12,7 @@
     # INFO: Handled via `fonts.fontconfig`
     font = {
       name = "SansSerif";
-      size = 12;
+      size = 14;
     };
     iconTheme.package = pkgs.tela-icon-theme;
     iconTheme.name = "Tela-black";

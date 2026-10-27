@@ -1,5 +1,5 @@
 * {
-  font-size: 14px;
+  font-size: 20pt;
   /* INFO: Font configured via `fonts.fontconfig`  */
   font-family: "SansSerif";
 }
@@ -9,13 +9,16 @@ window#waybar { background: none; }
 .module {
   color: #ebdbb2;
   background: #282828;
-  margin:3px 3px 0px 3px;
-  padding: 0px 8px;
-  border-radius: 10px;
+  margin: 0.2em 0.2em 0 0.2em;
+  padding: 0 0.55em;
+  border-radius: 0.4em;
 }
 .module:hover { background: #3c3836; }
+
+.modules-right > widget:last-child > .module {
+  padding-right: 0.9em;
+}
 
 #pulseaudio { color: #d3869b; }
 
 #backlight { color: #fabd2f; }
-

@@ -1,8 +1,7 @@
 {
     "mainBar": {
         "layer": "top",
-        "height": 20,
-        "spacing": 4,
+        "spacing": 0,
 
         "modules-left": [
             "hyprland/workspaces"
@@ -17,7 +16,8 @@
             "battery"
         ],
         "tray": {
-            "spacing": 10
+            "spacing": 10,
+            "icon-size": 30
         },
 
         "hyprland/workspaces": {
