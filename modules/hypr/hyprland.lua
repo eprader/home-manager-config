@@ -1,8 +1,7 @@
+require("monitors")
+dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
 require("keybindings")
 require("animations")
-require("monitors")
-
-dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
 
 -- AUTOSTART
 hl.on("hyprland.start", function()
