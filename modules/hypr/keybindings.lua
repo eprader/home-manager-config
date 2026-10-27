@@ -1,15 +1,5 @@
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 
--- $browser = brave
---
--- $volumeUp10 = wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%+
--- $volumeDown10 = wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
--- $toggleAudioSourceMute = wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
--- $toggleAudioSinkMute = wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
---
--- $brightnessUp10 = brightnessctl set $(( ($(brightnessctl get) * 100 / $(brightnessctl max) + 10) / 10 * 10 ))%
--- $brightnessDown10 = brightnessctl set $(( ($(brightnessctl get) * 100 / $(brightnessctl max) - 10) / 10 * 10 ))%
-
 hl.bind("SUPER + Q", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + C", hl.dsp.window.close())
 hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
