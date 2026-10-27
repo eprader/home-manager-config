@@ -36,5 +36,6 @@
   xdg.configFile."hypr/keybindings.lua".source = ./keybindings.lua;
   xdg.configFile."hypr/animations.lua".source = ./animations.lua;
   xdg.configFile."hypr/monitors.lua".source = ./monitors.lua;
+  xdg.configFile."hypr/scaling.lua".source = ./scaling.lua;
   programs.hyprlock.enable = true;
 }
