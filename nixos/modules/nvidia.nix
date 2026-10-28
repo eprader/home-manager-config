@@ -10,9 +10,9 @@
     powerManagement.finegrained = false;
     open = false; # proprietary driver (older GPU)
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
-  # 580.x doesn't build on the newest kernels, so pin an LTS kernel here.
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  # 580.x doesn't build on the newest kernels, so we pin
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 }
