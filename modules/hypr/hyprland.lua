@@ -78,13 +78,35 @@ hl.window_rule({
 	suppress_event = "maximize",
 })
 
-hl.window_rule({
-	name = "flameshot-multi-display-fix",
-	match = { title = "^flameshot$" },
-	rounding = 0,
-	border_size = 0,
-	float = true,
-	pin = true,
-	move = { 0, 0 },
-	size = { "monitor_w", "monitor_h" },
-})
+-- Flameshot composites its capture over the whole desktop bounding box, so its
+-- overlay must be anchored on the leftmost monitor and span all of them;
+-- otherwise the image is offset (shifted left + strip of the neighbour shown).
+-- monitor_w/monitor_h only cover one monitor, and hyprmoncfg can change the
+-- layout at runtime, hence re-apply on layout change (same pattern as scaling.lua).
+-- shortcut: assumes all monitors start at the leftmost monitor's top edge (y),
+-- upgrade if a monitor is ever positioned higher/lower than another.
+local function flameshot_rule()
+	local base = nil
+	for _, m in ipairs(hl.get_monitors()) do
+		if not base or m.x < base.x then base = m end
+	end
+	local w, h = base.width, base.height
+	for _, m in ipairs(hl.get_monitors()) do
+		w = math.max(w, m.x + m.width - base.x)
+		h = math.max(h, m.y + m.height - base.y)
+	end
+	hl.window_rule({
+		name = "flameshot-multi-display-fix",
+		match = { title = "^flameshot$" },
+		rounding = 0,
+		border_size = 0,
+		float = true,
+		pin = true,
+		monitor = base.name,
+		move = { 0, 0 },
+		size = { w, h },
+	})
+end
+
+flameshot_rule()
+hl.on("monitor.layout_changed", flameshot_rule)
