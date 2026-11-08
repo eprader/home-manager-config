@@ -18,7 +18,7 @@ hl.bind("SUPER + J", hl.dsp.focus({ direction = "down" }))
 -- Two actions on one key: in Lua this is one function that dispatches both.
 hl.bind("SUPER + M", function()
 	hl.dispatch(hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
-	hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "m", window = "class:^(discord)$" }))
+	hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL SHIFT", key = "m", window = "class:^(discord(-ptb)?)$" }))
 end)
 
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("flameshot gui"))
